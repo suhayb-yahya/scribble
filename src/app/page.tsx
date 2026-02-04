@@ -4,6 +4,7 @@ import {
   AboutSection,
   StoryMissionVision,
   ExploreSection,
+  ClientsSection,
   FriendsAcrossBorders,
 } from "@/components/sections";
 
@@ -16,6 +17,7 @@ export default function Home() {
       <StoryMissionVision />
       <ExploreSection />
       <FriendsAcrossBorders />
+      <ClientsSection />
     </main>
   );
 }
