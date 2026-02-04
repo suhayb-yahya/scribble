@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Dancing_Script } from "next/font/google";
 
 const dancingScript = Dancing_Script({
@@ -9,7 +10,7 @@ const dancingScript = Dancing_Script({
 });
 
 const navItems = [
-  { label: "HOME", href: "/", active: true },
+  { label: "HOME", href: "/" },
   { label: "ABOUT", href: "/about" },
   { label: "SERVICES", href: "/services" },
   { label: "JOBS", href: "/jobs" },
@@ -63,6 +64,8 @@ const socialIcons: Record<string, React.ComponentType<{ className?: string }>> =
 };
 
 export default function Header() {
+  const pathname = usePathname();
+
   return (
     <header className="absolute top-0 left-0 right-0 z-10 w-full px-4 py-4 flex justify-center">
       <div className="w-full max-w-6xl bg-white rounded-full shadow-md flex items-center justify-between gap-6 px-8 py-4">
@@ -81,19 +84,23 @@ export default function Header() {
 
         {/* Navigation */}
         <nav className="flex items-center gap-6 flex-wrap justify-center">
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className={`text-sm font-medium uppercase tracking-wide transition-colors ${
-                item.active
-                  ? "text-primary"
-                  : "text-black hover:text-primary/80"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isActive =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(item.href);
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={`text-sm font-medium uppercase tracking-wide transition-colors ${
+                  isActive ? "text-primary" : "text-black hover:text-primary/80"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
           <span className="text-black text-sm font-medium" dir="rtl">
             العربية
           </span>
