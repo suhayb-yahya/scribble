@@ -33,7 +33,7 @@ const servicesData = [
 
 export default function ServicesSection() {
   return (
-    <section className="bg-primary text-white pt-24 pb-32 px-6 md:px-10 rounded-b-[3rem] md:rounded-b-[4rem]">
+    <section className="bg-primary text-white pt-24 pb-32 px-6 md:px-10 rounded-b-[100px]">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-6xl font-bold uppercase text-center tracking-tight mb-8 max-w-4xl mx-auto leading-tight">
           NOTHING PLEASES US<br />EXCEPT THE STRANGE

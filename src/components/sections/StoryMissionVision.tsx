@@ -4,7 +4,7 @@ const rubik = Rubik({ weight: "600", subsets: ["latin"] });
 
 export default function StoryMissionVision() {
   return (
-    <section className="py-20 px-6 md:px-10 bg-white">
+    <section className="relative z-10 py-20 px-6 md:px-10 bg-white">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="space-y-12 ml-6 md:ml-[220px]">
           <div>

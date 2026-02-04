@@ -1,12 +1,12 @@
 export default function ExploreSection() {
   return (
     <section
-      className="relative min-h-[72vh] md:min-h-[76vh] py-16 md:py-24 px-6 md:px-10 overflow-hidden rounded-t-[80px] md:rounded-t-[96px] bg-cover bg-center bg-no-repeat bg-[url('/assets/explore-bg.png')]"
+      className="relative z-0 min-h-screen pt-36 md:pt-44 pb-16 md:pb-24 px-6 md:px-10 overflow-hidden rounded-t-[100px] bg-cover bg-[50%_28%] bg-no-repeat bg-[url('/assets/explore-bg.png')] shadow-none"
       aria-label="Explore"
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/50 rounded-t-[80px] md:rounded-t-[96px]" aria-hidden />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/50" aria-hidden />
       <div className="absolute inset-x-0 bottom-0 h-[35%] bg-gradient-to-t from-[#5A1F46] to-transparent pointer-events-none" aria-hidden />
-      <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row justify-end items-center md:items-start text-right min-h-[50vh] md:min-h-[55vh]">
+      <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row justify-end items-center md:items-start text-right min-h-[68vh] md:min-h-[72vh]">
         <div className="w-full max-w-[520px]">
           <h2 className="text-[2.5rem] md:text-[2.75rem] font-bold uppercase text-white tracking-[0.04em] mb-4">
             EXPLORE
