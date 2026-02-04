@@ -38,13 +38,13 @@ export default function ExploreSection() {
           </div>
         </div>
 
-        {/* Portfolio counters: left edge aligned with text above, extends to viewport right */}
-        <div className="max-w-6xl mx-auto w-full flex mt-10 md:mt-12 overflow-visible -mr-6 md:-mr-10">
+        {/* Counters box: bigger, shifted below */}
+        <div className="max-w-6xl mx-auto w-full flex mt-14 md:mt-20 overflow-visible -mr-6 md:-mr-10">
           <div className="flex-1 min-w-0" aria-hidden />
-          <div className="flex-[0_0_auto] w-full min-w-0 max-w-[95%] md:max-w-[44rem] h-auto min-h-[8rem] md:min-h-[8rem] rounded-l-[4rem] md:rounded-l-[5rem] rounded-r-none border-t border-l border-b border-white pl-6 pr-0 py-4 bg-black/20 backdrop-blur-sm flex items-stretch gap-0 relative overflow-hidden">
-            <div className="flex items-center gap-6 md:gap-8 flex-1 py-4 pl-0 pr-6">
+          <div className="flex-[0_0_auto] w-full min-w-0 max-w-[95%] md:max-w-[48rem] h-auto min-h-0 rounded-l-[5rem] md:rounded-l-[6rem] rounded-r-none border-t border-l border-b border-white pl-8 md:pl-10 pr-0 pt-0 pb-4 md:pb-6 bg-black/20 backdrop-blur-sm flex items-start gap-0 relative overflow-hidden">
+            <div className="flex items-stretch gap-6 md:gap-10 flex-1 min-h-full py-3 md:py-4 pl-0 pr-8 md:pr-10">
               <div className="flex flex-col justify-center">
-                <span className="block w-[6rem] h-[3.6rem] shrink-0" aria-hidden>
+                <span className="block w-[6rem] h-[3.6rem] md:w-[7rem] md:h-[4.2rem] shrink-0" aria-hidden>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 50" fill="none" className="w-full h-full">
                     <path d="M7.96899 48.5068C7.55299 48.5068 7.20699 48.3579 6.92999 48.0569C6.65299 47.7569 6.51398 47.3989 6.51398 46.9829C6.51398 46.7979 6.55895 46.5909 6.65295 46.3589L23.006 9.28784H1.73297C1.27097 9.28784 0.866958 9.12598 0.519958 8.80298C0.173959 8.47998 0 8.087 0 7.625V1.73389C0 1.22589 0.172958 0.810816 0.519958 0.486816C0.865958 0.164816 1.26997 0.00195312 1.73297 0.00195312H33.123C33.677 0.00195312 34.104 0.164816 34.405 0.486816C34.705 0.810816 34.855 1.22589 34.855 1.73389V6.93091C34.855 7.62391 34.7969 8.18993 34.6819 8.62793C34.5659 9.06793 34.393 9.51898 34.162 9.97998L17.878 46.844C17.739 47.121 17.497 47.4678 17.15 47.8828C16.804 48.2988 16.26 48.5068 15.522 48.5068H7.96899Z" fill="url(#paint0_linear_explore_743)"/>
                     <path d="M61.671 48.5068C61.209 48.5068 60.816 48.346 60.493 48.022C60.169 47.7 60.008 47.2839 60.008 46.7749V38.46H38.18C37.718 38.46 37.325 38.2988 37.002 37.9758C36.678 37.6528 36.517 37.2368 36.517 36.7278V31.116C36.517 30.793 36.586 30.4469 36.725 30.0769C36.864 29.7069 37.048 29.3609 37.279 29.0369L57.582 1.18188C58.182 0.396885 59.037 0.00292969 60.146 0.00292969H68.946C69.407 0.00292969 69.8 0.165793 70.124 0.487793C70.447 0.811793 70.6089 1.22686 70.6089 1.73486V29.2449H76.776C77.33 29.2449 77.757 29.407 78.058 29.73C78.358 30.053 78.508 30.447 78.508 30.908V36.7278C78.508 37.2368 78.346 37.6528 78.0229 37.9758C77.6989 38.2988 77.306 38.46 76.845 38.46H70.6089V46.7749C70.6089 47.2839 70.447 47.7 70.124 48.022C69.8 48.346 69.407 48.5068 68.946 48.5068H61.671ZM47.258 29.5898H60.216V11.365L47.258 29.5898Z" fill="url(#paint1_linear_explore_743)"/>
@@ -65,10 +65,10 @@ export default function ExploreSection() {
                     </defs>
                   </svg>
                 </span>
-                <span className="text-xs font-semibold text-white uppercase tracking-[0.2em] mt-1">VIDEOS</span>
+                <span className="text-sm md:text-base font-semibold text-white uppercase tracking-[0.2em] mt-1.5">VIDEOS</span>
               </div>
               <div className="flex flex-col justify-center">
-                <span className="block w-[6rem] h-[3.6rem] shrink-0" aria-hidden>
+                <span className="block w-[6rem] h-[3.6rem] md:w-[7rem] md:h-[4.2rem] shrink-0" aria-hidden>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 50" fill="none" className="w-full h-full">
                     <text x="0" y="48" fill="url(#paint_linear_explore_39)" fontFamily="Rubik, sans-serif" fontSize="70" fontWeight="700">39</text>
                     <defs>
@@ -79,10 +79,10 @@ export default function ExploreSection() {
                     </defs>
                   </svg>
                 </span>
-                <span className="text-xs font-semibold text-white uppercase tracking-[0.2em] mt-1">BRAND</span>
+                <span className="text-sm md:text-base font-semibold text-white uppercase tracking-[0.2em] mt-1.5">BRAND</span>
               </div>
               <div className="flex flex-col justify-center">
-                <span className="block w-[6rem] h-[3.6rem] shrink-0" aria-hidden>
+                <span className="block w-[6rem] h-[3.6rem] md:w-[7rem] md:h-[4.2rem] shrink-0" aria-hidden>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 50" fill="none" className="w-full h-full">
                     <text x="0" y="48" fill="url(#paint_linear_explore_76)" fontFamily="Rubik, sans-serif" fontSize="70" fontWeight="700">76</text>
                     <defs>
@@ -93,12 +93,12 @@ export default function ExploreSection() {
                     </defs>
                   </svg>
                 </span>
-                <span className="text-xs font-semibold text-white uppercase tracking-[0.2em] mt-1">CLIENTS</span>
+                <span className="text-sm md:text-base font-semibold text-white uppercase tracking-[0.2em] mt-1.5">CLIENTS</span>
               </div>
             </div>
             <button
               type="button"
-              className="shrink-0 self-start flex items-center justify-center min-w-[8.5rem] h-12 bg-white border-t border-r border-b border-white rounded-r-none hover:opacity-95 transition-opacity pl-4 pr-3 mr-8"
+              className="shrink-0 self-start flex items-center justify-center h-10 md:h-12 min-w-[9rem] md:min-w-[11rem] bg-white border-t border-r border-b border-white rounded-r-none hover:opacity-95 transition-opacity pl-5 pr-5 md:pl-6 md:pr-6 mr-8 md:mr-10"
               aria-label="View portfolio"
             >
               <span
@@ -107,7 +107,7 @@ export default function ExploreSection() {
                   fontStyle: 'normal',
                   fontWeight: 600,
                   lineHeight: 'normal',
-                  fontSize: 'clamp(0.9rem, 1.2vw, 1.2rem)',
+                  fontSize: 'clamp(0.7rem, 1vw, 0.9rem)',
                 }}
               >
                 PORTFOLIO
