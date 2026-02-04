@@ -41,7 +41,7 @@ export default function ExploreSection() {
         {/* Counters box: bigger, shifted below */}
         <div className="max-w-6xl mx-auto w-full flex mt-14 md:mt-20 overflow-visible -mr-6 md:-mr-10">
           <div className="flex-1 min-w-0" aria-hidden />
-          <div className="flex-[0_0_auto] w-full min-w-0 max-w-[95%] md:max-w-[48rem] h-auto min-h-0 rounded-l-[5rem] md:rounded-l-[6rem] rounded-r-none border-t border-l border-b border-white pl-8 md:pl-10 pr-0 pt-0 pb-4 md:pb-6 bg-black/20 backdrop-blur-sm flex items-start gap-0 relative overflow-hidden">
+          <div className="flex-[0_0_auto] w-full min-w-0 max-w-[95%] md:max-w-[48rem] h-auto min-h-0 rounded-l-[5rem] md:rounded-l-[6rem] rounded-r-none border-t border-l border-b border-white pl-[5rem] md:pl-[6rem] pr-0 pt-0 pb-4 md:pb-6 bg-black/20 backdrop-blur-sm flex items-start gap-0 relative overflow-hidden">
             <div className="flex items-stretch gap-6 md:gap-10 flex-1 min-h-full py-3 md:py-4 pl-0 pr-8 md:pr-10">
               <div className="flex flex-col justify-center">
                 <span className="block w-[6rem] h-[3.6rem] md:w-[7rem] md:h-[4.2rem] shrink-0" aria-hidden>
@@ -65,40 +65,78 @@ export default function ExploreSection() {
                     </defs>
                   </svg>
                 </span>
-                <span className="text-sm md:text-base font-semibold text-white uppercase tracking-[0.2em] mt-1.5">VIDEOS</span>
-              </div>
-              <div className="flex flex-col justify-center">
-                <span className="block w-[6rem] h-[3.6rem] md:w-[7rem] md:h-[4.2rem] shrink-0" aria-hidden>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 50" fill="none" className="w-full h-full">
-                    <text x="0" y="48" fill="url(#paint_linear_explore_39)" fontFamily="Rubik, sans-serif" fontSize="70" fontWeight="700">39</text>
-                    <defs>
-                      <linearGradient id="paint_linear_explore_39" x1="-2.566" y1="35.27" x2="153.112" y2="37.41" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#D17F64"/>
-                        <stop offset="0.971" stopColor="#469098"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
+                <span
+                  className="uppercase tracking-[0.2em] mt-1.5"
+                  style={{
+                    color: '#D57C61',
+                    fontFamily: 'Rubik, sans-serif',
+                    fontSize: '1.119rem',
+                    fontStyle: 'normal',
+                    fontWeight: 600,
+                    lineHeight: 'normal',
+                  }}
+                >
+                  VIDEOS
                 </span>
-                <span className="text-sm md:text-base font-semibold text-white uppercase tracking-[0.2em] mt-1.5">BRAND</span>
               </div>
-              <div className="flex flex-col justify-center">
-                <span className="block w-[6rem] h-[3.6rem] md:w-[7rem] md:h-[4.2rem] shrink-0" aria-hidden>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 50" fill="none" className="w-full h-full">
-                    <text x="0" y="48" fill="url(#paint_linear_explore_76)" fontFamily="Rubik, sans-serif" fontSize="70" fontWeight="700">76</text>
-                    <defs>
-                      <linearGradient id="paint_linear_explore_76" x1="-2.566" y1="35.27" x2="153.112" y2="37.41" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#D17F64"/>
-                        <stop offset="0.971" stopColor="#469098"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </span>
-                <span className="text-sm md:text-base font-semibold text-white uppercase tracking-[0.2em] mt-1.5">CLIENTS</span>
+              <div className="flex flex-col justify-center gap-2 md:gap-3">
+                <div className="flex items-center gap-4 md:gap-6">
+                  <span className="block w-[6rem] h-[3.6rem] md:w-[7rem] md:h-[4.2rem] shrink-0" aria-hidden>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 50" fill="none" className="w-full h-full">
+                      <text x="0" y="48" fill="url(#paint_linear_explore_39)" fontFamily="Rubik, sans-serif" fontSize="70" fontWeight="700">39</text>
+                      <defs>
+                        <linearGradient id="paint_linear_explore_39" x1="-2.566" y1="35.27" x2="153.112" y2="37.41" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#D17F64"/>
+                          <stop offset="0.971" stopColor="#469098"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </span>
+                  <span className="block w-[6rem] h-[3.6rem] md:w-[7rem] md:h-[4.2rem] shrink-0" aria-hidden>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 50" fill="none" className="w-full h-full">
+                      <text x="0" y="48" fill="url(#paint_linear_explore_76)" fontFamily="Rubik, sans-serif" fontSize="70" fontWeight="700">76</text>
+                      <defs>
+                        <linearGradient id="paint_linear_explore_76" x1="-2.566" y1="35.27" x2="153.112" y2="37.41" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#D17F64"/>
+                          <stop offset="0.971" stopColor="#469098"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </span>
+                </div>
+                <div className="flex items-center gap-4 md:gap-6">
+                  <span
+                    className="uppercase tracking-[0.2em]"
+                    style={{
+                      color: '#D57C61',
+                      fontFamily: 'Rubik, sans-serif',
+                      fontSize: '1.119rem',
+                      fontStyle: 'normal',
+                      fontWeight: 600,
+                      lineHeight: 'normal',
+                    }}
+                  >
+                    BRAND
+                  </span>
+                  <span
+                    className="uppercase tracking-[0.2em]"
+                    style={{
+                      color: '#D57C61',
+                      fontFamily: 'Rubik, sans-serif',
+                      fontSize: '1.119rem',
+                      fontStyle: 'normal',
+                      fontWeight: 600,
+                      lineHeight: 'normal',
+                    }}
+                  >
+                    CLIENTS
+                  </span>
+                </div>
               </div>
             </div>
             <button
               type="button"
-              className="shrink-0 self-start flex items-center justify-center h-10 md:h-12 min-w-[9rem] md:min-w-[11rem] bg-white border-t border-r border-b border-white rounded-r-none hover:opacity-95 transition-opacity pl-5 pr-5 md:pl-6 md:pr-6 mr-8 md:mr-10"
+              className="shrink-0 self-start flex items-center justify-center h-10 md:h-12 min-w-[9rem] md:min-w-[11rem] bg-white border-t border-r border-b border-white rounded-r-none rounded-b-xl hover:opacity-95 transition-opacity pl-5 pr-5 md:pl-6 md:pr-6 mr-8 md:mr-10"
               aria-label="View portfolio"
             >
               <span
