@@ -67,7 +67,7 @@ export default function ClientsSection() {
             clientsData.map((client, index) => (
               <div
                 key={`${client.alt}-${index}`}
-                className="flex items-center justify-center w-full min-h-[100px] opacity-90 hover:opacity-100 transition-opacity duration-300"
+                className="flex items-center justify-center w-full min-h-[6.25rem] opacity-90 hover:opacity-100 transition-opacity duration-300"
               >
                 <Image
                   src={client.src}
@@ -75,7 +75,7 @@ export default function ClientsSection() {
                   width={client.width ?? 400}
                   height={client.height ?? 200}
                   className="object-contain w-full h-auto"
-                  sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 400px"
+                  sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 25rem"
                 />
               </div>
             ))
@@ -83,7 +83,7 @@ export default function ClientsSection() {
             Array.from({ length: 24 }).map((_, i) => (
               <div
                 key={i}
-                className="flex items-center justify-center w-full min-h-[100px] rounded border border-gray-200 bg-gray-50 text-gray-400 text-sm"
+                className="flex items-center justify-center w-full min-h-[6.25rem] rounded border border-gray-200 bg-gray-50 text-gray-400 text-sm"
                 aria-hidden
               >
                 Logo {i + 1}
