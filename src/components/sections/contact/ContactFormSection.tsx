@@ -67,7 +67,7 @@ export default function ContactFormSection() {
       className="relative w-full min-w-0 overflow-x-visible overflow-y-visible bg-primary"
       aria-label="Contact information and form"
     >
-      <div className="w-full max-w-6xl pl-[calc(10%+100px)] pr-4 py-12 md:py-16 lg:py-20">
+      <div className="w-full max-w-[1400px] pl-[calc(10%+100px)] pr-4 py-12 md:py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           {/* Left: Logo + location/phone row, then form underneath — wider so logo + info stay on one line */}
           <div className="flex flex-col gap-10 md:gap-14 lg:gap-16 min-w-0">
@@ -75,7 +75,7 @@ export default function ContactFormSection() {
             <div className="flex flex-nowrap items-center gap-6 md:gap-8 min-w-0">
               <ScribbleLogo className="shrink-0 w-[16.51vw] h-[8.19vw]" />
               <div
-                className={`flex flex-col gap-1 text-[#FFF] uppercase tracking-wide md:ml-auto shrink-0 min-w-[320px] lg:min-w-[380px] ${rubik.className}`}
+                className={`flex flex-col gap-1 text-[#FFF] uppercase tracking-wide md:ml-auto shrink-0 min-w-[320px] lg:min-w-[380px] ml-6 lg:ml-10 ${rubik.className}`}
               >
                 <span className="text-[22px] font-semibold leading-normal whitespace-nowrap">
                   Scribble Production Company
@@ -94,7 +94,7 @@ export default function ContactFormSection() {
 
             {/* Form sticks under them */}
             <form
-              className="flex flex-col gap-4 w-full max-w-md"
+              className="flex flex-col gap-4 w-full max-w-[34.72vw]"
               onSubmit={(e) => e.preventDefault()}
             >
             <label className="sr-only" htmlFor="contact-name">
