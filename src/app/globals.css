@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #7B2553;
+  --secondary: #ffffff;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+body {
+  color: var(--secondary);
+  background: var(--primary);
+}
+
+/* Jobs: Apply Now button — black default, gradient on hover (from SVG) */
+.apply-now-btn {
+  background: #000;
+}
+.apply-now-btn:hover {
+  /* Gradient from SVG: #4F1A39 → #469098, direction ~(183,-76) ≈ 70deg */
+  background: linear-gradient(70deg, #4F1A39 0%, #469098 97.1%);
+}
