@@ -32,7 +32,7 @@ type JobsListSectionProps = {
 export default function JobsListSection({ jobs }: JobsListSectionProps) {
   return (
     <section
-      className="py-16 md:py-24 bg-white grid grid-cols-1 lg:grid-cols-2 min-h-0"
+      className="py-16 md:py-24 bg-white grid grid-cols-1 lg:grid-cols-[1.35fr_0.65fr] min-h-0"
       aria-label="Available positions"
     >
       {/* Left half: jobs list */}
@@ -87,15 +87,15 @@ export default function JobsListSection({ jobs }: JobsListSectionProps) {
         ))}
       </div>
 
-      {/* Right half: character illustration */}
-      <div className="relative w-full min-h-[320px] lg:min-h-[480px] flex items-start justify-center lg:justify-start px-6 lg:pl-6 lg:pr-10 pt-8 lg:pt-[100px]">
+      {/* Right half: character illustration (smaller to give more room to jobs list) */}
+      <div className="relative w-full min-h-[280px] lg:min-h-[360px] flex items-start justify-center lg:justify-start px-6 lg:pl-6 lg:pr-10 pt-8 lg:pt-[100px]">
         <Image
           src="/assets/jobs-character.png"
           alt="Creative professional at work — join our team at Scribble"
-          width={600}
-          height={600}
-          className="object-contain w-full h-full max-h-[60vh] lg:max-h-[520px]"
-          sizes="(max-width: 1023px) 100vw, 50vw"
+          width={380}
+          height={380}
+          className="object-contain w-full h-full max-w-[280px] max-h-[50vh] lg:max-w-[340px] lg:max-h-[380px]"
+          sizes="(max-width: 1023px) 80vw, 340px"
         />
       </div>
     </section>

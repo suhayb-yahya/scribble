@@ -31,7 +31,7 @@ export default function JobsHero() {
 
         {/* Bottom-left text overlay */}
         <div
-          className="absolute left-0 bottom-0 p-4 pointer-events-none ml-[10%] flex flex-col justify-center mb-14 md:mb-20 max-w-[90%] md:max-w-[716px]"
+          className="absolute left-0 bottom-0 p-4 pointer-events-none ml-[14%] flex flex-col justify-center mb-40 md:mb-48 w-[40%] max-w-[600px]"
           aria-hidden
         >
           <h1
