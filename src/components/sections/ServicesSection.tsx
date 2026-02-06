@@ -33,12 +33,12 @@ const servicesData = [
 
 export default function ServicesSection() {
   return (
-    <section className="bg-primary text-white pt-24 pb-32 px-6 md:px-10 rounded-b-[8vw] md:rounded-b-[6rem]">
+    <section className="bg-primary text-white pt-22 pb-32 px-6 md:px-10 rounded-b-[8vw] md:rounded-b-[6rem]">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-6xl font-bold uppercase text-center tracking-tight mb-8 max-w-4xl mx-auto leading-tight">
+        <h2 className="text-4xl md:text-6xl font-bold uppercase text-center tracking-tight mb-10 max-w-4xl mx-auto leading-tight">
           NOTHING PLEASES US<br />EXCEPT THE STRANGE
         </h2>
-        <p className="text-xl md:text-2xl font-bold text-center text-white max-w-5xl mx-auto mb-16 leading-tight px-4">
+        <p className="text-xl md:text-3xl font-bold text-center text-white max-w-5xl mx-auto mb-16 leading-tight px-4">
           We strive to provide a comprehensive range of creative and professional services designed to meet the needs of brands in today&apos;s competitive digital world. From the first idea to the final execution.
         </p>
 
@@ -48,9 +48,9 @@ export default function ServicesSection() {
               key={card.title}
               className="bg-primary border border-white/40 rounded-2xl p-8 text-left h-full flex flex-col justify-start transition-colors duration-200 hover:bg-[#6a2049]"
             >
-              <h3 className="text-lg font-bold uppercase tracking-wide mb-4">
+              <h2 className="text-lg font-bold uppercase tracking-wide mb-4">
                 {card.title}
-              </h3>
+              </h2>
               <p className="text-base text-white/90 leading-relaxed">
                 {card.description}
               </p>
