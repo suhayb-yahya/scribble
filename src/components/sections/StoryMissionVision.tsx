@@ -10,7 +10,7 @@ export default function StoryMissionVision() {
       <section className={`${rubik.className} bg-white py-20 px-6 md:px-10`}>
         <div className="max-w-6xl mx-auto">
           {/* Top paragraph (center) */}
-          <p className="mx-auto max-w-[760.4px] max-h-[210px] text-center text-[32px] leading-[1.4] font-[400] text-primary">
+          <p className="mx-auto md:max-w-[760.4px] md:max-h-[210px] text-center text-[32px] leading-[1.4] font-[400] text-primary">
             Founded in 2016, Scribble Media Production has delivered standout projects built on
             the creativity and passion of its team. With a unique artistic touch, our original work
             has defined the company’s identity and set it apart in the industry.
