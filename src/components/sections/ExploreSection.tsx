@@ -70,13 +70,15 @@ export default function ExploreSection() {
 
   return (
     <section
-      className="relative z-0 min-h-screen pt-36 md:pt-44 pb-16 md:pb-24 px-6 md:px-10 overflow-hidden rounded-t-[8vw] md:rounded-t-[6rem] bg-cover bg-[50%_28%] bg-no-repeat bg-[url('/assets/explore-bg.png')] shadow-none"
+      className="relative z-0 min-h-screen pt-36 md:pt-44 pb-16 md:pb-24 pl-6 md:pl-10 pr-0 overflow-hidden rounded-t-[8vw] md:rounded-t-[6rem] bg-cover bg-[50%_28%] bg-no-repeat bg-[url('/assets/explore-bg.png')] shadow-none"
       aria-label="Explore"
     >
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/50" aria-hidden />
       <div className="relative z-10 flex flex-col min-h-[68vh] md:min-h-screen">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-end items-center md:items-start w-full px-0">
-          <div className="w-full max-w-[90%] sm:max-w-[32rem] text-left mt-22 md:mt-24">
+        <div className="max-w-6xl mx-auto mr-0 w-full px-0">
+          <div className="flex flex-col md:flex-row md:justify-end">
+            <div className="w-full max-w-[90%] sm:max-w-[55rem] md:ml-auto">
+              <div className="text-left mt-22 md:mt-24 ml-12 md:ml-20">
               <h2
                   className={`
                     ${rubik.className}
@@ -112,14 +114,12 @@ export default function ExploreSection() {
             >
                 We constantly seek creativity that stands out, turning ideas into powerful visuals and sound that leave a lasting impression. With passion and expertise, we craft work that elevates your brand and speaks to your audience in the best way possible.
             </p>
-          </div>
-        </div>
+              </div>
 
-        {/* Counters box: bigger, shifted below */}
-        <div className="max-w-6xl mx-auto w-full flex mt-14 md:mt-20 overflow-visible -mr-6 md:-mr-10">
-          <div className="flex-1 min-w-0" aria-hidden />
-          <div className="flex-[0_0_auto] w-full min-w-0 max-w-[95%] md:max-w-[55rem] h-auto min-h-0 rounded-l-[5rem] md:rounded-l-[6rem] rounded-r-none border-t border-l border-b border-white pl-[5rem] md:pl-[6rem] pr-0 pt-0 pb-4 md:pb-6 bg-black/20 backdrop-blur-sm flex items-start gap-0 relative overflow-hidden">
-            <div className="flex flex-1 justify-center">
+        {/* Counters box: left edge aligns with text, extends to right edge */}
+        <div className="flex w-full mt-14 md:mt-20 -mr-6 md:-mr-10 overflow-visible ml-12 md:ml-20">
+          <div className="flex-1 min-w-0 rounded-l-[5rem] md:rounded-l-[6rem] rounded-r-none border-t border-l border-b border-white pl-[5rem] md:pl-[6rem] pr-6 md:pr-10 pt-0 pb-4 md:pb-6 bg-black/20 backdrop-blur-sm flex items-start gap-0 justify-start">
+            <div className="flex flex-1 justify-start">
                   <div className="flex items-center gap-8 md:gap-14 py-3 md:py-4">
                   {/* VIDEOS */}
                   <div className="flex flex-col items-center justify-center">
@@ -215,7 +215,7 @@ export default function ExploreSection() {
               </div>
             <button
               type="button"
-              className="shrink-0 self-start flex items-center justify-center h-10 md:h-12 min-w-[7rem] md:min-w-[8rem] bg-white border-t border-r border-b border-white rounded-r-none rounded-b-xl hover:opacity-95 transition-opacity pl-5 pr-5 md:pl-6 md:pr-6 mr-8 md:mr-10"
+              className="shrink-0 self-start flex items-center justify-center h-10 md:h-12 min-w-[7rem] md:min-w-[8rem] bg-white border-t border-r border-b border-white rounded-r-none rounded-b-xl hover:opacity-95 transition-opacity pl-5 pr-5 md:pl-6 md:pr-6 mr-10 md:mr-16"
               aria-label="View portfolio"
             >
               <span
@@ -231,6 +231,9 @@ export default function ExploreSection() {
               </span>
             </button>
           </div>
+        </div>
+            </div>
+        </div>
         </div>
       </div>
       <div className="absolute inset-x-0 bottom-0 h-[15%] bg-gradient-to-t from-[#4F1A39] to-transparent pointer-events-none" aria-hidden />

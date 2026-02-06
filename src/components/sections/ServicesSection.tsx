@@ -92,6 +92,8 @@ export default function ServicesSection() {
                   <article
                       className="
                   bg-[#7B2553]
+                  hover:bg-[#4F1A39]
+                  transition-colors duration-200
                   rounded-2xl
                   px-8
                   py-10
