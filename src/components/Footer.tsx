@@ -21,7 +21,7 @@ export default function Footer() {
     const isActive = (href: string) => pathname === href;
 
     return (
-        <footer className="bg-white px-6 md:px-16 pt-14 pb-6">
+        <footer className="bg-white px-6 md:px-16 pt-12 pb-6">
             {/* Main content */}
             <div className="max-w-[100rem] mx-auto flex items-end justify-between gap-12">
                 {/* LEFT SIDE: logo + info + nav (together) */}
