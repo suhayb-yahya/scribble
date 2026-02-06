@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function ServicesHero() {
   return (
     <section
-      className="relative w-full min-w-0 overflow-hidden"
+      className="relative w-full min-w-0 overflow-hidden z-0"
       aria-label="Services"
     >
       <div className="relative w-full aspect-[16/10] min-h-[320px] sm:min-h-[400px] md:min-h-[480px]">
@@ -11,16 +11,17 @@ export default function ServicesHero() {
           src="/assets/services-hero.png"
           alt="Creative studio — professional photography and media production at Scribble"
           fill
-          className="object-cover object-center"
+          className="object-cover"
+          style={{ objectPosition: "center calc(50% - 100px)" }}
           sizes="100vw"
           priority
         />
-        {/* Bottom gradient: fade to black so transition strip below blends in */}
+        {/* Bottom gradient: fade into primary so content container merges smoothly */}
         <div
-          className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
+          className="absolute inset-x-0 bottom-0 h-2/5 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to top, #404040 0%, rgba(64, 64, 64, 0.5) 50%, transparent 100%)",
+              "linear-gradient(to top, #7B2553 0%, rgba(123, 37, 83, 0.85) 20%, rgba(85, 58, 74, 0.5) 50%, transparent 100%)",
           }}
           aria-hidden
         />

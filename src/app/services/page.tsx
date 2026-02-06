@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import type { ServicesPart } from "@/components/sections/services/ServicesPartsSection";
 import ServicesHero from "@/components/sections/services/ServicesHero";
 import ServicesPartsSection from "@/components/sections/services/ServicesPartsSection";
-import ServicesTransition from "@/components/sections/services/ServicesTransition";
 
 export const metadata: Metadata = {
   title: "Services — Scribble",
@@ -82,7 +81,6 @@ export default function ServicesPage() {
   return (
     <main className="flex flex-col w-full min-w-0 max-w-full overflow-x-hidden min-h-screen">
       <ServicesHero />
-      <ServicesTransition />
       <ServicesPartsSection parts={servicesParts} />
       {/* More sections will be added here */}
     </main>

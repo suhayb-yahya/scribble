@@ -38,7 +38,7 @@ function PartBlock({ part }: { part: ServicesPart }) {
   const isProductionPhotography = part.id === PRODUCTION_PHOTOGRAPHY_ID;
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 lg:gap-0 items-stretch max-w-[1440px] mx-auto px-4 sm:px-6 py-12 lg:py-16">
+    <div className="flex flex-col lg:flex-row gap-8 lg:gap-0 items-stretch max-w-[1440px] mx-auto pl-10 pr-4 sm:pl-16 sm:pr-6 lg:pl-20 py-12 lg:py-16">
       {/* Text box — width/minHeight per part (design 1440px) */}
       <div
         className={`flex flex-col justify-center shrink-0 ${
@@ -107,10 +107,14 @@ export default function ServicesPartsSection({
 }: ServicesPartsSectionProps) {
   return (
     <section
-      className="w-full min-w-0 relative overflow-hidden bg-primary"
+      className="w-full min-w-0 relative -mt-32 sm:-mt-40 md:-mt-52 z-20 overflow-visible"
+      style={{
+        background:
+          "linear-gradient(to bottom, transparent 0%, rgba(123, 37, 83, 0.4) 30px, rgba(123, 37, 83, 0.9) 60px, #7B2553 90px, #7B2553 100%)",
+      }}
       aria-label="Services overview"
     >
-      <div className="relative">
+      <div className="relative -mt-[100px]">
         {parts.map((part) => (
           <PartBlock key={part.id} part={part} />
         ))}
