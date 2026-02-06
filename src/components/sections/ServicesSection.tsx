@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const servicesData = [
   {
     title: "GRAPHIC DESIGN",
@@ -30,11 +34,32 @@ const servicesData = [
       "Managing social media pages is more than just posting: it's a complete process designed to build a strong and consistent presence for the brand.",
   },
 ];
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
 
 export default function ServicesSection() {
   return (
     <section className="bg-primary text-white pt-22 pb-32 px-6 md:px-10 rounded-b-[8vw] md:rounded-b-[6rem]">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-6xl font-bold uppercase text-center tracking-tight mb-10 max-w-4xl mx-auto leading-tight">
           NOTHING PLEASES US<br />EXCEPT THE STRANGE
         </h2>
@@ -42,21 +67,51 @@ export default function ServicesSection() {
           We strive to provide a comprehensive range of creative and professional services designed to meet the needs of brands in today&apos;s competitive digital world. From the first idea to the final execution.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-          {servicesData.map((card) => (
-            <article
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {servicesData.map((card, index) => (
+            <motion.div
               key={card.title}
-              className="bg-primary border border-white/40 rounded-2xl p-8 text-left h-full flex flex-col justify-start transition-colors duration-200 hover:bg-[#6a2049]"
+              variants={cardVariants}
+              whileHover={{ y: -6, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 220, damping: 18 }}
+              className="rounded-2xl p-[1px]"
+              style={{
+                background:
+                  "linear-gradient(90deg, #469098 -0.12%, #D17F64 100.12%)",
+              }}
             >
-              <h2 className="text-lg font-bold uppercase tracking-wide mb-4">
-                {card.title}
-              </h2>
-              <p className="text-base text-white/90 leading-relaxed">
-                {card.description}
-              </p>
-            </article>
+              <article
+                className="
+                  bg-primary
+                  rounded-2xl
+                  p-8
+                  h-full
+                  flex
+                  flex-col
+                  justify-start
+                  transition-colors
+                  duration-300
+                  hover:bg-[#4F1A39]
+                "
+              >
+                <h3 className="text-lg font-bold uppercase tracking-wide mb-4">
+                  {card.title}
+                </h3>
+
+                <p className="text-base text-white/90 leading-relaxed">
+                  {card.description}
+                </p>
+              </article>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
+
       </div>
     </section>
   );
