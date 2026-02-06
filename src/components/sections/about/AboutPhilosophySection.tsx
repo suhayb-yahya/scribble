@@ -25,7 +25,7 @@ export default function AboutPhilosophySection() {
             key={box.title}
             className="rounded-2xl p-6 sm:p-8 md:p-10 border-2 flex flex-col justify-center min-h-[200px]"
             style={{
-              backgroundColor: "#7B2553",
+              backgroundColor: box.title === "WHY SCRIBBLE?" ? "#4F1A39" : "#7B2553",
               borderColor: "#D2A860",
             }}
           >
