@@ -13,7 +13,7 @@ export default function Home() {
     <main className="flex flex-col w-full min-w-0 max-w-full overflow-x-hidden">
       <HeroBanner />
       <ServicesSection />
-      <AboutSection />
+      {/*<AboutSection />*/}
       <StoryMissionVision />
       <ExploreSection />
       <FriendsAcrossBorders />
