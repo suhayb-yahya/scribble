@@ -1,6 +1,9 @@
 "use client";
 
+import { Rubik } from "next/font/google";
 import { motion } from "framer-motion";
+
+const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin"] });
 
 const servicesData = [
   {
@@ -68,7 +71,7 @@ export default function ServicesSection() {
         </p>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -90,7 +93,8 @@ export default function ServicesSection() {
                 className="
                   bg-primary
                   rounded-2xl
-                  p-8
+                  px-8
+                  py-10
                   h-full
                   flex
                   flex-col
@@ -100,11 +104,24 @@ export default function ServicesSection() {
                   hover:bg-[#4F1A39]
                 "
               >
-                <h3 className="text-lg font-bold uppercase tracking-wide mb-4">
+                <h3
+                  className={`${rubik.className} font-semibold mb-4`}
+                  style={{
+                    fontSize: "28.12px",
+                    lineHeight: "100%",
+                  }}
+                >
                   {card.title}
                 </h3>
 
-                <p className="text-base text-white/90 leading-relaxed">
+                <p
+                  className={`${rubik.className} text-white/90 leading-relaxed`}
+                  style={{
+                    fontWeight: 400,
+                    fontSize: "18.43px",
+                    // lineHeight: "100%",
+                  }}
+                >
                   {card.description}
                 </p>
               </article>
