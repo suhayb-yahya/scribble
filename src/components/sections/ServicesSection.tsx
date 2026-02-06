@@ -1,3 +1,10 @@
+"use client";
+
+import { Rubik } from "next/font/google";
+import { motion } from "framer-motion";
+
+const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin"] });
+
 const servicesData = [
   {
     title: "GRAPHIC DESIGN",
@@ -30,6 +37,27 @@ const servicesData = [
       "Managing social media pages is more than just posting: it's a complete process designed to build a strong and consistent presence for the brand.",
   },
 ];
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
 
 export default function ServicesSection() {
   return (
