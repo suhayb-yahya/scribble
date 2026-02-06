@@ -74,8 +74,7 @@ export default function ExploreSection() {
       aria-label="Explore"
     >
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/50" aria-hidden />
-      <div className="absolute inset-x-0 bottom-0 h-[35%] bg-gradient-to-t from-[#5A1F46] to-transparent pointer-events-none" aria-hidden />
-      <div className="relative z-10 flex flex-col min-h-[68vh] md:min-h-[72vh]">
+      <div className="relative z-10 flex flex-col min-h-[68vh] md:min-h-screen">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-end items-center md:items-start w-full px-0">
           <div className="w-full max-w-[90%] sm:max-w-[32rem] text-left mt-22 md:mt-24">
               <h2
@@ -234,6 +233,8 @@ export default function ExploreSection() {
           </div>
         </div>
       </div>
+      <div className="absolute inset-x-0 bottom-0 h-[15%] bg-gradient-to-t from-[#4F1A39] to-transparent pointer-events-none" aria-hidden />
+
     </section>
   );
 }
