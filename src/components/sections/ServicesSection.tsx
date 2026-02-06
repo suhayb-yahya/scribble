@@ -83,7 +83,6 @@ export default function ServicesSection() {
                 {card.description}
               </p>
             </article>
-            </motion.div>
           ))}
         </div>
       </div>
