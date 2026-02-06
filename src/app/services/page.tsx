@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const servicesParts: ServicesPart[] = [
   {
     id: "motion-graphics",
-    title: "Motion Graphics",
+    title: "MOTION GRAPHICS",
     description:
       "Motion graphics and animation turn complex ideas into simple, engaging visual stories. Through carefully crafted movement, design, and effects, we create impactful videos that capture attention, strengthen brand identity, and deliver messages clearly—whether for awareness, education, or marketing.",
     imageSrc: "/assets/services-motion-graphics.png",
@@ -27,8 +27,8 @@ const servicesParts: ServicesPart[] = [
     description:
       "In our graphic design work, we go beyond visuals to create designs that communicate, inspire, and make an impact. By blending creativity with strategy, we craft meaningful designs that reflect each brand's identity—from logos and brand identities to social media, marketing, and print materials—ensuring every detail builds connection, trust, and a strong, lasting presence.",
     layout: "text-left",
-    boxWidthPx: 1315.876,
-    boxMinHeightPx: 359.863,
+    boxWidthPx: 1317,
+    boxMinHeightPx: 361,
   },
   // Next section — two parts (same structure as first)
   {
@@ -39,8 +39,8 @@ const servicesParts: ServicesPart[] = [
     imageSrc: "/assets/services-production-photography.png",
     imageAlt: "Production photography and visual content creation",
     layout: "text-right",
-    boxWidthPx: 746.66,
-    boxMinHeightPx: 463.12,
+    boxWidthPx: 748,
+    boxMinHeightPx: 465,
   },
   {
     id: "social-media",
