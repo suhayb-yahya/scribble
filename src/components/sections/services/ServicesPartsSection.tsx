@@ -46,30 +46,33 @@ function PartBlock({ part }: { part: ServicesPart }) {
         }`}
       >
         <div
-          className={`rounded-2xl p-6 sm:p-8 shadow-lg w-full overflow-auto ${lgWidthClass} ${
-            isProductionPhotography ? "" : "border-2 border-[#e8a4b8] bg-primary/95"
-          }`}
+          className={`rounded-2xl p-[0.893px] shadow-lg w-full overflow-auto ${lgWidthClass}`}
           style={{
             maxWidth: `${boxWidth}px`,
             minHeight: `${boxMinHeight}px`,
-            ...(isProductionPhotography
-              ? {
-                  backgroundColor: "#4F1A39",
-                  border: "0.893px solid #469098",
-                }
-              : {}),
+            background:
+              "linear-gradient(to right, #469098, #D17F64)",
           }}
         >
-          <h2
-            className={`${rubik.className} mb-4 text-[#FFF] text-[53.294px] font-semibold leading-normal`}
+          <div
+            className={`rounded-2xl p-6 sm:p-8 w-full overflow-auto ${
+              isProductionPhotography ? "bg-[#4F1A39]" : "bg-[#7B2553]"
+            }`}
+            style={{
+              minHeight: `${boxMinHeight - 2}px`,
+            }}
           >
-            {part.title}
-          </h2>
-          <p
-            className={`${rubik.className} text-[#FFF] text-[26px] font-semibold leading-normal`}
-          >
-            {part.description}
-          </p>
+            <h2
+              className={`${rubik.className} mb-4 text-[#FFF] text-[53.294px] font-semibold leading-normal`}
+            >
+              {part.title}
+            </h2>
+            <p
+              className={`${rubik.className} text-[#FFF] text-[26px] font-semibold leading-normal`}
+            >
+              {part.description}
+            </p>
+          </div>
         </div>
       </div>
 
