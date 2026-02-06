@@ -56,13 +56,8 @@ export default function ClientsSection() {
       aria-label="Our clients"
     >
       <div className="max-w-7xl mx-auto">
-        <h2
-          className={`${rubik.className} text-2xl md:text-3xl font-semibold text-primary text-center uppercase tracking-wide mb-12 md:mb-16`}
-        >
-          Our Clients
-        </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-10 md:gap-12 items-center justify-items-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-10 md:gap-15 items-center justify-items-center">
           {clientsData.length > 0 ? (
             clientsData.map((client, index) => (
               <div
@@ -72,7 +67,7 @@ export default function ClientsSection() {
                 <Image
                   src={client.src}
                   alt={client.alt}
-                  width={client.width ?? 400}
+                  width={client.width ?? 420}
                   height={client.height ?? 200}
                   className="object-contain w-full h-auto"
                   sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 25rem"
