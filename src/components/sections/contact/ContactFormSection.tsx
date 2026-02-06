@@ -67,10 +67,10 @@ export default function ContactFormSection() {
       className="relative w-full min-w-0 overflow-x-visible overflow-y-visible bg-primary"
       aria-label="Contact information and form"
     >
-      <div className="w-full max-w-[1400px] pl-[calc(10%+100px)] pr-4 py-12 md:py-16 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
-          {/* Left: Logo + location/phone row, then form underneath — wider so logo + info stay on one line */}
-          <div className="flex flex-col gap-10 md:gap-14 lg:gap-16 min-w-0">
+      <div className="w-full max-w-[1400px] pl-[calc(5%+60px)] pr-4 pt-0 pb-12 md:pb-16 lg:pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-x-8 lg:gap-y-12 items-center">
+          {/* First half: logo, contact info, form */}
+          <div className="flex flex-col gap-10 md:gap-14 lg:gap-16 min-w-0 lg:min-w-0">
             {/* Row: Logo on left, company info on the right — single line, no wrap */}
             <div className="flex flex-nowrap items-center gap-6 md:gap-8 min-w-0">
               <ScribbleLogo className="shrink-0 w-[16.51vw] h-[8.19vw]" />
@@ -94,7 +94,7 @@ export default function ContactFormSection() {
 
             {/* Form sticks under them */}
             <form
-              className="flex flex-col gap-4 w-full max-w-[34.72vw]"
+              className="flex flex-col gap-4"
               onSubmit={(e) => e.preventDefault()}
             >
             <label className="sr-only" htmlFor="contact-name">
@@ -105,7 +105,7 @@ export default function ContactFormSection() {
               name="name"
               type="text"
               placeholder="Name"
-              className="w-full px-4 py-3 rounded-lg bg-black/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+              className="contact-input-style w-[512.529px] max-w-full h-[55.135px] px-4"
               aria-label="Your name"
             />
             <label className="sr-only" htmlFor="contact-email">
@@ -116,7 +116,7 @@ export default function ContactFormSection() {
               name="email"
               type="email"
               placeholder="Email"
-              className="w-full px-4 py-3 rounded-lg bg-black/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+              className="contact-input-style w-[512.529px] max-w-full h-[55.135px] px-4"
               aria-label="Your email"
             />
             <label className="sr-only" htmlFor="contact-comments">
@@ -127,27 +127,29 @@ export default function ContactFormSection() {
               name="comments"
               placeholder="Comments"
               rows={4}
-              className="w-full px-4 py-3 rounded-lg bg-black/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 resize-y min-h-[100px]"
+              className="contact-input-style w-[512.529px] max-w-full min-h-[100px] px-4 py-3 resize-y"
               aria-label="Your message"
             />
-            <button
-              type="submit"
-              className="w-fit px-8 py-3 rounded-lg bg-black text-white font-medium uppercase tracking-wide hover:opacity-90 transition-opacity"
-            >
-              Send
-            </button>
+            <div className="flex justify-end max-w-[512.529px]">
+              <button
+                type="submit"
+                className="w-fit px-8 py-3 rounded-lg bg-black text-white font-medium uppercase tracking-wide hover:opacity-90 transition-opacity"
+              >
+                Send
+              </button>
+            </div>
             </form>
           </div>
 
-          {/* Right half: Character illustration — thrown right and down */}
-          <div className="relative flex justify-end items-end min-h-[280px] lg:-mr-[20vw] pt-8 lg:pt-16">
+          {/* Second half: illustration */}
+          <div className="relative flex justify-center items-end min-h-[280px] pt-8 lg:pt-16">
             <Image
               src="/assets/contact-illustration.png"
               alt="Scribble — creative energy and connection"
               width={340}
               height={280}
-              className="object-contain object-right w-full max-w-[280px] md:max-w-[320px] lg:max-w-[340px] h-auto"
-              sizes="(max-width: 768px) 280px, (max-width: 1024px) 320px, 340px"
+              className="object-contain w-[340px] h-[280px]"
+              sizes="340px"
             />
           </div>
         </div>

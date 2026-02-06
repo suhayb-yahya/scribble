@@ -21,6 +21,22 @@ body {
   background: var(--primary);
 }
 
+/* Contact form inputs — fill and gradient border from SVG (teal → coral) */
+.contact-input-style {
+  background: linear-gradient(#7B2553, #7B2553) padding-box,
+    linear-gradient(to right, #469098, #D17F64) border-box;
+  border: 0.893px solid transparent;
+  border-radius: 0.5rem;
+  color: #fff;
+}
+.contact-input-style::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+.contact-input-style:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
 /* Jobs: Apply Now button — black default, gradient on hover (from SVG) */
 .apply-now-btn {
   background: #000;
