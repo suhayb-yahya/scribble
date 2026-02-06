@@ -79,7 +79,7 @@ export default function Header() {
                 height="44.851"
                 viewBox="0 0 91 45"
                 fill="none"
-              >
+            >
                 <path
                   d="M78.9444 42.5383C63.9994 40.4463 48.6224 39.8393 33.4794 39.9913C28.4194 40.0883 23.3364 40.2703 18.3844 40.8933C16.4064 41.2053 14.2834 41.3983 12.5474 42.3283C12.3864 42.4163 12.4234 42.5053 12.4994 42.2343C12.5324 41.9973 12.4364 41.6703 12.2394 41.4903C15.5944 42.0963 29.4254 41.8333 33.6574 41.9273C43.8774 42.0403 54.1094 42.5083 64.2774 43.6093C65.0474 43.6923 64.9824 44.9123 64.1594 44.8483C49.5014 43.5633 33.1384 43.9323 18.3614 44.3243C15.9844 44.2873 13.6184 44.5243 11.2524 43.8903C10.9994 43.7793 10.7544 43.7343 10.3384 43.3413C9.91844 42.9173 9.75945 42.2683 9.88645 41.7033C10.6664 38.9153 15.6314 38.5803 17.9774 38.0673C28.2294 36.6183 38.4644 36.5163 48.7634 36.5173C59.0164 36.6163 69.2544 36.9853 79.5394 38.2203C82.4004 38.6353 81.8754 42.9043 78.9434 42.5373L78.9444 42.5383Z"
                   fill="#7B2553"
@@ -118,32 +118,33 @@ export default function Header() {
                 />
               </svg>
             </span>
+            <span className="h-0.5 w-full bg-primary rounded-full mt-0.5" />
           </Link>
           <span className="h-6 w-0.5 bg-black" aria-hidden="true" />
-          
-          {/* Navigation */}
+
+        {/* Navigation */}
           <nav className="flex items-center gap-6 flex-wrap mx-2">
-            {navItems.map((item) => {
-              const isActive =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href);
-              return (
-                <Link
-                  key={item.label}
-                  href={item.href}
+          {navItems.map((item) => {
+            const isActive =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(item.href);
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
                   className={`text-sm font-bold uppercase tracking-wide transition-colors ${
-                    isActive ? "text-primary" : "text-black hover:text-primary/80"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
+                  isActive ? "text-primary" : "text-black hover:text-primary/80"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
             <span className="text-black text-sm font-bold uppercase tracking-wide">
               عربي
-            </span>
-          </nav>
+          </span>
+        </nav>
         </div>
 
         {/* Social icons */}

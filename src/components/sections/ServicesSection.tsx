@@ -61,74 +61,31 @@ const cardVariants = {
 
 export default function ServicesSection() {
   return (
-    <section className="bg-primary text-white pt-22 pb-32 px-6 md:px-10 rounded-b-[8vw] md:rounded-b-[6rem]">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-6xl font-bold uppercase text-center tracking-tight mb-10 max-w-4xl mx-auto leading-tight">
+    <section className="bg-primary text-white pt-24 pb-32 px-6 md:px-10 rounded-b-[8vw] md:rounded-b-[6rem]">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl md:text-6xl font-bold uppercase text-center tracking-tight mb-8 max-w-4xl mx-auto leading-tight">
           NOTHING PLEASES US<br />EXCEPT THE STRANGE
         </h2>
-        <p className="text-xl md:text-3xl font-bold text-center text-white max-w-5xl mx-auto mb-16 leading-tight px-4">
+        <p className="text-xl md:text-2xl font-bold text-center text-white max-w-5xl mx-auto mb-16 leading-tight px-4">
           We strive to provide a comprehensive range of creative and professional services designed to meet the needs of brands in today&apos;s competitive digital world. From the first idea to the final execution.
         </p>
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {servicesData.map((card, index) => (
-            <motion.div
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          {servicesData.map((card) => (
+            <article
               key={card.title}
-              variants={cardVariants}
-              whileHover={{ y: -6, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 220, damping: 18 }}
-              className="rounded-2xl p-[1px]"
-              style={{
-                background:
-                  "linear-gradient(90deg, #469098 -0.12%, #D17F64 100.12%)",
-              }}
+              className="bg-primary border border-white/40 rounded-2xl p-8 text-left h-full flex flex-col justify-start transition-colors duration-200 hover:bg-[#6a2049]"
             >
-              <article
-                className="
-                  bg-primary
-                  rounded-2xl
-                  px-8
-                  py-10
-                  h-full
-                  flex
-                  flex-col
-                  justify-start
-                  transition-colors
-                  duration-300
-                  hover:bg-[#4F1A39]
-                "
-              >
-                <h3
-                  className={`${rubik.className} font-semibold mb-4`}
-                  style={{
-                    fontSize: "28.12px",
-                    lineHeight: "100%",
-                  }}
-                >
-                  {card.title}
-                </h3>
-
-                <p
-                  className={`${rubik.className} text-white/90 leading-relaxed`}
-                  style={{
-                    fontWeight: 400,
-                    fontSize: "18.43px",
-                    // lineHeight: "100%",
-                  }}
-                >
-                  {card.description}
-                </p>
-              </article>
+              <h3 className="text-lg font-bold uppercase tracking-wide mb-4">
+                {card.title}
+              </h3>
+              <p className="text-base text-white/90 leading-relaxed">
+                {card.description}
+              </p>
+            </article>
             </motion.div>
           ))}
-        </motion.div>
-
+        </div>
       </div>
     </section>
   );
