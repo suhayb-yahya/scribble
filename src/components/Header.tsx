@@ -19,10 +19,10 @@ const navItems = [
 ];
 
 const socialLinks = [
-  { name: "Facebook", href: "#", icon: "f" },
-  { name: "Instagram", href: "#", icon: "camera" },
-  { name: "YouTube", href: "#", icon: "play" },
-  { name: "LinkedIn", href: "#", icon: "in" },
+  { name: "Facebook", href: "https://www.facebook.com/scribblestudio.co", icon: "f" },
+  { name: "Instagram", href: "https://www.instagram.com/scribblestudio.co/", icon: "camera" },
+  { name: "YouTube", href: "https://www.youtube.com/@scribblestudio1178", icon: "play" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/scribblestudio/", icon: "in" },
 ];
 
 function HamburgerIcon({ className }: { className?: string }) {

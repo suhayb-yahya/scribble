@@ -70,7 +70,7 @@ export default function ExploreSection() {
 
   return (
     <section
-      className="relative z-0 min-h-screen pt-36 md:pt-44 pb-16 md:pb-24 pl-6 md:pl-10 pr-0 overflow-hidden rounded-t-[8vw] md:rounded-t-[6rem] bg-cover bg-[50%_28%] bg-no-repeat bg-[url('/assets/explore-bg.png')] shadow-none"
+      className="relative z-0 min-h-screen pt-36 md:pt-44 pb-16 md:pb-24 pl-6 md:pl-10 pr-0 overflow-hidden rounded-t-[8vw] md:rounded-t-[6rem] bg-cover bg-[50%_28%] bg-no-repeat bg-[url('/assets/explore-bg.jpg')] shadow-none"
       aria-label="Explore"
     >
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/50" aria-hidden />

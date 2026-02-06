@@ -14,14 +14,24 @@ const navBase =
 
 const navInactive = "text-[#19140F] hover:text-[#7B2553]";
 const navActive = "text-[#7B2553]";
+const navInactiveOnPrimary = "text-white/90 hover:text-white";
+const navActiveOnPrimary = "text-white";
 
 export default function Footer() {
     const pathname = usePathname();
+    const usePrimaryFooter = pathname === "/about" || pathname === "/services" || pathname === "/contact";
 
     const isActive = (href: string) => pathname === href;
 
+    const footerBg = usePrimaryFooter ? "bg-[#7B2553]" : "bg-white";
+    const infoColor = usePrimaryFooter ? "text-white/90" : "text-[#0A031A]";
+    const navLinkClass = (href: string) =>
+        `${navBase} ${usePrimaryFooter ? (isActive(href) ? navActiveOnPrimary : navInactiveOnPrimary) : (isActive(href) ? navActive : navInactive)}`;
+    const dividerClass = usePrimaryFooter ? "bg-white/30" : "bg-[#8B1E4D]";
+    const copyrightClass = usePrimaryFooter ? "text-white/80" : "text-gray-900";
+
     return (
-        <footer className="bg-white px-6 md:px-16 pt-12 pb-6">
+        <footer className={`${footerBg} px-6 md:px-16 pt-12 pb-6`}>
             <div className="max-w-[100rem] mx-auto flex flex-col md:flex-row items-start md:items-end justify-between gap-12">
 
                 {/* LEFT */}
@@ -29,11 +39,11 @@ export default function Footer() {
 
                     {/* Logo & Info */}
                     <div className="space-y-3">
-                        <Image src="/assets/logo-scribble.svg" alt="Scribble" width={150} height={50} />
-                        <p className={`${rubik.className} font-[700] text-[14.61px] leading-none text-[#0A031A]`}>
+                        <Image src="/assets/logo-scribble.svg" alt="Scribble" width={150} height={50} className={usePrimaryFooter ? "brightness-0 invert" : undefined} />
+                        <p className={`${rubik.className} font-[700] text-[14.61px] leading-none ${infoColor}`}>
                             At Scribble Production Company
                         </p>
-                        <p className={`${rubik.className} font-[700] text-[14.61px] leading-none text-[#0A031A]`}>
+                        <p className={`${rubik.className} font-[700] text-[14.61px] leading-none ${infoColor}`}>
                             PALESTINE, RAMALLAH, 00970 2 2975232
                         </p>
                     </div>
@@ -41,14 +51,14 @@ export default function Footer() {
                     {/* Navigation */}
                     <div className="grid grid-cols-2 gap-x-12 gap-y-4 mt-6 md:mt-0">
                         <nav className="flex flex-col gap-4">
-                            <Link href="/" className={`${navBase} ${isActive("/") ? navActive : navInactive}`}>HOME</Link>
-                            <Link href="/about" className={`${navBase} ${isActive("/about") ? navActive : navInactive}`}>ABOUT US</Link>
-                            <Link href="/services" className={`${navBase} ${isActive("/services") ? navActive : navInactive}`}>SERVICES</Link>
+                            <Link href="/" className={navLinkClass("/")}>HOME</Link>
+                            <Link href="/about" className={navLinkClass("/about")}>ABOUT US</Link>
+                            <Link href="/services" className={navLinkClass("/services")}>SERVICES</Link>
                         </nav>
                         <nav className="flex flex-col gap-4">
-                            <Link href="/portfolio" className={`${navBase} ${isActive("/portfolio") ? navActive : navInactive}`}>PORTFOLIO</Link>
-                            <Link href="/contact" className={`${navBase} ${isActive("/contact") ? navActive : navInactive}`}>CONTACT US</Link>
-                            <Link href="/jobs" className={`${navBase} ${isActive("/jobs") ? navActive : navInactive}`}>JOBS</Link>
+                            <Link href="/portfolio" className={navLinkClass("/portfolio")}>PORTFOLIO</Link>
+                            <Link href="/contact" className={navLinkClass("/contact")}>CONTACT US</Link>
+                            <Link href="/jobs" className={navLinkClass("/jobs")}>JOBS</Link>
                         </nav>
                     </div>
                 </div>
@@ -60,10 +70,10 @@ export default function Footer() {
             </div>
 
             <div className="max-w-[100rem] mx-auto mt-6">
-                <div className="h-px bg-[#8B1E4D]" />
+                <div className={`h-px ${dividerClass}`} />
             </div>
 
-            <div className="max-w-[100rem] mx-auto mt-3 text-center md:text-right text-xs font-medium text-gray-900">
+            <div className={`max-w-[100rem] mx-auto mt-3 text-center md:text-right text-xs font-medium ${copyrightClass}`}>
                 © 2016 SCRIBBLE. All rights reserved
             </div>
         </footer>
