@@ -38,7 +38,7 @@ function PartBlock({ part }: { part: ServicesPart }) {
   const isProductionPhotography = part.id === PRODUCTION_PHOTOGRAPHY_ID;
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 lg:gap-0 items-stretch max-w-[1440px] mx-auto px-4 sm:px-6 py-12 lg:py-16">
+    <div className="flex flex-col lg:flex-row gap-8 lg:gap-0 items-stretch max-w-[1440px] mx-auto pl-10 pr-4 sm:pl-16 sm:pr-6 lg:pl-20 py-12 lg:py-16">
       {/* Text box — width/minHeight per part (design 1440px) */}
       <div
         className={`flex flex-col justify-center shrink-0 ${
@@ -46,30 +46,33 @@ function PartBlock({ part }: { part: ServicesPart }) {
         }`}
       >
         <div
-          className={`rounded-2xl p-6 sm:p-8 shadow-lg w-full overflow-auto ${lgWidthClass} ${
-            isProductionPhotography ? "" : "border-2 border-[#e8a4b8] bg-primary/95"
-          }`}
+          className={`rounded-2xl p-[0.893px] shadow-lg w-full overflow-auto ${lgWidthClass}`}
           style={{
             maxWidth: `${boxWidth}px`,
             minHeight: `${boxMinHeight}px`,
-            ...(isProductionPhotography
-              ? {
-                  backgroundColor: "#4F1A39",
-                  border: "0.893px solid #469098",
-                }
-              : {}),
+            background:
+              "linear-gradient(to right, #469098, #D17F64)",
           }}
         >
-          <h2
-            className={`${rubik.className} mb-4 text-[#FFF] text-[53.294px] font-semibold leading-normal`}
+          <div
+            className={`rounded-2xl p-6 sm:p-8 w-full overflow-auto ${
+              isProductionPhotography ? "bg-[#4F1A39]" : "bg-[#7B2553]"
+            }`}
+            style={{
+              minHeight: `${boxMinHeight - 2}px`,
+            }}
           >
-            {part.title}
-          </h2>
-          <p
-            className={`${rubik.className} text-[#FFF] text-[26px] font-semibold leading-normal`}
-          >
-            {part.description}
-          </p>
+            <h2
+              className={`${rubik.className} mb-4 text-[#FFF] text-[53.294px] font-semibold leading-normal`}
+            >
+              {part.title}
+            </h2>
+            <p
+              className={`${rubik.className} text-[#FFF] text-[26px] font-semibold leading-normal`}
+            >
+              {part.description}
+            </p>
+          </div>
         </div>
       </div>
 
@@ -107,10 +110,14 @@ export default function ServicesPartsSection({
 }: ServicesPartsSectionProps) {
   return (
     <section
-      className="w-full min-w-0 relative overflow-hidden bg-primary"
+      className="w-full min-w-0 relative -mt-32 sm:-mt-40 md:-mt-52 z-20 overflow-visible"
+      style={{
+        background:
+          "linear-gradient(to bottom, transparent 0%, rgba(123, 37, 83, 0.4) 30px, rgba(123, 37, 83, 0.9) 60px, #7B2553 90px, #7B2553 100%)",
+      }}
       aria-label="Services overview"
     >
-      <div className="relative">
+      <div className="relative -mt-[100px]">
         {parts.map((part) => (
           <PartBlock key={part.id} part={part} />
         ))}
