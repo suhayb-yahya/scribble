@@ -9,7 +9,7 @@ export default function AboutIllustrationSection() {
   return (
     <section
       className="w-full min-w-0 py-12 md:py-16 flex flex-col justify-center items-center gap-8 md:gap-10"
-      style={{ backgroundColor: "#7B2553" }}
+      style={{ backgroundColor: "#6a264a" }}
       aria-label="Different — nothing pleases us except the strange"
     >
       <div className="flex justify-center">
