@@ -23,9 +23,8 @@ export default function AboutPhilosophySection() {
         {boxes.map((box) => (
           <div
             key={box.title}
-            className="rounded-2xl p-6 sm:p-8 md:p-10 border-2 flex flex-col justify-center min-h-[200px]"
+            className="rounded-2xl p-6 sm:p-8 md:p-10 border-2 flex flex-col justify-center min-h-[200px] bg-[#7B2553] hover:bg-[#4F1A39] transition-colors duration-200"
             style={{
-              backgroundColor: box.title === "WHY SCRIBBLE?" ? "#4F1A39" : "#7B2553",
               borderColor: "#D2A860",
             }}
           >

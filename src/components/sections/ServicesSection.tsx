@@ -91,7 +91,7 @@ export default function ServicesSection() {
                 >
                   <article
                       className="
-                  bg-primary
+                  bg-[#7B2553]
                   rounded-2xl
                   px-8
                   py-10
@@ -99,9 +99,6 @@ export default function ServicesSection() {
                   flex
                   flex-col
                   justify-start
-                  transition-colors
-                  duration-300
-                  hover:bg-[#4F1A39]
                 "
                   >
                     <h3

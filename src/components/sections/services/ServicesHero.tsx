@@ -8,13 +8,14 @@ export default function ServicesHero() {
     >
       <div className="relative w-full aspect-[16/10] min-h-[320px] sm:min-h-[400px] md:min-h-[480px]">
         <Image
-          src="/assets/services-hero.png"
+          src="/assets/services-hero.jpg"
           alt="Creative studio — professional photography and media production at Scribble"
           fill
           className="object-cover"
-          style={{ objectPosition: "center calc(50% - 100px)" }}
+          style={{ objectPosition: "center center" }}
           sizes="100vw"
           priority
+          unoptimized
         />
         {/* Bottom gradient: fade into primary so content container merges smoothly */}
         <div
@@ -25,7 +26,6 @@ export default function ServicesHero() {
           }}
           aria-hidden
         />
-        {/* Optional overlay for title on the gradient floor area — add when we have copy */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
       </div>
     </section>
