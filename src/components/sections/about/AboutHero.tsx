@@ -11,12 +11,13 @@ export default function AboutHero() {
     >
       <div className="relative w-full aspect-[16/10] min-h-[320px] sm:min-h-[400px] md:min-h-[480px]">
         <Image
-          src="/assets/about-main.png"
+          src="/assets/about-main.jpg"
           alt="Scribble team — modern office, creative professionals at work"
           fill
           className="object-cover object-center"
           sizes="100vw"
           priority
+          quality={95}
         />
         <div
           className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
