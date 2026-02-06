@@ -7,7 +7,7 @@ export default function Footer() {
     return (
         <footer className="bg-white px-6 md:px-16 pt-16 pb-8">
             {/* Main content */}
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+            <div className="max-w-[100rem]  mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
 
                 {/* Left: Logo & Info */}
                 <div className="space-y-4">
@@ -59,7 +59,7 @@ export default function Footer() {
                 {/* Right: Illustration */}
                 <div className="flex md:justify-end justify-center">
                     <Image
-                        src="/assets/footer-character.png" // صورة الكرتون
+                        src="/assets/character.png"
                         alt="Scribble Character"
                         width={160}
                         height={160}
@@ -69,12 +69,12 @@ export default function Footer() {
             </div>
 
             {/* Divider */}
-            <div className="max-w-7xl mx-auto mt-12">
+            <div className="max-w-[100rem] mx-auto mt-8">
                 <div className="h-px bg-[#8B1E4D]" />
             </div>
 
             {/* Bottom */}
-            <div className="max-w-7xl mx-auto mt-6 text-right text-sm text-gray-700">
+            <div className="max-w-[100rem] mx-auto mt-3 text-right text-sm text-gray-700">
                 © 2016 SCRIBBLE. All rights reserved
             </div>
         </footer>
