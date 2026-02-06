@@ -6,10 +6,10 @@ const rubik = Rubik({ weight: ["600", "700"], subsets: ["latin"] });
 export default function ContactHero() {
   return (
     <section
-      className="relative w-full min-w-0 overflow-hidden aspect-[16/10] min-h-[320px] sm:min-h-[400px] md:min-h-[480px]"
+      className="relative w-full min-w-0 overflow-hidden aspect-[3/2] min-h-[360px] sm:min-h-[480px] md:min-h-[560px] lg:min-h-[640px]"
       aria-label="Contact Scribble"
     >
-      {/* Main image — text overlays sit on top of this */}
+      {/* Main image — natural aspect ratio, no cropping; displays at full width × proportional height */}
       <Image
         src="/assets/contact-main.png"
         alt="Scribble studio — creative team and production environment"
@@ -17,11 +17,12 @@ export default function ContactHero() {
         className="object-cover object-center"
         sizes="100vw"
         priority
+        unoptimized
       />
 
-      {/* Text overlay — lower-left of the image, raised ~200px from bottom */}
+      {/* Text overlay — lower-left of the image */}
       <div
-        className="absolute inset-0 pl-[calc(10%+100px)] pr-4 pb-[350px] pointer-events-none flex flex-col justify-end text-left max-w-2xl"
+        className="absolute inset-0 pl-[calc(5%+60px)] pr-4 pb-[200px] pointer-events-none flex flex-col justify-end text-left max-w-2xl"
         aria-hidden
       >
         <h1
