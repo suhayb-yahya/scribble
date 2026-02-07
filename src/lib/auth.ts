@@ -39,5 +39,6 @@ export function getLogoutCookie(): string {
 }
 
 export function getAdminPassword(): string {
-  return process.env.ADMIN_PASSWORD ?? "";
+  const raw = process.env.ADMIN_PASSWORD ?? "";
+  return typeof raw === "string" ? raw.trim() : "";
 }

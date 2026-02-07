@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     );
   }
   const body = await request.json().catch(() => ({}));
-  const submitted = typeof body.password === "string" ? body.password : "";
+  const submitted = (typeof body.password === "string" ? body.password : "").trim();
   if (submitted !== password) {
     return NextResponse.json({ error: "Invalid password" }, { status: 401 });
   }
