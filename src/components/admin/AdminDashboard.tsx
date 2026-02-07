@@ -367,10 +367,7 @@ export default function AdminDashboard() {
                 if (res.ok) {
                   const data = await res.json();
                   setCounters(data);
-                } else {
-                  const data = await res.json().catch(() => ({}));
-                  setError(data.error ?? "Failed to save counters");
-                }
+                } else setError("Failed to save counters");
               } catch {
                 setError("Failed to save counters");
               } finally {
