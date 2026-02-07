@@ -29,6 +29,7 @@ const servicesParts: ServicesPart[] = [
     layout: "text-left",
     boxWidthPx: 1317,
     boxMinHeightPx: 361,
+    fullWidth: true,
   },
   // Next section — two parts (same structure as first)
   {
