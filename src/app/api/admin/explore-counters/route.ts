@@ -36,6 +36,17 @@ export async function PUT(request: Request) {
     brands: parseNumber(body.brands),
     clients: parseNumber(body.clients),
   };
-  await saveExploreCounters(counters);
+  try {
+    await saveExploreCounters(counters);
+  } catch (e) {
+    const code = e && typeof e === "object" && "code" in e ? (e as NodeJS.ErrnoException).code : null;
+    if (code === "EACCES" || code === "EROFS" || code === "ENOENT") {
+      return NextResponse.json(
+        { error: "Saving is not available (read-only). Add BLOB_READ_WRITE_TOKEN in Vercel and connect a Blob store." },
+        { status: 503 }
+      );
+    }
+    throw e;
+  }
   return NextResponse.json(counters);
 }
