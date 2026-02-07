@@ -1,4 +1,5 @@
 export { default as HeroBanner } from "./HeroBanner";
+export { default as HeroToServicesTransition } from "./HeroToServicesTransition";
 export { default as ServicesSection } from "./ServicesSection";
 export { default as AboutSection } from "./AboutSection";
 export { default as StoryMissionVision } from "./StoryMissionVision";

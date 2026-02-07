@@ -62,7 +62,7 @@ const cardVariants = {
 export default function ServicesSection() {
   return (
       <section className="bg-primary text-white pt-22 pb-32 px-6 md:px-10 rounded-b-[8vw] md:rounded-b-[6rem]">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto -mt-40 md:-mt-56">
           <h2 className="text-4xl md:text-6xl font-bold uppercase text-center tracking-tight mb-10 max-w-4xl mx-auto leading-tight">
             NOTHING PLEASES US<br />EXCEPT THE STRANGE
           </h2>

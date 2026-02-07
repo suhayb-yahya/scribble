@@ -1,5 +1,6 @@
 import {
   HeroBanner,
+  HeroToServicesTransition,
   ServicesSection,
   StoryMissionVision,
   ExploreSection,
@@ -13,6 +14,7 @@ export default async function Home() {
   return (
     <main className="flex flex-col w-full min-w-0 max-w-full overflow-x-hidden">
       <HeroBanner />
+      <HeroToServicesTransition />
       <ServicesSection />
       <StoryMissionVision />
       <ExploreSection
