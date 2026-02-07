@@ -1,60 +1,51 @@
-import type { Metadata } from "next";
-import JobsHero from "@/components/sections/jobs/JobsHero";
-import JobsListSection from "@/components/sections/jobs/JobsListSection";
-import type { JobItem } from "@/components/sections/jobs/JobsListSection";
-
-export const metadata: Metadata = {
-  title: "Jobs — Scribble",
-  description: "Careers and opportunities at Scribble",
-};
-
-const jobsList: JobItem[] = [
+[
   {
-    id: "graphic-designer",
-    title: "Graphic Designer",
-    requirements: [
+    "id": "graphic-designer",
+    "title": "Graphic Designer",
+    "requirements": [
       "Strong creative talent with the ability to develop fresh, visually appealing concepts.",
       "Professional mastery of Adobe software, including Photoshop, Illustrator, InDesign.",
       "Excellent sense of layout, color, and typography, with strong attention to detail.",
       "Ability to transform ideas into effective visual designs across digital and print media.",
       "Strong communication skills and the ability to work collaboratively within a creative team.",
       "Ability to manage time, meet deadlines, and handle multiple projects simultaneously.",
-      "A portfolio showcasing high-quality design work and creative problem-solving.",
-    ],
+      "A portfolio showcasing high-quality design work and creative problem-solving."
+    ]
   },
   {
-    id: "mobile-contentwriter",
-    title: "Mobile Contentwriter",
-    requirements: [
+    "id": "mobile-contentwriter",
+    "title": "Mobile Contentwriter",
+    "requirements": [
       "Exceptional writing and editing skills with a strong grasp of tone, voice, and brand guidelines.",
       "Experience creating short-form content for mobile and social platforms (captions, stories, reels).",
       "Ability to adapt messaging for different audiences and formats while keeping copy concise and engaging.",
       "Understanding of SEO and how to optimize content for discoverability and engagement.",
       "Comfort working with creative teams and turning briefs into clear, compelling copy.",
       "Ability to manage multiple projects, meet deadlines, and incorporate feedback quickly.",
-      "A portfolio or samples of mobile-first and social content across different brands or formats.",
-    ],
+      "A portfolio or samples of mobile-first and social content across different brands or formats."
+    ]
   },
   {
-    id: "videographer",
-    title: "Videographer",
-    requirements: [
+    "id": "videographer",
+    "title": "Videographer",
+    "requirements": [
       "Proficiency in shooting, lighting, and sound for both indoor and outdoor productions.",
       "Strong skills in video editing and post-production (e.g. Adobe Premiere, DaVinci Resolve, After Effects).",
       "Ability to plan shoots, create shot lists, and work from creative briefs and storyboards.",
       "Experience with different formats: commercials, social content, documentaries, or branded content.",
       "Good eye for composition, movement, and visual storytelling that fits brand and campaign goals.",
       "Ability to work collaboratively with directors, clients, and other crew; reliable on set and on deadline.",
-      "A reel or portfolio demonstrating range in style, format, and production value.",
-    ],
+      "A reel or portfolio demonstrating range in style, format, and production value."
+    ]
   },
-];
-
-export default function JobsPage() {
-  return (
-    <main className="flex flex-col w-full min-w-0 max-w-full overflow-x-hidden min-h-screen">
-      <JobsHero />
-      <JobsListSection jobs={jobsList} />
-    </main>
-  );
-}
+  {
+    "id": "test",
+    "title": "TEST",
+    "requirements": [
+      "TEST1",
+      "TEST2",
+      "TEST3"
+    ],
+    "applyUrl": "http://google.com"
+  }
+]

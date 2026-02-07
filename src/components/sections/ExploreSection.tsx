@@ -63,10 +63,19 @@ function useCountUp(end: number, duration: number = 2000, startOnView: boolean =
   return { count, ref: elementRef };
 }
 
-export default function ExploreSection() {
-  const videosCount = useCountUp(743, 1000);
-  const brandsCount = useCountUp(39, 1000);
-  const clientsCount = useCountUp(76, 1000);
+export type ExploreCountersProps = {
+  videos?: number;
+  brands?: number;
+  clients?: number;
+};
+
+const defaultCounters = { videos: 743, brands: 39, clients: 76 };
+
+export default function ExploreSection(props: ExploreCountersProps = {}) {
+  const { videos, brands, clients } = { ...defaultCounters, ...props };
+  const videosCount = useCountUp(videos, 1000);
+  const brandsCount = useCountUp(brands, 1000);
+  const clientsCount = useCountUp(clients, 1000);
 
   return (
     <section
