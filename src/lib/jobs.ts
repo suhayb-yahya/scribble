@@ -32,7 +32,8 @@ function normalizeJob(raw: LegacyJob | JobItem): JobItem {
       applyUrl,
     };
   }
-  const title = typeof (raw as LegacyJob).title === "string" ? (raw as LegacyJob).title : "";
+  const rawTitle = (raw as LegacyJob).title;
+  const title: string = typeof rawTitle === "string" ? rawTitle : "";
   const requirements = Array.isArray((raw as LegacyJob).requirements)
     ? (raw as LegacyJob).requirements!.filter((x): x is string => typeof x === "string")
     : [];
