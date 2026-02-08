@@ -62,7 +62,7 @@ const cardVariants = {
 export default function ServicesSection() {
   return (
       <section className="bg-primary text-white pt-22 pb-32 px-6 md:px-10 rounded-b-[8vw] md:rounded-b-[6rem]">
-        <div className="max-w-7xl mx-auto -mt-20 md:-mt-24">
+        <div className="w-full max-w-[1280px] mx-auto -mt-20 md:-mt-24">
           <h2 className="text-4xl md:text-6xl font-bold uppercase text-center tracking-tight mb-10 max-w-4xl mx-auto leading-tight">
             NOTHING PLEASES US<br />EXCEPT THE STRANGE
           </h2>
@@ -71,7 +71,7 @@ export default function ServicesSection() {
           </p>
 
           <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-[1280px] mx-auto items-start"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
@@ -97,10 +97,11 @@ export default function ServicesSection() {
                   rounded-2xl
                   px-8
                   py-10
-                  h-full
+                  h-[280px]
                   flex
                   flex-col
                   justify-start
+                  overflow-hidden
                 "
                   >
                     <h3
@@ -114,11 +115,10 @@ export default function ServicesSection() {
                     </h3>
 
                     <p
-                        className={`${rubik.className} text-white/90 leading-relaxed`}
+                        className={`${rubik.className} text-white/90 leading-relaxed line-clamp-5`}
                         style={{
                           fontWeight: 400,
                           fontSize: "18.43px",
-                          // lineHeight: "100%",
                         }}
                     >
                       {card.description}

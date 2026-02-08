@@ -3,11 +3,6 @@ import { Rubik } from "next/font/google";
 
 const rubik = Rubik({ subsets: ["latin"], weight: ["400", "600"] });
 
-const DESIGN_WIDTH = 1440;
-const BOX_HEIGHT_SCALE = 0.55; // Compact box height
-function pxToMinHeightVw(px: number) {
-  return (px / DESIGN_WIDTH) * 100 * BOX_HEIGHT_SCALE;
-}
 
 export type ServicesPart = {
   id: string;
@@ -20,7 +15,7 @@ export type ServicesPart = {
   layout: "text-left" | "text-right";
   /** @deprecated Box width is always 50% of row. Kept for backwards compatibility. */
   boxWidthPx?: number;
-  /** Optional: text box min-height in px (1440px design). Default 359.863. Converted to vw in layout. */
+  /** Optional: text box min-height in px. Default 260. Fixed so boxes don't grow on wide screens. */
   boxMinHeightPx?: number;
   /** When true, box spans full width of the section (e.g. Graphic Design). */
   fullWidth?: boolean;
@@ -34,8 +29,7 @@ function PartBlock({ part }: { part: ServicesPart }) {
   const isTextLeft = part.layout === "text-left";
   const hasImage = Boolean(part.imageSrc);
   const fullWidth = Boolean(part.fullWidth);
-  const boxMinHeightPx = part.boxMinHeightPx ?? 359.863;
-  const minHeightVw = pxToMinHeightVw(boxMinHeightPx);
+  const boxMinHeightPx = part.boxMinHeightPx ?? 260;
   const isProductionPhotography = part.id === "production-photography";
   const textBox = (
     <div
@@ -46,7 +40,7 @@ function PartBlock({ part }: { part: ServicesPart }) {
       <div
         className="rounded-[8px] p-[0.893px] shadow-lg w-full overflow-auto my-6 lg:my-8"
         style={{
-          minHeight: `${minHeightVw}vw`,
+          minHeight: `${boxMinHeightPx}px`,
           backgroundImage:
             "linear-gradient(to right, transparent 748px, #D17F64 748px), linear-gradient(to right, #469098 0%, #D17F64 100%)",
           backgroundSize: "1500px 100%, 748px 100%",
@@ -57,7 +51,7 @@ function PartBlock({ part }: { part: ServicesPart }) {
         <div
           className="rounded-[7.1px] py-6 px-6 sm:py-8 sm:px-8 w-full overflow-auto"
           style={{
-            minHeight: `calc(${minHeightVw}vw - 2px)`,
+            minHeight: `${boxMinHeightPx - 2}px`,
             backgroundColor: isProductionPhotography ? "#4F1A39" : "#7B2553",
           }}
         >

@@ -19,7 +19,7 @@ const servicesParts: ServicesPart[] = [
     imageAlt: "Motion graphics and creative production",
     layout: "text-left",
     boxWidthPx: 746.66,
-    boxMinHeightPx: 463.12,
+    boxMinHeightPx: 260,
   },
   {
     id: "graphic-design",
@@ -28,7 +28,7 @@ const servicesParts: ServicesPart[] = [
       "In our graphic design work, we go beyond visuals to create designs that communicate, inspire, and make an impact. By blending creativity with strategy, we craft meaningful designs that reflect each brand's identity—from logos and brand identities to social media, marketing, and print materials—ensuring every detail builds connection, trust, and a strong, lasting presence.",
     layout: "text-left",
     boxWidthPx: 1317,
-    boxMinHeightPx: 361,
+    boxMinHeightPx: 260,
     fullWidth: true,
   },
   // Next section — two parts (same structure as first)
@@ -41,7 +41,7 @@ const servicesParts: ServicesPart[] = [
     imageAlt: "Production photography and visual content creation",
     layout: "text-right",
     boxWidthPx: 748,
-    boxMinHeightPx: 465,
+    boxMinHeightPx: 260,
   },
   {
     id: "social-media",
@@ -52,7 +52,7 @@ const servicesParts: ServicesPart[] = [
     imageAlt: "Social media management and brand presence",
     layout: "text-left",
     boxWidthPx: 746.66,
-    boxMinHeightPx: 463.12,
+    boxMinHeightPx: 260,
   },
   {
     id: "branding",
@@ -63,7 +63,7 @@ const servicesParts: ServicesPart[] = [
     imageAlt: "Branding and brand identity",
     layout: "text-right",
     boxWidthPx: 746.66,
-    boxMinHeightPx: 463.12,
+    boxMinHeightPx: 260,
   },
   {
     id: "sound-identity",
@@ -74,7 +74,7 @@ const servicesParts: ServicesPart[] = [
     imageAlt: "Sound identity and sonic branding",
     layout: "text-left",
     boxWidthPx: 746.66,
-    boxMinHeightPx: 463.12,
+    boxMinHeightPx: 260,
   },
 ];
 
