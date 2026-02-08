@@ -5,6 +5,23 @@ import { Rubik } from "next/font/google";
 import { useLocale } from "@/components/LocaleProvider";
 import { getTranslations } from "@/lib/translations";
 
+/** Physical margins for Explore content so they never flip in RTL */
+function useExploreInsets() {
+  const [left, setLeft] = useState("0.75rem");
+  const [right, setRight] = useState("180px");
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => {
+      setLeft(mq.matches ? "1.5rem" : "0.75rem");
+      setRight(mq.matches ? "320px" : "180px");
+    };
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return { left, right };
+}
+
 const rubik = Rubik({ weight: "600", subsets: ["latin", "arabic"] });
 
 function useCountUp(end: number, duration: number = 2000, startOnView: boolean = true) {
@@ -76,22 +93,31 @@ const defaultCounters = { videos: 743, brands: 39, clients: 76 };
 export default function ExploreSection(props: ExploreCountersProps = {}) {
   const locale = useLocale();
   const t = getTranslations(locale);
+  const { left: insetLeft, right: insetRight } = useExploreInsets();
   const { videos, brands, clients } = { ...defaultCounters, ...props };
   const videosCount = useCountUp(videos, 1000);
   const brandsCount = useCountUp(brands, 1000);
   const clientsCount = useCountUp(clients, 1000);
 
+  const isRtl = locale === "ar";
+
   return (
     <section
-      className="relative z-0 min-h-screen pt-36 md:pt-44 pb-16 md:pb-24 pl-6 md:pl-10 pr-0 overflow-hidden rounded-t-[8vw] md:rounded-t-[6rem] bg-cover bg-[50%_28%] bg-no-repeat bg-[url('/assets/explore-bg.jpg')] shadow-none"
+      className="relative z-0 min-h-screen pt-36 md:pt-44 pb-16 md:pb-24 pr-0 overflow-hidden rounded-t-[8vw] md:rounded-t-[6rem] bg-cover bg-[50%_28%] bg-no-repeat bg-[url('/assets/explore-bg.jpg')] shadow-none"
       aria-label="Explore"
+      dir="ltr"
+      style={{ paddingLeft: "2.5rem" }}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/50" aria-hidden />
-      <div className="relative z-10 flex flex-col min-h-[68vh] md:min-h-screen">
-        <div className="max-w-6xl mx-auto mr-0 w-full px-0">
-          <div className="flex flex-col md:flex-row md:justify-end">
+      <div className="relative z-10 flex flex-col min-h-[68vh] md:min-h-screen" dir="ltr">
+        <div className="max-w-6xl mx-auto mr-0 w-full px-0" dir="ltr">
+          <div className="flex flex-col md:flex-row md:justify-end" dir="ltr">
             <div className="w-full max-w-[90%] sm:max-w-[55rem] md:ml-auto">
-              <div className="text-left mt-22 md:mt-24 ml-20 md:ml-36">
+              <div
+                className={`mt-22 md:mt-24 ${isRtl ? "text-right" : "text-left"}`}
+                dir={isRtl ? "rtl" : "ltr"}
+                style={{ marginLeft: insetLeft, marginRight: insetRight }}
+              >
               <h2
                   className={`
                     ${rubik.className}
@@ -130,7 +156,10 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
               </div>
 
         {/* Counters box: left edge aligns with text, extends to right edge */}
-        <div className="flex w-full mt-20 md:mt-28 -mr-6 md:-mr-10 overflow-visible ml-20 md:ml-36">
+        <div
+          className="flex w-full mt-20 md:mt-28 -mr-6 md:-mr-10 overflow-visible"
+          style={{ marginLeft: insetLeft }}
+        >
           <div className="flex-1 min-w-0 rounded-l-[5rem] md:rounded-l-[6rem] rounded-r-none border-t border-l border-b border-white pl-[5rem] md:pl-[6rem] pr-6 md:pr-10 pt-0 pb-2 md:pb-3 bg-black/20 backdrop-blur-sm flex items-center gap-0 justify-start">
             <div className="flex flex-1 justify-start">
                   <div className="flex items-center gap-4 md:gap-8 py-1 md:py-2">
@@ -226,7 +255,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
               </div>
             <button
               type="button"
-              className="shrink-0 self-start flex items-center justify-center h-10 md:h-12 min-w-[7rem] md:min-w-[8rem] bg-white border-t border-r border-b border-white rounded-r-none rounded-b-xl hover:opacity-95 transition-opacity pl-5 pr-5 md:pl-6 md:pr-6 mr-20 md:mr-32 rtl:mr-0 rtl:ml-20 rtl:md:ml-32"
+              className="shrink-0 self-start flex items-center justify-center h-10 md:h-12 min-w-[7rem] md:min-w-[8rem] bg-white border-t border-r border-b border-white rounded-r-none rounded-b-xl hover:opacity-95 transition-opacity pl-5 pr-5 md:pl-6 md:pr-6 mr-20 md:mr-32"
               aria-label={t.explore.viewPortfolioAria}
             >
               <span

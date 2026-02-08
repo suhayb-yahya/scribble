@@ -31,9 +31,12 @@ export default function JobsHero({ locale }: { locale: Locale }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
 
-        {/* Bottom-left text overlay */}
+        {/* Text overlay: LTR from left, RTL from right */}
         <div
-          className="absolute left-0 bottom-0 p-4 pointer-events-none ml-[14%] flex flex-col justify-center mb-40 md:mb-48 w-[40%] max-w-[600px]"
+          dir={locale === "ar" ? "rtl" : "ltr"}
+          className={`absolute bottom-0 p-4 pointer-events-none flex flex-col justify-center mb-40 md:mb-48 w-[40%] max-w-[600px] ${
+            locale === "ar" ? "right-0 mr-[14%]" : "left-0 ml-[14%]"
+          }`}
           aria-hidden
         >
           <h1
