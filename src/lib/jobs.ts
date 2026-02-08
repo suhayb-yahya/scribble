@@ -16,7 +16,8 @@ type LegacyJob = {
 
 function normalizeJob(raw: LegacyJob | JobItem): JobItem {
   const id = typeof raw.id === "string" ? raw.id : "";
-  const applyUrl = typeof (raw as JobItem).applyUrl === "string" ? (raw as JobItem).applyUrl.trim() || undefined : undefined;
+  const rawApplyUrl = (raw as JobItem).applyUrl;
+  const applyUrl = typeof rawApplyUrl === "string" ? rawApplyUrl.trim() || undefined : undefined;
   const hasNewShape = typeof (raw as JobItem).title === "object" && (raw as JobItem).title !== null;
   if (hasNewShape) {
     const t = (raw as JobItem).title as { en?: string; ar?: string };
