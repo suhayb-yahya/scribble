@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Rubik } from "next/font/google";
+import { useState } from "react";
 
 const rubik = Rubik({ weight: "600", subsets: ["latin"] });
 
@@ -62,6 +63,38 @@ function ScribbleLogo({
 }
 
 export default function ContactFormSection() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [comments, setComments] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus("sending");
+    setErrorMessage("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, comments }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setStatus("error");
+        setErrorMessage(data.error ?? "Something went wrong. Please try again.");
+        return;
+      }
+      setStatus("success");
+      setName("");
+      setEmail("");
+      setComments("");
+    } catch {
+      setStatus("error");
+      setErrorMessage("Network error. Please try again.");
+    }
+  }
+
   return (
     <section
       className="relative w-full min-w-0 overflow-x-visible overflow-y-visible bg-primary"
@@ -95,7 +128,7 @@ export default function ContactFormSection() {
             {/* Form sticks under them */}
             <form
               className="flex flex-col gap-4"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleSubmit}
             >
             <label className="sr-only" htmlFor="contact-name">
               Name
@@ -105,6 +138,10 @@ export default function ContactFormSection() {
               name="name"
               type="text"
               placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              disabled={status === "sending"}
               className="contact-input-style w-[512.529px] max-w-full h-[55.135px] px-4"
               aria-label="Your name"
             />
@@ -116,6 +153,10 @@ export default function ContactFormSection() {
               name="email"
               type="email"
               placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              disabled={status === "sending"}
               className="contact-input-style w-[512.529px] max-w-full h-[55.135px] px-4"
               aria-label="Your email"
             />
@@ -127,15 +168,28 @@ export default function ContactFormSection() {
               name="comments"
               placeholder="Comments"
               rows={4}
+              value={comments}
+              onChange={(e) => setComments(e.target.value)}
+              required
+              disabled={status === "sending"}
               className="contact-input-style w-[512.529px] max-w-full min-h-[100px] px-4 py-3 resize-y"
               aria-label="Your message"
             />
+            {(status === "success" || status === "error") && (
+              <p
+                role="alert"
+                className={`text-sm max-w-[512.529px] ${status === "success" ? "text-green-300" : "text-red-300"}`}
+              >
+                {status === "success" ? "Message sent. We'll get back to you soon." : errorMessage}
+              </p>
+            )}
             <div className="flex justify-end max-w-[512.529px]">
               <button
                 type="submit"
-                className="w-fit px-8 py-3 rounded-lg bg-black text-white font-medium uppercase tracking-wide hover:opacity-90 transition-opacity"
+                disabled={status === "sending"}
+                className="w-fit px-8 py-3 rounded-lg bg-black text-white font-medium uppercase tracking-wide hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Send
+                {status === "sending" ? "Sending…" : "Send"}
               </button>
             </div>
             </form>
