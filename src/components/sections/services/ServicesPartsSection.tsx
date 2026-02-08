@@ -87,17 +87,10 @@ function PartBlock({ part }: { part: ServicesPart }) {
       {/* Image slot — 50% width when present */}
       {hasImage && (
         <div
-          className={`lg:w-1/2 min-h-[200px] relative flex items-center justify-center shrink-0 ${
-            isProductionPhotography ? "lg:justify-start lg:pl-0" : ""
-          } ${isTextLeft ? "lg:order-2" : "lg:order-1"}`}
+          className={`lg:w-1/2 min-h-[200px] relative flex items-center justify-center shrink-0 ${isTextLeft ? "lg:order-2" : "lg:order-1"}`}
         >
           <div
             className="relative w-[424.623px] max-w-full h-[354.216px] shrink-0 mx-auto lg:mx-0"
-            style={
-              isProductionPhotography
-                ? { transform: "translateX(-1.5rem)" }
-                : undefined
-            }
           >
             <Image
               src={part.imageSrc!}
