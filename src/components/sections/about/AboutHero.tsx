@@ -29,38 +29,36 @@ export default function AboutHero() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
 
-        {/* Bottom-left text overlay */}
+        {/* Bottom-left text overlay — aligned with content sections (px-6 md:px-10, max-w-6xl) */}
         <div
-          className="absolute left-0 bottom-0 p-4 pointer-events-none ml-[10%] flex flex-col justify-center mb-14 md:mb-20"
-          style={{
-            width: "716px",
-            height: "124px",
-          }}
+          className="absolute inset-x-0 bottom-0 pointer-events-none mb-14 md:mb-20 px-6 md:px-10 flex justify-center"
           aria-hidden
         >
-          <h1
-            className={`${rubik.className} text-white uppercase leading-tight`}
-            style={{
-              fontSize: "clamp(28px, 6vw, 53.294px)",
-              fontWeight: 600,
-              lineHeight: "normal",
-            }}
-          >
-            ABOUT
-          </h1>
-          <p
-            className={`${rubik.className} text-white mt-4 leading-tight`}
-            style={{
-              fontSize: "24px",
-              fontWeight: 600,
-              lineHeight: "normal",
-            }}
-          >
-            Founded in 2016, Scribble Media Production is driven by creativity
-            and passion. Known for its original artistic touch, we transform
-            ideas into impactful visual experiences that inspire audiences and
-            elevate brands.
-          </p>
+          <div className="w-full max-w-6xl flex flex-col justify-center">
+            <h1
+              className={`${rubik.className} text-white uppercase leading-tight`}
+              style={{
+                fontSize: "clamp(28px, 6vw, 53.294px)",
+                fontWeight: 600,
+                lineHeight: "normal",
+              }}
+            >
+              ABOUT
+            </h1>
+            <p
+              className={`${rubik.className} text-white mt-4 leading-tight`}
+              style={{
+                fontSize: "24px",
+                fontWeight: 600,
+                lineHeight: "normal",
+              }}
+            >
+              Founded in 2016, Scribble Media Production is driven by creativity
+              and passion. Known for its original artistic touch, we transform
+              ideas into impactful visual experiences that inspire audiences and
+              elevate brands.
+            </p>
+          </div>
         </div>
       </div>
     </section>

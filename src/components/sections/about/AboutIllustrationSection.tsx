@@ -27,7 +27,7 @@ export default function AboutIllustrationSection() {
           width: "50%",
           minWidth: "min(578px, 100%)",
           fontSize: "clamp(32px, 6vw, 56px)",
-          letterSpacing: "0.08em",
+          letterSpacing: "0.02em",
           lineHeight: 1.2,
           background: textGradient,
           WebkitBackgroundClip: "text",

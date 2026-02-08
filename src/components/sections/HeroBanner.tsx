@@ -2,7 +2,7 @@ export default function HeroBanner() {
   return (
     <section className="w-full min-w-0 overflow-hidden" aria-label="Hero">
       <img
-        src="/assets/hero-banner.jpg"
+        src="/assets/hero-banner.jpeg"
         alt="Scribble — modern workspace"
         loading="eager"
         fetchPriority="high"
