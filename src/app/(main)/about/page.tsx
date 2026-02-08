@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getLocale } from "@/app/actions/locale";
 import AboutHero from "@/components/sections/about/AboutHero";
 import AboutTabsSection from "@/components/sections/about/AboutTabsSection";
 import AboutBeachSection from "@/components/sections/about/AboutBeachSection";
@@ -10,14 +11,15 @@ export const metadata: Metadata = {
   description: "Our story, mission, and vision at Scribble Media Production",
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const locale = await getLocale();
   return (
     <main className="flex flex-col w-full min-w-0 max-w-full overflow-x-hidden min-h-screen">
-      <AboutHero />
-      <AboutTabsSection />
-      <AboutBeachSection />
-      <AboutPhilosophySection />
-      <AboutIllustrationSection />
+      <AboutHero locale={locale} />
+      <AboutTabsSection locale={locale} />
+      <AboutBeachSection locale={locale} />
+      <AboutPhilosophySection locale={locale} />
+      <AboutIllustrationSection locale={locale} />
     </main>
   );
 }

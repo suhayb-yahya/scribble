@@ -1,19 +1,11 @@
 import { Rubik } from "next/font/google";
+import { getTranslations, type Locale } from "@/lib/translations";
 
-const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin"] });
+const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin", "arabic"] });
 
-const boxes = [
-  {
-    title: "OUR PHILOSOPHY",
-    body: "At our core, we believe true creativity can't be copied. That's why we create 100% original, tailor-made work through a collaborative Scribble team that crafts inspiring stories where every detail matters.",
-  },
-  {
-    title: "WHY SCRIBBLE?",
-    body: "We're not just executors—we're partners in success. We innovate with purpose, perfect every detail, and create cinematic experiences that resonate locally and globally, and are truly remembered.",
-  },
-];
-
-export default function AboutPhilosophySection() {
+export default function AboutPhilosophySection({ locale }: { locale: Locale }) {
+  const t = getTranslations(locale);
+  const boxes = t.about.philosophy;
   return (
     <section
       className="py-16 md:py-24 px-6 md:px-10 bg-primary"

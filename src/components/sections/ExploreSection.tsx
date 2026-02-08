@@ -2,8 +2,10 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Rubik } from "next/font/google";
+import { useLocale } from "@/components/LocaleProvider";
+import { getTranslations } from "@/lib/translations";
 
-const rubik = Rubik({ weight: "600", subsets: ["latin"] });
+const rubik = Rubik({ weight: "600", subsets: ["latin", "arabic"] });
 
 function useCountUp(end: number, duration: number = 2000, startOnView: boolean = true) {
   const [count, setCount] = useState(0);
@@ -72,6 +74,8 @@ export type ExploreCountersProps = {
 const defaultCounters = { videos: 743, brands: 39, clients: 76 };
 
 export default function ExploreSection(props: ExploreCountersProps = {}) {
+  const locale = useLocale();
+  const t = getTranslations(locale);
   const { videos, brands, clients } = { ...defaultCounters, ...props };
   const videosCount = useCountUp(videos, 1000);
   const brandsCount = useCountUp(brands, 1000);
@@ -100,7 +104,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                     leading-none
                   `}
               >
-                  EXPLORE
+                  {t.explore.headline}
               </h2>
 
               <p
@@ -111,7 +115,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                 fontSize: 'clamp(1rem, 2vw, 1.25rem)',
               }}
             >
-              At Scribble Production Company, ordinary is never enough.
+              {t.explore.intro1}
             </p>
             <p
               className={`${rubik.className} max-w-[85%] sm:max-w-[26rem] leading-[1.5] tracking-tight mb-7 text-white`}
@@ -121,7 +125,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                 fontSize: 'clamp(1rem, 2vw, 1.25rem)',
               }}
             >
-                We constantly seek creativity that stands out, turning ideas into powerful visuals and sound that leave a lasting impression. With passion and expertise, we craft work that elevates your brand and speaks to your audience in the best way possible.
+                {t.explore.intro2}
             </p>
               </div>
 
@@ -157,11 +161,10 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                               fontWeight: 600,
                           }}
                       >
-                          VIDEOS
+                          {t.explore.videos}
                       </span>
                   </div>
 
-                  {/* BRAND */}
                   <div className="flex flex-col items-center justify-center">
                       <div ref={brandsCount.ref as React.RefObject<HTMLDivElement>}>
                           <span
@@ -187,11 +190,10 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                               fontWeight: 600,
                           }}
                       >
-                          BRAND
+                          {t.explore.brand}
                       </span>
                   </div>
 
-                  {/* CLIENTS */}
                   <div className="flex flex-col items-center justify-center">
                       <div ref={clientsCount.ref as React.RefObject<HTMLDivElement>}>
                           <span
@@ -217,15 +219,15 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                               fontWeight: 600,
                           }}
                       >
-                        CLIENTS
+                        {t.explore.clients}
                       </span>
                   </div>
                   </div>
               </div>
             <button
               type="button"
-              className="shrink-0 self-start flex items-center justify-center h-10 md:h-12 min-w-[7rem] md:min-w-[8rem] bg-white border-t border-r border-b border-white rounded-r-none rounded-b-xl hover:opacity-95 transition-opacity pl-5 pr-5 md:pl-6 md:pr-6 mr-20 md:mr-32"
-              aria-label="View portfolio"
+              className="shrink-0 self-start flex items-center justify-center h-10 md:h-12 min-w-[7rem] md:min-w-[8rem] bg-white border-t border-r border-b border-white rounded-r-none rounded-b-xl hover:opacity-95 transition-opacity pl-5 pr-5 md:pl-6 md:pr-6 mr-20 md:mr-32 rtl:mr-0 rtl:ml-20 rtl:md:ml-32"
+              aria-label={t.explore.viewPortfolioAria}
             >
               <span
                 className={`${rubik.className} uppercase whitespace-nowrap text-[#19140F]`}
@@ -236,7 +238,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                   fontSize: 'clamp(1rem, 1vw, 0.9rem)',
                 }}
               >
-                PORTFOLIO
+                {t.explore.portfolioButton}
               </span>
             </button>
           </div>

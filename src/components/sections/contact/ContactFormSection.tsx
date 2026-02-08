@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Rubik } from "next/font/google";
 import { useState } from "react";
+import { getTranslations, type Locale } from "@/lib/translations";
 
 const rubik = Rubik({ weight: "600", subsets: ["latin"] });
 
@@ -62,7 +63,10 @@ function ScribbleLogo({
   );
 }
 
-export default function ContactFormSection() {
+export default function ContactFormSection({ locale }: { locale: Locale }) {
+  const t = getTranslations(locale);
+  const formT = t.contact.form;
+  const companyT = t.contact.company;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [comments, setComments] = useState("");
@@ -82,7 +86,7 @@ export default function ContactFormSection() {
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
         setStatus("error");
-        setErrorMessage(data.error ?? "Something went wrong. Please try again.");
+        setErrorMessage(data.error ?? formT.errorGeneric);
         return;
       }
       setStatus("success");
@@ -91,7 +95,7 @@ export default function ContactFormSection() {
       setComments("");
     } catch {
       setStatus("error");
-      setErrorMessage("Network error. Please try again.");
+      setErrorMessage(formT.errorNetwork);
     }
   }
 
@@ -108,19 +112,19 @@ export default function ContactFormSection() {
             <div className="flex flex-nowrap items-center gap-6 md:gap-8 min-w-0">
               <ScribbleLogo className="shrink-0 w-[16.51vw] h-[8.19vw]" />
               <div
-                className={`flex flex-col gap-1 text-[#FFF] uppercase tracking-wide md:ml-auto shrink-0 min-w-[320px] lg:min-w-[380px] ml-6 lg:ml-10 ${rubik.className}`}
+                className={`flex flex-col gap-1 text-[#FFF] uppercase tracking-wide md:ml-auto shrink-0 min-w-[320px] lg:min-w-[380px] ml-6 lg:ml-10 rtl:ml-0 rtl:mr-6 rtl:lg:mr-10 ${rubik.className}`}
               >
                 <span className="text-[22px] font-semibold leading-normal whitespace-nowrap">
-                  Scribble Production Company
+                  {companyT.name}
                 </span>
                 <span className="text-[22px] font-semibold leading-normal whitespace-nowrap">
-                  Ramallah, Palestine
+                  {companyT.address}
                 </span>
                 <a
                   href="tel:0097222975232"
                   className="text-[42px] font-semibold leading-normal text-[#FFF] hover:opacity-90 transition-opacity mt-1 whitespace-nowrap"
                 >
-                  00972 2 2975232
+                  {companyT.phone}
                 </a>
               </div>
             </div>
@@ -131,65 +135,65 @@ export default function ContactFormSection() {
               onSubmit={handleSubmit}
             >
             <label className="sr-only" htmlFor="contact-name">
-              Name
+              {formT.name}
             </label>
             <input
               id="contact-name"
               name="name"
               type="text"
-              placeholder="Name"
+              placeholder={formT.name}
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
               disabled={status === "sending"}
               className="contact-input-style w-[512.529px] max-w-full h-[55.135px] px-4"
-              aria-label="Your name"
+              aria-label={formT.nameLabel}
             />
             <label className="sr-only" htmlFor="contact-email">
-              Email
+              {formT.email}
             </label>
             <input
               id="contact-email"
               name="email"
               type="email"
-              placeholder="Email"
+              placeholder={formT.email}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
               disabled={status === "sending"}
               className="contact-input-style w-[512.529px] max-w-full h-[55.135px] px-4"
-              aria-label="Your email"
+              aria-label={formT.emailLabel}
             />
             <label className="sr-only" htmlFor="contact-comments">
-              Comments
+              {formT.comments}
             </label>
             <textarea
               id="contact-comments"
               name="comments"
-              placeholder="Comments"
+              placeholder={formT.comments}
               rows={4}
               value={comments}
               onChange={(e) => setComments(e.target.value)}
               required
               disabled={status === "sending"}
               className="contact-input-style w-[512.529px] max-w-full min-h-[100px] px-4 py-3 resize-y"
-              aria-label="Your message"
+              aria-label={formT.messageLabel}
             />
             {(status === "success" || status === "error") && (
               <p
                 role="alert"
                 className={`text-sm max-w-[512.529px] ${status === "success" ? "text-green-300" : "text-red-300"}`}
               >
-                {status === "success" ? "Message sent. We'll get back to you soon." : errorMessage}
+                {status === "success" ? formT.successMessage : errorMessage}
               </p>
             )}
-            <div className="flex justify-end max-w-[512.529px]">
+            <div className="flex justify-end max-w-[512.529px] rtl:justify-start">
               <button
                 type="submit"
                 disabled={status === "sending"}
                 className="w-fit px-8 py-3 rounded-lg bg-black text-white font-medium uppercase tracking-wide hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {status === "sending" ? "Sending…" : "Send"}
+                {status === "sending" ? formT.sending : formT.send}
               </button>
             </div>
             </form>
@@ -199,7 +203,7 @@ export default function ContactFormSection() {
           <div className="relative flex justify-center items-end min-h-[280px] pt-8 lg:pt-16">
             <Image
               src="/assets/contact-illustration.png"
-              alt="Scribble — creative energy and connection"
+              alt={t.contact.illustrationAlt}
               width={340}
               height={280}
               className="object-contain w-[340px] h-[280px]"

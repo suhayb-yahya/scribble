@@ -1,21 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Dancing_Script } from "next/font/google";
 import { useEffect, useId, useState, type ComponentType } from "react";
+import { setLocale } from "@/app/actions/locale";
+import { localeHref } from "@/lib/locale-utils";
+import { getTranslations, type Locale } from "@/lib/translations";
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
 });
 
-const navItems = [
-  { label: "HOME", href: "/" },
-  { label: "ABOUT", href: "/about" },
-  { label: "SERVICES", href: "/services" },
-  { label: "JOBS", href: "/jobs" },
-  { label: "CONTACT", href: "/contact" },
+const navKeys = [
+  { key: "home" as const, href: "/" },
+  { key: "about" as const, href: "/about" },
+  { key: "services" as const, href: "/services" },
+  { key: "jobs" as const, href: "/jobs" },
+  { key: "contact" as const, href: "/contact" },
 ];
 
 const socialLinks = [
@@ -101,10 +104,17 @@ const socialIcons: Record<string, ComponentType<{ className?: string }>> = {
   LinkedIn: LinkedInIcon,
 };
 
-export default function Header() {
+async function handleLocaleSwitch(currentLocale: Locale) {
+  const nextLocale: Locale = currentLocale === "ar" ? "en" : "ar";
+  await setLocale(nextLocale);
+}
+
+export default function Header({ locale }: { locale: Locale }) {
   const pathname = usePathname();
+  const router = useRouter();
   const menuId = useId();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const t = getTranslations(locale);
 
   useEffect(() => {
     // Close the menu after navigation.
@@ -121,12 +131,16 @@ export default function Header() {
     };
   }, [mobileMenuOpen]);
 
+  const onLocaleClick = () => {
+    handleLocaleSwitch(locale).then(() => router.refresh());
+  };
+
   return (
     <header className="absolute top-0 left-0 right-0 z-10 w-full px-4 py-4 mt-4 flex justify-center">
       <div className="w-full max-w-6xl bg-white rounded-2xl md:rounded-full shadow-md flex items-center justify-between gap-3 md:gap-6 px-4 md:px-8 py-3 md:py-6">
-        {/* Left: Logo + desktop nav */}
+        {/* Start side: Logo + desktop nav (flips in RTL) */}
         <div className="flex items-center gap-4 shrink min-w-0">
-          <Link href="/" className="flex flex-col items-start inline-flex shrink-0">
+          <Link href={localeHref("/", locale)} className="flex flex-col items-start inline-flex shrink-0 rtl:items-end">
             <span aria-label="Scribble logo" className="inline-block">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -180,28 +194,33 @@ export default function Header() {
 
           {/* Desktop navigation */}
           <nav className="hidden md:flex items-center gap-4 lg:gap-6 mx-2 min-w-0">
-            {navItems.map((item) => {
+            {navKeys.map(({ key, href }) => {
               const isActive =
-                item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+                href === "/" ? pathname === "/" : pathname.startsWith(href);
               return (
                 <Link
-                  key={item.label}
-                  href={item.href}
+                  key={key}
+                  href={localeHref(href, locale)}
                   className={`text-sm font-bold uppercase tracking-wide transition-colors whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded ${
                     isActive ? "text-primary" : "text-black hover:text-primary/80"
                   }`}
                 >
-                  {item.label}
+                  {t.nav[key]}
                 </Link>
               );
             })}
-            <span className="text-black text-sm font-bold uppercase tracking-wide whitespace-nowrap">
-              عربي
-            </span>
+            <button
+              type="button"
+              onClick={onLocaleClick}
+              className="text-black text-sm font-bold uppercase tracking-wide whitespace-nowrap hover:text-primary/80 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded"
+              aria-label={locale === "ar" ? "Switch to English" : "التبديل إلى العربية"}
+            >
+              {t.localeSwitch}
+            </button>
           </nav>
         </div>
 
-        {/* Right: desktop social icons + mobile menu button */}
+        {/* End side: desktop social icons + mobile menu button */}
         <div className="flex items-center gap-2 shrink-0">
           {/* Social icons (desktop) */}
           <div className="hidden md:flex items-center gap-2">
@@ -224,7 +243,7 @@ export default function Header() {
           <button
             type="button"
             className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white hover:opacity-90 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
-            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-label={mobileMenuOpen ? t.aria.closeMenu : t.aria.openMenu}
             aria-expanded={mobileMenuOpen}
             aria-controls={menuId}
             onClick={() => setMobileMenuOpen((v) => !v)}
@@ -244,20 +263,20 @@ export default function Header() {
             onClick={() => setMobileMenuOpen(false)}
           />
 
-          <div className="absolute top-20 left-4 right-4 bg-white rounded-2xl shadow-lg p-5">
+          <div className="absolute top-20 left-4 right-4 rtl:left-4 rtl:right-4 bg-white rounded-2xl shadow-lg p-5">
             <nav id={menuId} className="flex flex-col gap-3">
-              {navItems.map((item) => {
+              {navKeys.map(({ key, href }) => {
                 const isActive =
-                  item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+                  href === "/" ? pathname === "/" : pathname.startsWith(href);
                 return (
                   <Link
-                    key={item.label}
-                    href={item.href}
+                    key={key}
+                    href={localeHref(href, locale)}
                     className={`text-sm font-bold uppercase tracking-wide transition-colors px-3 py-2 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${
                       isActive ? "text-primary bg-primary/5" : "text-black hover:text-primary/80"
                     }`}
                   >
-                    {item.label}
+                    {t.nav[key]}
                   </Link>
                 );
               })}
@@ -265,9 +284,14 @@ export default function Header() {
               <div className="h-px bg-black/10 my-2" aria-hidden="true" />
 
               <div className="flex items-center justify-between gap-3">
-                <span className="text-black text-sm font-bold uppercase tracking-wide">
-                  عربي
-                </span>
+                <button
+                  type="button"
+                  onClick={onLocaleClick}
+                  className="text-black text-sm font-bold uppercase tracking-wide hover:text-primary/80 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded"
+                  aria-label={locale === "ar" ? "Switch to English" : "التبديل إلى العربية"}
+                >
+                  {t.localeSwitch}
+                </button>
 
                 <div className="flex items-center gap-2">
                   {socialLinks.map(({ name, href }) => {

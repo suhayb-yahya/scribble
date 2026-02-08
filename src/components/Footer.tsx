@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Rubik } from "next/font/google";
 import { usePathname } from "next/navigation";
+import { localeHref } from "@/lib/locale-utils";
+import { getTranslations, type Locale } from "@/lib/translations";
 
 const rubik = Rubik({
     subsets: ["latin"],
@@ -17,8 +19,9 @@ const navActive = "text-[#7B2553]";
 const navInactiveOnPrimary = "text-white/90 hover:text-white";
 const navActiveOnPrimary = "text-white";
 
-export default function Footer() {
+export default function Footer({ locale }: { locale: Locale }) {
     const pathname = usePathname();
+    const t = getTranslations(locale);
     const usePrimaryFooter = pathname === "/about" || pathname === "/services" || pathname === "/contact";
 
     const isActive = (href: string) => pathname === href;
@@ -41,29 +44,29 @@ export default function Footer() {
                     <div className="space-y-3">
                         <Image src="/assets/logo-scribble.svg" alt="Scribble" width={150} height={50} className={usePrimaryFooter ? "brightness-0 invert" : undefined} />
                         <p className={`${rubik.className} font-[700] text-[14.61px] leading-none ${infoColor}`}>
-                            At Scribble Production Company
+                            {t.footer.atScribble}
                         </p>
                         <p className={`${rubik.className} font-[700] text-[14.61px] leading-none ${infoColor}`}>
-                            PALESTINE, RAMALLAH, 00970 2 2975232
+                            {t.footer.address}
                         </p>
                     </div>
 
                     {/* Navigation */}
                     <div className="grid grid-cols-2 gap-x-12 gap-y-4 mt-6 md:mt-0">
                         <nav className="flex flex-col gap-4">
-                            <Link href="/" className={navLinkClass("/")}>HOME</Link>
-                            <Link href="/about" className={navLinkClass("/about")}>ABOUT US</Link>
-                            <Link href="/services" className={navLinkClass("/services")}>SERVICES</Link>
+                            <Link href={localeHref("/", locale)} className={navLinkClass("/")}>{t.nav.home}</Link>
+                            <Link href={localeHref("/about", locale)} className={navLinkClass("/about")}>{t.nav.aboutUs}</Link>
+                            <Link href={localeHref("/services", locale)} className={navLinkClass("/services")}>{t.nav.services}</Link>
                         </nav>
                         <nav className="flex flex-col gap-4">
-                            <Link href="/portfolio" className={navLinkClass("/portfolio")}>PORTFOLIO</Link>
-                            <Link href="/contact" className={navLinkClass("/contact")}>CONTACT US</Link>
-                            <Link href="/jobs" className={navLinkClass("/jobs")}>JOBS</Link>
+                            <Link href={localeHref("/portfolio", locale)} className={navLinkClass("/portfolio")}>{t.nav.portfolio}</Link>
+                            <Link href={localeHref("/contact", locale)} className={navLinkClass("/contact")}>{t.nav.contactUs}</Link>
+                            <Link href={localeHref("/jobs", locale)} className={navLinkClass("/jobs")}>{t.nav.jobs}</Link>
                         </nav>
                     </div>
                 </div>
 
-                {/* RIGHT */}
+                {/* End side (right in LTR, left in RTL) */}
                 <div className="shrink-0 self-end md:self-auto mx-auto md:mx-0">
                     <Image src="/assets/character.png" alt="Scribble Character" width={170} height={170} />
                 </div>
@@ -73,8 +76,8 @@ export default function Footer() {
                 <div className={`h-px ${dividerClass}`} />
             </div>
 
-            <div className={`max-w-[100rem] mx-auto mt-3 text-center md:text-right text-xs font-medium ${copyrightClass}`}>
-                © 2016 SCRIBBLE. All rights reserved
+            <div className={`max-w-[100rem] mx-auto mt-3 text-center md:text-end text-xs font-medium ${copyrightClass}`}>
+                {t.footer.copyright}
             </div>
         </footer>
 

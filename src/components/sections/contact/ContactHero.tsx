@@ -1,15 +1,17 @@
 import Image from "next/image";
 import { Rubik } from "next/font/google";
+import { getTranslations, type Locale } from "@/lib/translations";
 
-const rubik = Rubik({ weight: ["600", "700"], subsets: ["latin"] });
+const rubik = Rubik({ weight: ["600", "700"], subsets: ["latin", "arabic"] });
 
-export default function ContactHero() {
+export default function ContactHero({ locale }: { locale: Locale }) {
+  const t = getTranslations(locale);
+  const { title1, title2, title3 } = t.contact.hero;
   return (
     <section
       className="relative w-full min-w-0 overflow-hidden aspect-[3/2] min-h-[360px] sm:min-h-[480px] md:min-h-[560px] lg:min-h-[640px]"
       aria-label="Contact Scribble"
     >
-      {/* Main image — natural aspect ratio, no cropping; displays at full width × proportional height */}
       <Image
         src="/assets/contact-main.png"
         alt="Scribble studio — creative team and production environment"
@@ -20,9 +22,8 @@ export default function ContactHero() {
         unoptimized
       />
 
-      {/* Text overlay — lower-left of the image */}
       <div
-        className="absolute inset-0 pl-[calc(5%+60px)] pr-4 pb-[200px] pointer-events-none flex flex-col justify-end text-left max-w-2xl"
+        className="absolute inset-0 pl-[calc(5%+60px)] pr-4 pb-[200px] pointer-events-none flex flex-col justify-end text-left max-w-2xl rtl:text-right rtl:pl-4 rtl:pr-[calc(5%+60px)]"
         aria-hidden
       >
         <h1
@@ -32,11 +33,11 @@ export default function ContactHero() {
             lineHeight: "normal",
           }}
         >
-          LET&apos;S REACH
+          {title1}
           <br />
-          YOUR TARGET
+          {title2}
           <br />
-          <span className="whitespace-nowrap">AUDIENCE TOGETHER</span>
+          <span className="whitespace-nowrap">{title3}</span>
         </h1>
       </div>
     </section>

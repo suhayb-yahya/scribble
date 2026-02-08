@@ -2,41 +2,10 @@
 
 import { Rubik } from "next/font/google";
 import { motion } from "framer-motion";
+import { useLocale } from "@/components/LocaleProvider";
+import { getTranslations } from "@/lib/translations";
 
-const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin"] });
-
-const servicesData = [
-  {
-    title: "GRAPHIC DESIGN",
-    description:
-        "In our graphic design work, we focus on delivering more than just beautiful visuals, we craft designs that communicate, inspire.",
-  },
-  {
-    title: "MOTION, ANIMATION",
-    description:
-        "Motion graphics and animation are effective visual tools that convert complex ideas into clear, engaging, and interactive content.",
-  },
-  {
-    title: "BRANDING",
-    description:
-        "Branding is more than just a logo or a color palette; it is the experience that shapes a brand's identity and leaves an impression on audience.",
-  },
-  {
-    title: "PRODUCTION",
-    description:
-        "Transforming ideas into visual content begins with planning and scriptwriting, followed by filming, directing, and editing, all using cinematic equipment.",
-  },
-  {
-    title: "PHOTOGRAPHY",
-    description:
-        "We offer professional photo sessions carefully designed to capture moments and create images that showcase a brand's identity at its best.",
-  },
-  {
-    title: "SOCIAL MEDIA",
-    description:
-        "Managing social media pages is more than just posting: it's a complete process designed to build a strong and consistent presence for the brand.",
-  },
-];
+const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin", "arabic"] });
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -59,15 +28,35 @@ const cardVariants = {
   },
 };
 
+const serviceKeys = [
+  "graphicDesign",
+  "motionAnimation",
+  "branding",
+  "production",
+  "photography",
+  "socialMedia",
+] as const;
+
 export default function ServicesSection() {
+  const locale = useLocale();
+  const t = getTranslations(locale);
+  const servicesData = serviceKeys.map((key) => ({
+    title: t.services[key].title,
+    description: t.services[key].description,
+  }));
+
+  const headlineLines = t.services.headline.split("\n");
+
   return (
       <section className="bg-primary text-white pt-22 pb-32 px-6 md:px-10 rounded-b-[8vw] md:rounded-b-[6rem]">
         <div className="w-full max-w-[1280px] mx-auto -mt-20 md:-mt-24">
           <h2 className="text-4xl md:text-6xl font-bold uppercase text-center tracking-tight mb-10 max-w-4xl mx-auto leading-tight">
-            NOTHING PLEASES US<br />EXCEPT THE STRANGE
+            {headlineLines[0]}
+            <br />
+            {headlineLines[1]}
           </h2>
           <p className="text-xl md:text-3xl font-bold text-center text-white max-w-5xl mx-auto mb-16 leading-tight px-4">
-            We strive to provide a comprehensive range of creative and professional services designed to meet the needs of brands in today&apos;s competitive digital world. From the first idea to the final execution.
+            {t.services.subhead}
           </p>
 
           <motion.div
@@ -77,7 +66,7 @@ export default function ServicesSection() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
           >
-            {servicesData.map((card, index) => (
+            {servicesData.map((card) => (
                 <motion.div
                     key={card.title}
                     variants={cardVariants}

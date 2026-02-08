@@ -1,6 +1,8 @@
 import Image from "next/image";
+import { getTranslations, type Locale } from "@/lib/translations";
 
-export default function ServicesHero() {
+export default function ServicesHero({ locale }: { locale: Locale }) {
+  const t = getTranslations(locale);
   return (
     <section
       className="relative w-full min-w-0 overflow-hidden z-0"
@@ -9,7 +11,7 @@ export default function ServicesHero() {
       <div className="relative w-full aspect-[16/10] min-h-[320px] sm:min-h-[400px] md:min-h-[480px]">
         <Image
           src="/assets/services-hero.jpg"
-          alt="Creative studio — professional photography and media production at Scribble"
+          alt={t.common.servicesHeroAlt}
           fill
           className="object-cover"
           style={{ objectPosition: "center center" }}

@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { Rubik } from "next/font/google";
+import { getTranslations, type Locale } from "@/lib/translations";
 
-const rubik = Rubik({ weight: ["400", "600", "700"], subsets: ["latin"] });
+const rubik = Rubik({ weight: ["400", "600", "700"], subsets: ["latin", "arabic"] });
 
 function PlayIcon({ className }: { className?: string }) {
   return (
@@ -27,9 +28,11 @@ export type JobItem = {
 
 type JobsListSectionProps = {
   jobs: JobItem[];
+  locale: Locale;
 };
 
-export default function JobsListSection({ jobs }: JobsListSectionProps) {
+export default function JobsListSection({ jobs, locale }: JobsListSectionProps) {
+  const t = getTranslations(locale);
   return (
     <section
       className="py-16 md:py-24 bg-white grid grid-cols-1 lg:grid-cols-[1.35fr_0.65fr] min-h-0"
@@ -79,7 +82,7 @@ export default function JobsListSection({ jobs }: JobsListSectionProps) {
                 href={job.applyUrl ?? "#"}
                 className={`${rubik.className} apply-now-btn inline-flex items-center gap-2 uppercase font-bold text-white text-sm tracking-wide rounded-full px-6 py-3 transition-[background] duration-300`}
               >
-                Apply now
+                {t.jobs.applyNow}
                 <PlayIcon className="w-4 h-4 text-white shrink-0" />
               </a>
             </div>
@@ -91,7 +94,7 @@ export default function JobsListSection({ jobs }: JobsListSectionProps) {
       <div className="relative w-full min-h-[280px] lg:min-h-[360px] flex items-start justify-center lg:justify-start px-6 lg:pl-6 lg:pr-10 pt-8 lg:pt-[100px]">
         <Image
           src="/assets/jobs-character.png"
-          alt="Creative professional at work — join our team at Scribble"
+          alt={t.jobs.characterAlt}
           width={380}
           height={380}
           className="object-contain w-full h-full max-w-[280px] max-h-[50vh] lg:max-w-[340px] lg:max-h-[380px]"

@@ -2,32 +2,21 @@
 
 import { useState } from "react";
 import { Rubik } from "next/font/google";
+import { getTranslations, type Locale } from "@/lib/translations";
 
-const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin"] });
+const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin", "arabic"] });
 
-const tabs = [
-  { id: "story", label: "OUR STORY" },
-  { id: "vision", label: "OUR VISION" },
-  { id: "mission", label: "OUR MISSION" },
-] as const;
+const tabIds = ["story", "vision", "mission"] as const;
 
-const tabContent: Record<(typeof tabs)[number]["id"], string[]> = {
-  story: [
-    "Our story began with a simple idea: to turn creativity into meaningful visual experiences. Since the very first project, our vision has been clear to combine art, technology, and storytelling in a way that inspires audiences and strengthens brands.",
-    "Over the years, we've grown into a team of passionate creatives, each adding a unique touch that shaped our identity and set us apart. What started as a small vision has become a trusted partner for businesses and individuals seeking originality, professionalism, and innovation. And our story is still being written with every new project, every new challenge, and every new success.",
-  ],
-  vision: [
-    "Our vision is to be the go-to creative partner for brands that dare to stand out. We aim to push boundaries, blend art with technology, and deliver visual experiences that leave a lasting impression.",
-    "We see a future where every brand has access to bold, original storytelling—and we're here to make that happen, one project at a time.",
-  ],
-  mission: [
-    "Our mission is to deliver more than beautiful visuals: we craft work that communicates, inspires, and drives real impact. We combine creativity with strategy so every project strengthens your brand and connects with your audience.",
-    "We're committed to originality, professionalism, and innovation in everything we do—from the first idea to the final deliverable.",
-  ],
-};
-
-export default function AboutTabsSection() {
-  const [activeTab, setActiveTab] = useState<(typeof tabs)[number]["id"]>("story");
+export default function AboutTabsSection({ locale }: { locale: Locale }) {
+  const t = getTranslations(locale);
+  const tabs = [
+    { id: "story" as const, label: t.about.tabs.ourStory },
+    { id: "vision" as const, label: t.about.tabs.ourVision },
+    { id: "mission" as const, label: t.about.tabs.ourMission },
+  ];
+  const tabContent = t.about.tabContent;
+  const [activeTab, setActiveTab] = useState<(typeof tabIds)[number]>("story");
 
   return (
     <section

@@ -1,10 +1,13 @@
 import { Rubik } from "next/font/google";
+import { getTranslations, type Locale } from "@/lib/translations";
 
-const rubik = Rubik({ weight: ["700"], subsets: ["latin"] });
+const rubik = Rubik({ weight: ["700"], subsets: ["latin", "arabic"] });
 
-export default function AboutIllustrationSection() {
+export default function AboutIllustrationSection({ locale }: { locale: Locale }) {
+  const t = getTranslations(locale);
   const textGradient =
     "linear-gradient(to right, #c08060 0%, #a07070 40%, #6090a0 70%, #60b0b0 100%)";
+  const { taglineLine1, taglineLine2, alt } = t.about.illustration;
 
   return (
     <section
@@ -15,7 +18,7 @@ export default function AboutIllustrationSection() {
       <div className="flex justify-center">
         <img
           src="/assets/about-chair-illustration.png"
-          alt="Scribble character — creative at work"
+          alt={alt}
           className="block max-w-full w-auto h-auto max-h-[280px] md:max-h-[360px]"
           decoding="async"
         />
@@ -39,17 +42,17 @@ export default function AboutIllustrationSection() {
           className="flex flex-wrap justify-center items-center mb-4"
           style={{ gap: "0.4em" }}
         >
-          <span>NOTHING</span>
-          <span>PLEASES</span>
-          <span>US</span>
+          {taglineLine1.map((word) => (
+            <span key={word}>{word}</span>
+          ))}
         </p>
         <p
           className="flex flex-wrap justify-center items-center"
           style={{ gap: "0.4em" }}
         >
-          <span>EXCEPT</span>
-          <span>THE</span>
-          <span>STRANGE</span>
+          {taglineLine2.map((word) => (
+            <span key={word}>{word}</span>
+          ))}
         </p>
       </div>
     </section>
