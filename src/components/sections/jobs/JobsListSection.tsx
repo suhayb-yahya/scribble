@@ -22,10 +22,23 @@ function PlayIcon({ className, flip }: { className?: string; flip?: boolean }) {
 
 export type JobItem = {
   id: string;
-  title: string;
-  requirements: string[];
+  title: { en: string; ar: string };
+  requirements: { en: string[]; ar: string[] };
   applyUrl?: string;
 };
+
+/** Resolve title for a locale (fallback to other locale if missing). */
+export function getJobTitle(job: JobItem, locale: Locale): string {
+  const other: Locale = locale === "en" ? "ar" : "en";
+  return job.title[locale]?.trim() || job.title[other]?.trim() || "";
+}
+
+/** Resolve requirements for a locale (fallback to other locale if missing). */
+export function getJobRequirements(job: JobItem, locale: Locale): string[] {
+  const other: Locale = locale === "en" ? "ar" : "en";
+  const list = job.requirements[locale] ?? job.requirements[other];
+  return Array.isArray(list) ? list : [];
+}
 
 type JobsListSectionProps = {
   jobs: JobItem[];
@@ -65,13 +78,13 @@ export default function JobsListSection({ jobs, locale }: JobsListSectionProps) 
                   lineHeight: "normal",
                 }}
               >
-                {job.title}
+                {getJobTitle(job, locale)}
               </h2>
             </div>
 
             {/* Requirements list */}
             <ul className="list-none ps-0 space-y-2 text-gray-800 text-base md:text-lg leading-relaxed">
-              {job.requirements.map((item, i) => (
+              {getJobRequirements(job, locale).map((item, i) => (
                 <li key={i} className="flex gap-2">
                   <span className="text-gray-500 shrink-0">–</span>
                   <span>{item}</span>

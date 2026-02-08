@@ -14,8 +14,10 @@ export default function AdminDashboard() {
   const [jobsLoading, setJobsLoading] = useState(false);
   const [error, setError] = useState("");
   const [editingId, setEditingId] = useState<string | null>(null);
-  const [formTitle, setFormTitle] = useState("");
-  const [formRequirements, setFormRequirements] = useState("");
+  const [formTitleEn, setFormTitleEn] = useState("");
+  const [formTitleAr, setFormTitleAr] = useState("");
+  const [formRequirementsEn, setFormRequirementsEn] = useState("");
+  const [formRequirementsAr, setFormRequirementsAr] = useState("");
   const [formApplyUrl, setFormApplyUrl] = useState("");
   const [saving, setSaving] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
@@ -111,40 +113,53 @@ export default function AdminDashboard() {
 
   const startAdd = () => {
     setEditingId(null);
-    setFormTitle("");
-    setFormRequirements("");
+    setFormTitleEn("");
+    setFormTitleAr("");
+    setFormRequirementsEn("");
+    setFormRequirementsAr("");
     setFormApplyUrl("");
   };
 
   const startEdit = (job: JobItem) => {
     setEditingId(job.id);
-    setFormTitle(job.title);
-    setFormRequirements(job.requirements.join("\n"));
+    setFormTitleEn(job.title.en ?? "");
+    setFormTitleAr(job.title.ar ?? "");
+    setFormRequirementsEn((job.requirements.en ?? []).join("\n"));
+    setFormRequirementsAr((job.requirements.ar ?? []).join("\n"));
     setFormApplyUrl(job.applyUrl ?? "");
   };
 
   const saveJob = async (e: React.FormEvent) => {
     e.preventDefault();
-    const requirements = formRequirements
+    const titleEn = formTitleEn.trim();
+    const titleAr = formTitleAr.trim();
+    if (!titleEn && !titleAr) {
+      setError("At least one of Title (EN) or Title (AR) is required");
+      return;
+    }
+    const requirementsEn = formRequirementsEn
       .split("\n")
       .map((r) => r.trim())
       .filter(Boolean);
-    if (!formTitle.trim()) {
-      setError("Title is required");
-      return;
-    }
+    const requirementsAr = formRequirementsAr
+      .split("\n")
+      .map((r) => r.trim())
+      .filter(Boolean);
     setSaving(true);
     setError("");
+    const payload = {
+      titleEn,
+      titleAr,
+      requirementsEn,
+      requirementsAr,
+      applyUrl: formApplyUrl.trim() || undefined,
+    };
     try {
       if (editingId) {
         const res = await fetch(`/api/admin/jobs/${editingId}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            title: formTitle.trim(),
-            requirements,
-            applyUrl: formApplyUrl.trim() || undefined,
-          }),
+          body: JSON.stringify(payload),
           credentials: "include",
         });
         if (!res.ok) {
@@ -159,11 +174,7 @@ export default function AdminDashboard() {
         const res = await fetch("/api/admin/jobs", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            title: formTitle.trim(),
-            requirements,
-            applyUrl: formApplyUrl.trim() || undefined,
-          }),
+          body: JSON.stringify(payload),
           credentials: "include",
         });
         if (!res.ok) {
@@ -173,8 +184,10 @@ export default function AdminDashboard() {
         }
         const created = await res.json();
         setJobs((prev) => [...prev, created]);
-        setFormTitle("");
-        setFormRequirements("");
+        setFormTitleEn("");
+        setFormTitleAr("");
+        setFormRequirementsEn("");
+        setFormRequirementsAr("");
         setFormApplyUrl("");
       }
     } catch {
@@ -288,28 +301,55 @@ export default function AdminDashboard() {
           {editingId ? "Edit job" : "Add job"}
         </h2>
         <form onSubmit={saveJob} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
-            <input
-              type="text"
-              value={formTitle}
-              onChange={(e) => setFormTitle(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-[#7B2553]/40 focus:border-[#7B2553]"
-              placeholder="e.g. Graphic Designer"
-              required
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Title (English)</label>
+              <input
+                type="text"
+                value={formTitleEn}
+                onChange={(e) => setFormTitleEn(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-[#7B2553]/40 focus:border-[#7B2553]"
+                placeholder="e.g. Graphic Designer"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Title (العربية)</label>
+              <input
+                type="text"
+                value={formTitleAr}
+                onChange={(e) => setFormTitleAr(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-[#7B2553]/40 focus:border-[#7B2553]"
+                placeholder="مثال: مصمم جرافيك"
+                dir="rtl"
+              />
+            </div>
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Requirements (one per line)
-            </label>
-            <textarea
-              value={formRequirements}
-              onChange={(e) => setFormRequirements(e.target.value)}
-              rows={6}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-[#7B2553]/40 focus:border-[#7B2553] resize-y"
-              placeholder="First requirement&#10;Second requirement&#10;…"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Requirements – English (one per line)
+              </label>
+              <textarea
+                value={formRequirementsEn}
+                onChange={(e) => setFormRequirementsEn(e.target.value)}
+                rows={6}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-[#7B2553]/40 focus:border-[#7B2553] resize-y"
+                placeholder="First requirement&#10;Second requirement&#10;…"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Requirements – العربية (سطر واحد لكل بند)
+              </label>
+              <textarea
+                value={formRequirementsAr}
+                onChange={(e) => setFormRequirementsAr(e.target.value)}
+                rows={6}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-[#7B2553]/40 focus:border-[#7B2553] resize-y"
+                placeholder="البند الأول&#10;البند الثاني&#10;…"
+                dir="rtl"
+              />
+            </div>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -433,7 +473,9 @@ export default function AdminDashboard() {
                 className="flex flex-wrap items-start justify-between gap-3 py-3 border-b border-gray-100 last:border-0"
               >
                 <div>
-                  <p className="font-semibold text-gray-900">{job.title}</p>
+                  <p className="font-semibold text-gray-900">
+                    {job.title.en || job.title.ar || "(No title)"}
+                  </p>
                   <p className="text-sm text-gray-500">{job.id}</p>
                 </div>
                 <div className="flex gap-2">

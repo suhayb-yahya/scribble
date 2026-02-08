@@ -1,51 +1,83 @@
 [
   {
     "id": "graphic-designer",
-    "title": "Graphic Designer",
-    "requirements": [
-      "Strong creative talent with the ability to develop fresh, visually appealing concepts.",
-      "Professional mastery of Adobe software, including Photoshop, Illustrator, InDesign.",
-      "Excellent sense of layout, color, and typography, with strong attention to detail.",
-      "Ability to transform ideas into effective visual designs across digital and print media.",
-      "Strong communication skills and the ability to work collaboratively within a creative team.",
-      "Ability to manage time, meet deadlines, and handle multiple projects simultaneously.",
-      "A portfolio showcasing high-quality design work and creative problem-solving."
-    ]
+    "title": {
+      "en": "Graphic Designer",
+      "ar": "جرافيك ديزاينر"
+    },
+    "requirements": {
+      "en": [
+        "Strong creative talent with the ability to develop fresh, visually appealing concepts.",
+        "Professional mastery of Adobe software, including Photoshop, Illustrator, InDesign.",
+        "Excellent sense of layout, color, and typography, with strong attention to detail.",
+        "Ability to transform ideas into effective visual designs across digital and print media.",
+        "Strong communication skills and the ability to work collaboratively within a creative team.",
+        "Ability to manage time, meet deadlines, and handle multiple projects simultaneously.",
+        "A portfolio showcasing high-quality design work and creative problem-solving."
+      ],
+      "ar": [
+        "موهبة إبداعية متميزة مع القدرة على ابتكار مفاهيم جديدة وجذابة بصريًا.",
+        "إتقان احترافي لبرامج أدوبي، بما في ذلك فوتوشوب، إليستريتور، وإنديزاين.",
+        "حسٌّ فنيٌّ رفيع في التخطيط، والألوان، والطباعة، مع دقة متناهية في التفاصيل.",
+        "القدرة على تحويل الأفكار إلى تصاميم بصرية فعّالة عبر الوسائط الرقمية والمطبوعة.",
+        "مهارات تواصل ممتازة والقدرة على العمل بروح الفريق ضمن فريق إبداعي.",
+        "القدرة على إدارة الوقت، والالتزام بالمواعيد النهائية، والتعامل مع مشاريع متعددة في آن واحد.",
+        "ملف أعمال يعرض أعمال تصميم عالية الجودة وحلولًا إبداعية للمشاكل."
+      ]
+    }
   },
   {
     "id": "mobile-contentwriter",
-    "title": "Mobile Contentwriter",
-    "requirements": [
-      "Exceptional writing and editing skills with a strong grasp of tone, voice, and brand guidelines.",
-      "Experience creating short-form content for mobile and social platforms (captions, stories, reels).",
-      "Ability to adapt messaging for different audiences and formats while keeping copy concise and engaging.",
-      "Understanding of SEO and how to optimize content for discoverability and engagement.",
-      "Comfort working with creative teams and turning briefs into clear, compelling copy.",
-      "Ability to manage multiple projects, meet deadlines, and incorporate feedback quickly.",
-      "A portfolio or samples of mobile-first and social content across different brands or formats."
-    ]
+    "title": {
+      "en": "Mobile Contentwriter",
+      "ar": "Mobile Contentwriter"
+    },
+    "requirements": {
+      "en": [
+        "Exceptional writing and editing skills with a strong grasp of tone, voice, and brand guidelines.",
+        "Experience creating short-form content for mobile and social platforms (captions, stories, reels).",
+        "Ability to adapt messaging for different audiences and formats while keeping copy concise and engaging.",
+        "Understanding of SEO and how to optimize content for discoverability and engagement.",
+        "Comfort working with creative teams and turning briefs into clear, compelling copy.",
+        "Ability to manage multiple projects, meet deadlines, and incorporate feedback quickly.",
+        "A portfolio or samples of mobile-first and social content across different brands or formats."
+      ],
+      "ar": [
+        "Exceptional writing and editing skills with a strong grasp of tone, voice, and brand guidelines.",
+        "Experience creating short-form content for mobile and social platforms (captions, stories, reels).",
+        "Ability to adapt messaging for different audiences and formats while keeping copy concise and engaging.",
+        "Understanding of SEO and how to optimize content for discoverability and engagement.",
+        "Comfort working with creative teams and turning briefs into clear, compelling copy.",
+        "Ability to manage multiple projects, meet deadlines, and incorporate feedback quickly.",
+        "A portfolio or samples of mobile-first and social content across different brands or formats."
+      ]
+    }
   },
   {
     "id": "videographer",
-    "title": "Videographer",
-    "requirements": [
-      "Proficiency in shooting, lighting, and sound for both indoor and outdoor productions.",
-      "Strong skills in video editing and post-production (e.g. Adobe Premiere, DaVinci Resolve, After Effects).",
-      "Ability to plan shoots, create shot lists, and work from creative briefs and storyboards.",
-      "Experience with different formats: commercials, social content, documentaries, or branded content.",
-      "Good eye for composition, movement, and visual storytelling that fits brand and campaign goals.",
-      "Ability to work collaboratively with directors, clients, and other crew; reliable on set and on deadline.",
-      "A reel or portfolio demonstrating range in style, format, and production value."
-    ]
-  },
-  {
-    "id": "test",
-    "title": "TEST",
-    "requirements": [
-      "TEST1",
-      "TEST2",
-      "TEST3"
-    ],
-    "applyUrl": "http://google.com"
+    "title": {
+      "en": "Videographer",
+      "ar": "Videographer"
+    },
+    "requirements": {
+      "en": [
+        "Proficiency in shooting, lighting, and sound for both indoor and outdoor productions.",
+        "Strong skills in video editing and post-production (e.g. Adobe Premiere, DaVinci Resolve, After Effects).",
+        "Ability to plan shoots, create shot lists, and work from creative briefs and storyboards.",
+        "Experience with different formats: commercials, social content, documentaries, or branded content.",
+        "Good eye for composition, movement, and visual storytelling that fits brand and campaign goals.",
+        "Ability to work collaboratively with directors, clients, and other crew; reliable on set and on deadline.",
+        "A reel or portfolio demonstrating range in style, format, and production value."
+      ],
+      "ar": [
+        "Proficiency in shooting, lighting, and sound for both indoor and outdoor productions.",
+        "Strong skills in video editing and post-production (e.g. Adobe Premiere, DaVinci Resolve, After Effects).",
+        "Ability to plan shoots, create shot lists, and work from creative briefs and storyboards.",
+        "Experience with different formats: commercials, social content, documentaries, or branded content.",
+        "Good eye for composition, movement, and visual storytelling that fits brand and campaign goals.",
+        "Ability to work collaboratively with directors, clients, and other crew; reliable on set and on deadline.",
+        "A reel or portfolio demonstrating range in style, format, and production value."
+      ]
+    }
   }
 ]
