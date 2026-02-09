@@ -106,15 +106,15 @@ export default function JobsListSection({ jobs, locale }: JobsListSectionProps) 
         ))}
       </div>
 
-      {/* Illustration */}
-      <div className="relative w-full min-h-[280px] lg:min-h-[360px] flex items-start justify-center px-6 lg:ps-6 lg:pe-10 pt-8 lg:pt-[100px]">
+      {/* Illustration: top-aligned, centered horizontally, shifted left */}
+      <div className="relative w-full min-h-[280px] lg:min-h-[420px] flex items-start justify-center px-6 lg:ps-6 lg:pe-10 pt-8 lg:pt-10 me-24 lg:me-48">
         <Image
           src="/assets/jobs-character.png"
           alt={t.jobs.characterAlt}
-          width={380}
-          height={380}
-          className="object-contain w-full h-full max-w-[280px] max-h-[50vh] lg:max-w-[340px] lg:max-h-[380px]"
-          sizes="(max-width: 1023px) 80vw, 340px"
+          width={440}
+          height={440}
+          className="object-contain w-full h-full max-w-[320px] max-h-[50vh] lg:max-w-[420px] lg:max-h-[420px]"
+          sizes="(max-width: 1023px) 80vw, 420px"
         />
       </div>
     </section>

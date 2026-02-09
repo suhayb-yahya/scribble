@@ -104,7 +104,7 @@ export default function ContactFormSection({ locale }: { locale: Locale }) {
       className="relative w-full min-w-0 overflow-x-visible overflow-y-visible bg-primary"
       aria-label="Contact information and form"
     >
-      <div className="w-full max-w-[1400px] pl-[calc(5%+60px)] pr-4 pt-0 pb-12 md:pb-16 lg:pb-20">
+      <div className="w-full max-w-[1400px] pl-[calc(5%+60px)] pr-4 rtl:pl-4 rtl:pr-[calc(5%+60px)] pt-0 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-x-8 lg:gap-y-12 items-center">
           {/* First half: logo, contact info, form */}
           <div className="flex flex-col gap-10 md:gap-14 lg:gap-16 min-w-0 lg:min-w-0">
@@ -187,7 +187,7 @@ export default function ContactFormSection({ locale }: { locale: Locale }) {
                 {status === "success" ? formT.successMessage : errorMessage}
               </p>
             )}
-            <div className="flex justify-end max-w-[512.529px] rtl:justify-start">
+            <div className="flex justify-start max-w-[512.529px] rtl:justify-end">
               <button
                 type="submit"
                 disabled={status === "sending"}
