@@ -9,12 +9,12 @@ const servicesData = [
   {
     title: "GRAPHIC DESIGN",
     description:
-        "In our graphic design work, we focus on delivering more than just beautiful visuals, we craft designs that communicate, inspire.",
+        "In our graphic design work, we focus on delivering more than just beautiful visuals, we craft designs that communicate, inspire, and achieve real impact for your brand.",
   },
   {
     title: "MOTION, ANIMATION",
     description:
-        "Motion graphics and animation are effective visual tools that convert complex ideas into clear, engaging, and interactive content.",
+        "Motion graphics and animation are effective visual tools that convert complex ideas into clear, engaging, and interactive content that brings stories to life.",
   },
   {
     title: "BRANDING",
@@ -61,17 +61,17 @@ const cardVariants = {
 
 export default function ServicesSection() {
   return (
-      <section className="bg-primary text-white pt-22 pb-32 px-6 md:px-10 rounded-b-[8vw] md:rounded-b-[6rem]">
-        <div className="w-full max-w-[1280px] mx-auto -mt-20 md:-mt-24">
-          <h2 className="text-4xl md:text-6xl font-bold uppercase text-center tracking-tight mb-10 max-w-4xl mx-auto leading-tight">
+      <section className="bg-primary text-white pt-22 pb-32 px-6 md:px-10">
+        <div className="w-full max-w-[1440px] mx-auto -mt-20 md:-mt-24">
+          <h2 className="text-3xl md:text-4xl font-bold uppercase text-center tracking-tight mb-10 max-w-4xl mx-auto leading-tight">
             NOTHING PLEASES US<br />EXCEPT THE STRANGE
           </h2>
-          <p className="text-xl md:text-3xl font-bold text-center text-white max-w-5xl mx-auto mb-16 leading-tight px-4">
+          <p className="text-xl md:text-3xl  text-center text-white max-w-5xl mx-auto mb-16 leading-tight px-5">
             We strive to provide a comprehensive range of creative and professional services designed to meet the needs of brands in today&apos;s competitive digital world. From the first idea to the final execution.
           </p>
 
           <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-[1280px] mx-auto items-start"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-[1440px] mx-auto items-start"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
@@ -97,7 +97,7 @@ export default function ServicesSection() {
                   rounded-2xl
                   px-8
                   py-10
-                  h-[280px]
+                  h-[240px]
                   flex
                   flex-col
                   justify-start

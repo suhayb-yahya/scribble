@@ -78,13 +78,28 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
   const clientsCount = useCountUp(clients, 1000);
 
   return (
-    <section
-      className="relative z-0 min-h-screen pt-36 md:pt-44 pb-16 md:pb-24 pl-6 md:pl-10 pr-0 overflow-hidden rounded-t-[8vw] md:rounded-t-[6rem] bg-cover bg-[50%_28%] bg-no-repeat bg-[url('/assets/explore-bg.jpg')] shadow-none"
-      aria-label="Explore"
+    <div
+      className="w-full min-w-0 overflow-hidden"
+      style={{
+        background: "linear-gradient(to right, #7B2553 0%, #7B2553 35%, #7B2553 65%, #7B2553 100%)",
+      }}
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/50" aria-hidden />
-      <div className="relative z-10 flex flex-col min-h-[68vh] md:min-h-screen">
-        <div className="max-w-6xl mx-auto mr-0 w-full px-0">
+      <div className="w-full max-w-[1920px] mx-auto">
+        <section
+          className="relative w-full min-w-0 overflow-hidden"
+          aria-label="Explore"
+        >
+          {/* Image 1600×780 aspect, max width 1920px, full shown without stretching */}
+          <img
+            src="/assets/explore-bg.jpeg"
+            alt=""
+            className="block w-full h-auto max-w-full"
+            style={{ aspectRatio: "1600/780" }}
+            aria-hidden
+            decoding="async"
+          />
+          <div className="absolute inset-0 z-10 flex flex-col pt-36 md:pt-44 pb-0 pl-6 md:pl-10 pr-0">
+        <div className="w-full max-w-[1920px] mx-auto mr-0 px-0 overflow-x-hidden">
           <div className="flex flex-col md:flex-row md:justify-end">
             <div className="w-full max-w-[90%] sm:max-w-[55rem] md:ml-auto">
               <div className="text-left mt-22 md:mt-24 ml-20 md:ml-36">
@@ -95,8 +110,8 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                     tracking-[0.04em]
                     mb-4
                     text-white
-                    text-[48px]
-                    md:text-[60px]
+                    text-[28px]
+                    md:text-[28px]
                     leading-none
                   `}
               >
@@ -104,21 +119,21 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
               </h2>
 
               <p
-              className={`${rubik.className} max-w-[85%] sm:max-w-[26rem] leading-[1.5] tracking-tight text-white`}
+              className={`${rubik.className} max-w-[85%] sm:max-w-[26rem] leading-[1.5]  text-white`}
               style={{
                 fontStyle: 'normal',
                 fontWeight: 600,
-                fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+                fontSize: 'clamp(1rem, 2vw, 1rem)',
               }}
             >
               At Scribble Production Company, ordinary is never enough.
             </p>
             <p
-              className={`${rubik.className} max-w-[85%] sm:max-w-[26rem] leading-[1.5] tracking-tight mb-7 text-white`}
+              className={`${rubik.className} max-w-[85%] sm:max-w-[26rem] leading-[1.5]  mb-7 text-white`}
               style={{
                 fontStyle: 'normal',
                 fontWeight: 600,
-                fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+                fontSize: 'clamp(1rem, 2vw, 1rem)',
               }}
             >
                 We constantly seek creativity that stands out, turning ideas into powerful visuals and sound that leave a lasting impression. With passion and expertise, we craft work that elevates your brand and speaks to your audience in the best way possible.
@@ -136,11 +151,11 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                           <span
                               className={`${rubik.className} block w-[7rem] md:w-[8.3rem] text-[3.5rem] md:text-[4.2rem] font-bold leading-none tabular-nums text-center`}
                               style={{
-                                  background: 'linear-gradient(90deg, #D17F64 0%, #469098 97.1%)',
+                                  background: 'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 97.1%)',
                                   WebkitBackgroundClip: 'text',
                                   WebkitTextFillColor: 'transparent',
                                   backgroundClip: 'text',
-                                  fontWeight: 700,
+                                  fontWeight: 300,
                                   fontVariantNumeric: 'tabular-nums',
                               }}
                           >
@@ -151,10 +166,10 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                       <span
                           className="uppercase tracking-[0.2em] mt-2"
                           style={{
-                              color: '#D57C61',
+                              color: '#FFFFFF',
                               fontFamily: 'Rubik, sans-serif',
-                              fontSize: '1.119rem',
-                              fontWeight: 600,
+                              fontSize: '1.0rem',
+                              fontWeight: 300,
                           }}
                       >
                           VIDEOS
@@ -165,13 +180,13 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                   <div className="flex flex-col items-center justify-center">
                       <div ref={brandsCount.ref as React.RefObject<HTMLDivElement>}>
                           <span
-                              className={`${rubik.className} block w-[7rem] md:w-[8rem] text-[3.5rem] md:text-[4.2rem] font-bold leading-none tabular-nums text-center`}
+                              className={`${rubik.className} block w-[7rem] md:w-[8rem] text-[3.5rem] md:text-[4.2rem] leading-none tabular-nums text-center`}
                               style={{
-                                  background: 'linear-gradient(90deg, #D17F64 0%, #469098 97.1%)',
-                                  WebkitBackgroundClip: 'text',
+                                background: 'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 97.1%)',
+                                WebkitBackgroundClip: 'text',
                                   WebkitTextFillColor: 'transparent',
                                   backgroundClip: 'text',
-                                  fontWeight: 700,
+                                  fontWeight: 300,
                                   fontVariantNumeric: 'tabular-nums',
                               }}
                           >
@@ -180,11 +195,11 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                       </div>
                       <span
                           className="uppercase tracking-[0.2em] mt-2"
-                          style={{
-                              color: '#D57C61',
+                          style={{  
+                              color: '#FFFFFF',
                               fontFamily: 'Rubik, sans-serif',
-                              fontSize: '1.119rem',
-                              fontWeight: 600,
+                              fontSize: '1.0rem',
+                              fontWeight: 300,
                           }}
                       >
                           BRAND
@@ -195,13 +210,13 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                   <div className="flex flex-col items-center justify-center">
                       <div ref={clientsCount.ref as React.RefObject<HTMLDivElement>}>
                           <span
-                              className={`${rubik.className} block w-[7rem] md:w-[8rem] text-[3.5rem] md:text-[4.2rem] font-bold leading-none tabular-nums text-center`}
+                              className={`${rubik.className} block w-[7rem] md:w-[8rem] text-[3.5rem] md:text-[4.2rem]  leading-none tabular-nums text-center`}
                               style={{
-                                  background: 'linear-gradient(90deg, #D17F64 0%, #469098 97.1%)',
+                                  background: 'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 97.1%)',
                                   WebkitBackgroundClip: 'text',
                                   WebkitTextFillColor: 'transparent',
                                   backgroundClip: 'text',
-                                  fontWeight: 700,
+                                  fontWeight: 300,
                                   fontVariantNumeric: 'tabular-nums',
                               }}
                           >
@@ -211,10 +226,10 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                       <span
                           className="uppercase tracking-[0.2em] mt-2"
                           style={{
-                              color: '#D57C61',
+                              color: '#FFFFFF',
                               fontFamily: 'Rubik, sans-serif',
-                              fontSize: '1.119rem',
-                              fontWeight: 600,
+                              fontSize: '1.0rem',
+                              fontWeight: 300,
                           }}
                       >
                         CLIENTS
@@ -245,8 +260,8 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
         </div>
         </div>
       </div>
-      <div className="absolute inset-x-0 bottom-0 h-[15%] bg-gradient-to-t from-[#4F1A39] to-transparent pointer-events-none" aria-hidden />
-
-    </section>
+      </section>
+      </div>
+    </div>
   );
 }

@@ -1,10 +1,10 @@
+import Image from "next/image";
 import { Rubik } from "next/font/google";
 
 const rubik = Rubik({ weight: ["700"], subsets: ["latin"] });
 
 export default function AboutIllustrationSection() {
-  const textGradient =
-    "linear-gradient(to right, #c08060 0%, #a07070 40%, #6090a0 70%, #60b0b0 100%)";
+  
 
   return (
     <section
@@ -12,12 +12,15 @@ export default function AboutIllustrationSection() {
       style={{ backgroundColor: "#7B2553" }}
       aria-label="Different — nothing pleases us except the strange"
     >
-      <div className="flex justify-center">
-        <img
-          src="/assets/about-chair-illustration.png"
+      <div className="w-full max-w-[1920px] mx-auto flex flex-col justify-center items-center gap-8 md:gap-10">
+      <div className="flex justify-center relative w-full max-w-[280px] md:max-w-[360px]">
+        <Image
+          src="/assets/char.svg"
           alt="Scribble character — creative at work"
-          className="block max-w-full w-auto h-auto max-h-[280px] md:max-h-[360px]"
-          decoding="async"
+          width={271}
+          height={294}
+          className="block w-full h-auto max-h-[280px] md:max-h-[360px] object-contain"
+          unoptimized
         />
       </div>
 
@@ -29,28 +32,18 @@ export default function AboutIllustrationSection() {
           fontSize: "clamp(32px, 6vw, 56px)",
           letterSpacing: "0.02em",
           lineHeight: 1.2,
-          background: textGradient,
+          background: "#FFFFFF",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           backgroundClip: "text",
         }}
       >
-        <p
-          className="flex flex-wrap justify-center items-center mb-4"
-          style={{ gap: "0.4em" }}
-        >
-          <span>NOTHING</span>
-          <span>PLEASES</span>
-          <span>US</span>
-        </p>
-        <p
-          className="flex flex-wrap justify-center items-center"
-          style={{ gap: "0.4em" }}
-        >
-          <span>EXCEPT</span>
-          <span>THE</span>
-          <span>STRANGE</span>
-        </p>
+
+        <h2 className="text-3xl md:text-4xl font-bold uppercase text-center tracking-tight mb-10 max-w-4xl mx-auto leading-tight">
+        NOTHING PLEASES US <br /> EXCEPT THE STRANGE
+        </h2>
+        
+      </div>
       </div>
     </section>
   );

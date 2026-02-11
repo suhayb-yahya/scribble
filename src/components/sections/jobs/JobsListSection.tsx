@@ -32,9 +32,10 @@ type JobsListSectionProps = {
 export default function JobsListSection({ jobs }: JobsListSectionProps) {
   return (
     <section
-      className="py-16 md:py-24 bg-white grid grid-cols-1 lg:grid-cols-[1.35fr_0.65fr] min-h-0"
+      className="py-16 md:py-24 bg-white min-h-0"
       aria-label="Available positions"
     >
+      <div className="max-w-[1440px] mx-auto w-full grid grid-cols-1 lg:grid-cols-[1.35fr_0.65fr] min-h-0">
       {/* Left half: jobs list */}
       <div className="max-w-4xl ml-[100px] flex flex-col gap-12 md:gap-16 pr-6 md:pr-10">
         {jobs.map((job) => (
@@ -97,6 +98,7 @@ export default function JobsListSection({ jobs }: JobsListSectionProps) {
           className="object-contain w-full h-full max-w-[280px] max-h-[50vh] lg:max-w-[340px] lg:max-h-[380px]"
           sizes="(max-width: 1023px) 80vw, 340px"
         />
+      </div>
       </div>
     </section>
   );

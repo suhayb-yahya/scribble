@@ -138,7 +138,7 @@ export default function ClientsSection() {
       className="py-16 md:py-24 px-6 md:px-10 bg-white"
       aria-label="Our clients"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1440px] mx-auto">
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-10 md:gap-15 items-center justify-items-center">
           {clientsData.length > 0 ? (

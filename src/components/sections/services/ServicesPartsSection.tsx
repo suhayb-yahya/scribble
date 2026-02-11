@@ -80,7 +80,7 @@ function PartBlock({ part }: { part: ServicesPart }) {
 
   return (
     <div
-      className={`flex flex-col lg:flex-row gap-2 lg:gap-0 items-stretch max-w-[1440px] mx-auto px-10 sm:px-16 lg:px-20 py-3 lg:py-4 ${!hasImage && !fullWidth ? "lg:justify-center" : ""}`}
+      className={`flex flex-col lg:flex-row gap-2 lg:gap-0 items-stretch w-full max-w-[1440px] mx-auto px-10 sm:px-16 lg:px-20 py-3 lg:py-4 ${!hasImage && !fullWidth ? "lg:justify-center" : ""}`}
     >
       {textBox}
 
