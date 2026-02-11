@@ -28,17 +28,17 @@ export default function AboutHero() {
                   className={`${rubik.className} text-white uppercase leading-tight`}
                   style={{
                     fontSize: "clamp(28px, 6vw, 48px)",
-                    fontWeight: 700,
+                    fontWeight: 500,
                     lineHeight: "1.2",
                   }}
                 >
                   ABOUT
                 </h1>
                 <p
-                  className={`${rubik.className} text-white mt-4 leading-tight font-bold`}
+                  className={`${rubik.className} text-white mt-4 leading-tight`}
                   style={{
                     fontSize: "24px",
-                    fontWeight: 700,
+                    fontWeight: 300,
                     lineHeight: "normal",
                   }}
                 >
