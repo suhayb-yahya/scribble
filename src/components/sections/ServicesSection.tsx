@@ -85,8 +85,7 @@ export default function ServicesSection() {
                     transition={{ type: "spring", stiffness: 220, damping: 18 }}
                     className="rounded-2xl p-[1px]"
                     style={{
-                      background:
-                          "linear-gradient(90deg, #469098 -0.12%, #D17F64 100.12%)",
+                      background: "linear-gradient(90deg, #469098 0%, #D17F64 100%)",
                     }}
                 >
                   <article
@@ -94,7 +93,7 @@ export default function ServicesSection() {
                   bg-[#7B2553]
                   hover:bg-[#4F1A39]
                   transition-colors duration-200
-                  rounded-2xl
+                  rounded-[15px]
                   px-8
                   py-10
                   h-[240px]

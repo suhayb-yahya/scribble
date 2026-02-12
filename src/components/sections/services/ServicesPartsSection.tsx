@@ -30,7 +30,6 @@ function PartBlock({ part }: { part: ServicesPart }) {
   const hasImage = Boolean(part.imageSrc);
   const fullWidth = Boolean(part.fullWidth);
   const boxMinHeightPx = part.boxMinHeightPx ?? 260;
-  const isProductionPhotography = part.id === "production-photography";
   const textBox = (
     <div
       className={`flex flex-col justify-center shrink-0 ${
@@ -38,21 +37,16 @@ function PartBlock({ part }: { part: ServicesPart }) {
       }`}
     >
       <div
-        className="rounded-[8px] p-[0.893px] shadow-lg w-full overflow-auto my-6 lg:my-8"
+        className="rounded-2xl p-[1px] w-full overflow-visible my-6 lg:my-8"
         style={{
           minHeight: `${boxMinHeightPx}px`,
-          backgroundImage:
-            "linear-gradient(to right, transparent 748px, #D17F64 748px), linear-gradient(to right, #469098 0%, #D17F64 100%)",
-          backgroundSize: "1500px 100%, 748px 100%",
-          backgroundPosition: "0 0, 0 0",
-          backgroundRepeat: "no-repeat, no-repeat",
+          background: "linear-gradient(90deg, #469098 0%, #D17F64 100%)",
         }}
       >
         <div
-          className="rounded-[7.1px] py-6 px-6 sm:py-8 sm:px-8 w-full overflow-auto"
+          className="rounded-[15px] py-6 px-6 sm:py-8 sm:px-8 w-full overflow-auto bg-[#7B2553] hover:bg-[#4F1A39] transition-colors duration-200"
           style={{
             minHeight: `${boxMinHeightPx - 2}px`,
-            backgroundColor: isProductionPhotography ? "#4F1A39" : "#7B2553",
           }}
         >
           <h2

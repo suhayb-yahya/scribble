@@ -12,7 +12,9 @@ export default async function JobsPage() {
   const jobsList = await getJobs();
   return (
     <main className="flex flex-col w-full min-w-0 max-w-full overflow-x-hidden min-h-screen">
-      <JobsHero />
+      <div className="w-full max-w-[1920px] mx-auto">
+        <JobsHero />
+      </div>
       <JobsListSection jobs={jobsList} />
     </main>
   );

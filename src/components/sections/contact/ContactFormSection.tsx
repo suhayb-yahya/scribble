@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Rubik } from "next/font/google";
 import { useState } from "react";
 
@@ -100,13 +99,13 @@ export default function ContactFormSection() {
       className="relative w-full min-w-0 overflow-x-visible overflow-y-visible bg-primary"
       aria-label="Contact information and form"
     >
-      <div className="w-full max-w-[1440px] mx-auto mt-10 md:mt-14 lg:mt-16 pl-[calc(5%+60px)] pr-4 pt-0 pb-12 md:pb-16 lg:pb-20">
+      <div className="w-full max-w-[1920px] mx-auto mt-10 md:mt-14 lg:mt-16 pl-[calc(5%+60px)] min-[1920px]:pl-[156px] pr-4 pt-0 pb-12 md:pb-16 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-x-8 lg:gap-y-12 items-center">
           {/* First half: logo, contact info, form */}
           <div className="flex flex-col gap-10 md:gap-14 lg:gap-16 min-w-0 lg:min-w-0">
             {/* Row: Logo on left, company info on the right — single line, no wrap */}
             <div className="flex flex-nowrap items-center gap-6 md:gap-8 min-w-0">
-              <ScribbleLogo className="shrink-0 w-[16.51vw] h-[8.19vw]" />
+              <ScribbleLogo className="shrink-0 w-[200px] h-[99px] sm:w-[238px] sm:h-[118px]" />
               <div
                 className={`flex flex-col gap-1 text-[#FFF] uppercase tracking-wide md:ml-auto shrink-0 min-w-[320px] lg:min-w-[380px] ml-6 lg:ml-10 ${rubik.className}`}
               >
@@ -196,14 +195,13 @@ export default function ContactFormSection() {
           </div>
 
           {/* Second half: illustration */}
-          <div className="relative flex justify-center items-end min-h-[280px] pt-8 lg:pt-16">
-            <Image
+          <div className="relative flex justify-center items-end min-h-[450px] pt-[50px]">
+            <img
               src="/assets/contact-illustration.png"
               alt="Scribble — creative energy and connection"
-              width={340}
-              height={280}
-              className="object-contain w-[340px] h-[280px]"
-              sizes="340px"
+              width={350}
+              height={450}
+              className="object-contain w-[350px] h-[450px]"
             />
           </div>
         </div>
