@@ -94,10 +94,10 @@ export default function JobsListSection({ jobs }: JobsListSectionProps) {
         <Image
           src="/assets/jobs-character.png"
           alt="Creative professional at work — join our team at Scribble"
-          width={380}
-          height={380}
-          className="object-contain w-full h-full max-w-[280px] max-h-[50vh] lg:max-w-[340px] lg:max-h-[380px]"
-          sizes="(max-width: 1023px) 80vw, 340px"
+          width={430}
+          height={400}
+          className="object-contain"
+          unoptimized
         />
       </div>
         </div>
