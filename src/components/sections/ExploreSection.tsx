@@ -91,20 +91,20 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
           className="relative w-full min-w-0 overflow-hidden"
           aria-label="Explore"
         >
-          {/* Image 1600×780 aspect, max width 1920px, full shown without stretching */}
+          {/* Image - compact aspect ratio */}
           <img
             src="/assets/explore-bg.jpeg"
             alt=""
-            className="block w-full h-auto max-w-full"
-            style={{ aspectRatio: "1600/780" }}
+            className="block w-full h-auto max-w-full object-cover object-center"
+            style={{ aspectRatio: "16/6", maxHeight: "55vh" }}
             aria-hidden
             decoding="async"
           />
-          <div className="absolute inset-0 z-10 flex flex-col pt-36 md:pt-44 pb-0 pl-6 md:pl-10 pr-0">
+          <div className="absolute inset-0 z-10 flex flex-col pt-24 md:pt-28 pb-0 pl-6 md:pl-10 pr-0">
         <div className="w-full max-w-[1920px] mx-auto mr-0 px-0 overflow-x-hidden">
           <div className="flex flex-col md:flex-row md:justify-end">
             <div className="w-full max-w-[90%] sm:max-w-[55rem] md:ml-auto">
-              <div className="text-left mt-22 md:mt-24 ml-20 md:ml-36">
+              <div className="text-left mt-0 ml-20 md:ml-36">
               <h2
                   className={`
                     ${rubik.className}
@@ -143,7 +143,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
               </div>
 
         {/* Counters box: left edge aligns with text, extends to right edge */}
-        <div className="flex w-full mt-20 md:mt-28 -mr-6 md:-mr-10 overflow-visible ml-20 md:ml-36">
+        <div className="flex w-full mt-8 md:mt-12 -mr-6 md:-mr-10 overflow-visible ml-20 md:ml-36">
           <div className="flex-1 min-w-0 rounded-l-[5rem] md:rounded-l-[6rem] rounded-r-none border-t border-l border-b border-white pl-[5rem] md:pl-[6rem] pr-6 md:pr-10 pt-0 pb-2 md:pb-3 bg-black/20 backdrop-blur-sm flex items-center gap-0 justify-start">
             <div className="flex flex-1 justify-start">
                   <div className="flex items-center gap-4 md:gap-8 py-1 md:py-2">
