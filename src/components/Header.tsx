@@ -1,9 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
+import { useLocale } from "next-intl";
 import { Dancing_Script } from "next/font/google";
 import { useEffect, useId, useState, type ComponentType } from "react";
+import { useTranslations } from "next-intl";
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
@@ -11,11 +12,11 @@ const dancingScript = Dancing_Script({
 });
 
 const navItems = [
-  { label: "HOME", href: "/" },
-  { label: "ABOUT", href: "/about" },
-  { label: "SERVICES", href: "/services" },
-  { label: "JOBS", href: "/jobs" },
-  { label: "CONTACT", href: "/contact" },
+  { labelKey: "home", href: "/" },
+  { labelKey: "about", href: "/about" },
+  { labelKey: "services", href: "/services" },
+  { labelKey: "jobs", href: "/jobs" },
+  { labelKey: "contact", href: "/contact" },
 ];
 
 const socialLinks = [
@@ -103,6 +104,8 @@ const socialIcons: Record<string, ComponentType<{ className?: string }>> = {
 
 export default function Header() {
   const pathname = usePathname();
+  const locale = useLocale();
+  const t = useTranslations("nav");
   const menuId = useId();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -185,19 +188,23 @@ export default function Header() {
                 item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
               return (
                 <Link
-                  key={item.label}
+                  key={item.href}
                   href={item.href}
                   className={`text-sm font-bold uppercase tracking-wide transition-colors whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded ${
                     isActive ? "text-primary" : "text-black hover:text-primary/80"
                   }`}
                 >
-                  {item.label}
+                  {t(item.labelKey as "home" | "about" | "services" | "jobs" | "contact")}
                 </Link>
               );
             })}
-            <span className="text-black text-sm font-bold uppercase tracking-wide whitespace-nowrap">
-              عربي
-            </span>
+            <Link
+              href="/"
+              locale={locale === "en" ? "ar" : "en"}
+              className="text-black text-sm font-bold uppercase tracking-wide whitespace-nowrap hover:text-primary/80 transition-colors"
+            >
+              {locale === "en" ? t("arabic") : t("english")}
+            </Link>
           </nav>
         </div>
 
@@ -251,13 +258,13 @@ export default function Header() {
                   item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
                 return (
                   <Link
-                    key={item.label}
+                    key={item.href}
                     href={item.href}
                     className={`text-sm font-bold uppercase tracking-wide transition-colors px-3 py-2 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${
                       isActive ? "text-primary bg-primary/5" : "text-black hover:text-primary/80"
                     }`}
                   >
-                    {item.label}
+                    {t(item.labelKey as "home" | "about" | "services" | "jobs" | "contact")}
                   </Link>
                 );
               })}
@@ -265,9 +272,13 @@ export default function Header() {
               <div className="h-px bg-black/10 my-2" aria-hidden="true" />
 
               <div className="flex items-center justify-between gap-3">
-                <span className="text-black text-sm font-bold uppercase tracking-wide">
-                  عربي
-                </span>
+                <Link
+                  href="/"
+                  locale={locale === "en" ? "ar" : "en"}
+                  className="text-black text-sm font-bold uppercase tracking-wide hover:text-primary/80 transition-colors"
+                >
+                  {locale === "en" ? t("arabic") : t("english")}
+                </Link>
 
                 <div className="flex items-center gap-2">
                   {socialLinks.map(({ name, href }) => {

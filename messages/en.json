@@ -1,0 +1,87 @@
+{
+  "nav": {
+    "home": "HOME",
+    "about": "ABOUT",
+    "services": "SERVICES",
+    "jobs": "JOBS",
+    "contact": "CONTACT",
+    "arabic": "عربي",
+    "english": "English"
+  },
+  "footer": {
+    "home": "HOME",
+    "aboutUs": "ABOUT US",
+    "services": "SERVICES",
+    "portfolio": "PORTFOLIO",
+    "contactUs": "CONTACT US",
+    "jobs": "JOBS",
+    "atScribble": "At Scribble Production Company",
+    "address": "PALESTINE, RAMALLAH, 00970 2 2975232",
+    "copyright": "© 2016 SCRIBBLE. All rights reserved"
+  },
+  "services": {
+    "heading1": "NOTHING PLEASES US",
+    "heading2": "EXCEPT THE STRANGE",
+    "intro": "We strive to provide a comprehensive range of creative and professional services designed to meet the needs of brands in today's competitive digital world. From the first idea to the final execution.",
+    "graphicDesign": "GRAPHIC DESIGN",
+    "graphicDesignDesc": "In our graphic design work, we focus on delivering more than just beautiful visuals, we craft designs that communicate, inspire, and achieve real impact for your brand.",
+    "motionAnimation": "MOTION, ANIMATION",
+    "motionAnimationDesc": "Motion graphics and animation are effective visual tools that convert complex ideas into clear, engaging, and interactive content that brings stories to life.",
+    "branding": "BRANDING",
+    "brandingDesc": "Branding is more than just a logo or a color palette; it is the experience that shapes a brand's identity and leaves an impression on audience.",
+    "production": "PRODUCTION",
+    "productionDesc": "Transforming ideas into visual content begins with planning and scriptwriting, followed by filming, directing, and editing, all using cinematic equipment.",
+    "photography": "PHOTOGRAPHY",
+    "photographyDesc": "We offer professional photo sessions carefully designed to capture moments and create images that showcase a brand's identity at its best.",
+    "socialMedia": "SOCIAL MEDIA",
+    "socialMediaDesc": "Managing social media pages is more than just posting: it's a complete process designed to build a strong and consistent presence for the brand."
+  },
+  "storyMissionVision": {
+    "intro": "Founded in 2016, Scribble Media Production has delivered standout projects built on the creativity and passion of its team. With a unique artistic touch, our original work has defined the company's identity and set it apart in the industry.",
+    "story": "STORY",
+    "storyDesc": "Our story is one of passion, creativity, and growth. What started as a simple idea became a journey of turning visions into powerful visual experiences. With every project, we continue to inspire, innovate, and leave a lasting impact.",
+    "mission": "MISSION",
+    "missionDesc": "In our graphic design work, we focus on delivering more than just beautiful visuals, we craft designs that communicate, inspire, and achieve real impact.",
+    "vision": "VISION",
+    "visionDesc": "In our graphic design work, we focus on delivering more than just beautiful visuals, we craft designs that communicate, inspire, and achieve real impact."
+  },
+  "explore": {
+    "title": "EXPLORE",
+    "paragraph1": "At Scribble Production Company, ordinary is never enough.",
+    "paragraph2": "We constantly seek creativity that stands out, turning ideas into powerful visuals and sound that leave a lasting impression. With passion and expertise, we craft work that elevates your brand and speaks to your audience in the best way possible.",
+    "videos": "VIDEOS",
+    "brand": "BRAND",
+    "clients": "CLIENTS",
+    "portfolio": "PORTFOLIO"
+  },
+  "friendsAcrossBorders": {
+    "title": "FRIENDS ACROSS BORDERS",
+    "description": "Our clients are the true reflection of our success, and their testimonials are the most genuine proof of the quality we deliver. We take pride in their trust and value their words as a testament to our commitment to always providing the best."
+  },
+  "about": {
+    "title": "ABOUT",
+    "intro": "Founded in 2016, Scribble Media Production is driven by creativity and passion. Known for its original artistic touch, we transform ideas into impactful visual experiences that inspire audiences and elevate brands.",
+    "ourStory": "OUR STORY",
+    "ourVision": "OUR VISION",
+    "ourMission": "OUR MISSION",
+    "storyP1": "Our story began with a simple idea: to turn creativity into meaningful visual experiences. Since the very first project, our vision has been clear to combine art, technology, and storytelling in a way that inspires audiences and strengthens brands.",
+    "storyP2": "Over the years, we've grown into a team of passionate creatives, each adding a unique touch that shaped our identity and set us apart. What started as a small vision has become a trusted partner for businesses and individuals seeking originality, professionalism, and innovation. And our story is still being written with every new project, every new challenge, and every new success.",
+    "visionP1": "Our vision is to be the go-to creative partner for brands that dare to stand out. We aim to push boundaries, blend art with technology, and deliver visual experiences that leave a lasting impression.",
+    "visionP2": "We see a future where every brand has access to bold, original storytelling—and we're here to make that happen, one project at a time.",
+    "missionP1": "Our mission is to deliver more than beautiful visuals: we craft work that communicates, inspires, and drives real impact. We combine creativity with strategy so every project strengthens your brand and connects with your audience.",
+    "missionP2": "We're committed to originality, professionalism, and innovation in everything we do—from the first idea to the final deliverable.",
+    "ourPhilosophy": "Our Philosophy",
+    "philosophyDesc": "At our core, we believe true creativity can't be copied. That's why we create 100% original, tailor-made work through a collaborative Scribble team that crafts inspiring stories where every detail matters.",
+    "whyScribble": "Why Scribble?",
+    "whyScribbleDesc": "We're not just executors—we're partners in success. We innovate with purpose, perfect every detail, and create cinematic experiences that resonate locally and globally, and are truly remembered."
+  },
+  "contact": {
+    "title1": "LET'S REACH",
+    "title2": "YOUR TARGET",
+    "title3": "AUDIENCE TOGETHER"
+  },
+  "jobs": {
+    "title": "JOBS",
+    "intro": "Founded in 2016, Scribble Media Production is driven by creativity and passion. Known for its original artistic touch, we transform ideas into impactful visual experiences that inspire audiences and elevate brands."
+  }
+}

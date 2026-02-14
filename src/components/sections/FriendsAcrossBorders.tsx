@@ -1,4 +1,9 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 export default function FriendsAcrossBorders() {
+  const t = useTranslations("friendsAcrossBorders");
   return (
     <div className="w-full bg-[#7B2553]">
       <div className="w-full max-w-[1920px] mx-auto">
@@ -6,11 +11,11 @@ export default function FriendsAcrossBorders() {
         <div className="max-w-[1440px] mx-auto text-center">
           <h2 className="text-7xl md:text-[45px] text-white font-bold uppercase tracking-tight mb-4 md:mb-6 -mt-2">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FFFFFF] to-[#FFFFFF]">
-              FRIENDS ACROSS BORDERS
+              {t("title")}
             </span>
           </h2>
           <p className="text-white leading-[1.2] sm:max-w-[55.5rem] mx-auto text-center mt-10" style={{ fontSize: "28px" }}>
-            Our clients are the true reflection of our success, and their testimonials are the most genuine proof of the quality we deliver. We take pride in their trust and value their words as a testament to our commitment to always providing the best.
+            {t("description")}
           </p>
         </div>
         </section>

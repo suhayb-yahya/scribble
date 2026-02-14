@@ -1,9 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import { Rubik } from "next/font/google";
+import { useTranslations } from "next-intl";
 
-const rubik = Rubik({ weight: "600", subsets: ["latin"] });
+const rubik = Rubik({ weight: "600", subsets: ["latin", "arabic"] });
 
 export default function JobsHero() {
+  const t = useTranslations("jobs");
   return (
     <section
       className="relative w-full min-w-0 overflow-hidden bg-[#7B2553]"
@@ -33,7 +37,7 @@ export default function JobsHero() {
               lineHeight: "1.2",
             }}
           >
-            JOBS
+            {t("title")}
           </h1>
           <p
             className={`${rubik.className} text-white mt-4 leading-tight`}
@@ -43,10 +47,7 @@ export default function JobsHero() {
               lineHeight: "normal",
             }}
           >
-            Founded in 2016, Scribble Media Production is driven by creativity
-            and passion. Known for its original artistic touch, we transform
-            ideas into impactful visual experiences that inspire audiences and
-            elevate brands.
+            {t("intro")}
           </p>
         </div>
       </div>

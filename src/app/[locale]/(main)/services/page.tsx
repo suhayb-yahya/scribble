@@ -31,7 +31,6 @@ const servicesParts: ServicesPart[] = [
     boxMinHeightPx: 260,
     fullWidth: true,
   },
-  // Next section — two parts (same structure as first)
   {
     id: "production-photography",
     title: "PRODUCTION PHOTOGRAPHY",
@@ -83,7 +82,6 @@ export default function ServicesPage() {
     <main className="flex flex-col w-full min-w-0 max-w-full overflow-x-hidden min-h-screen">
       <ServicesHero />
       <ServicesPartsSection parts={servicesParts} />
-      {/* More sections will be added here */}
     </main>
   );
 }

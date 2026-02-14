@@ -2,41 +2,18 @@
 
 import { Rubik } from "next/font/google";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
-const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin"] });
+const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin", "arabic"] });
 
-const servicesData = [
-  {
-    title: "GRAPHIC DESIGN",
-    description:
-        "In our graphic design work, we focus on delivering more than just beautiful visuals, we craft designs that communicate, inspire, and achieve real impact for your brand.",
-  },
-  {
-    title: "MOTION, ANIMATION",
-    description:
-        "Motion graphics and animation are effective visual tools that convert complex ideas into clear, engaging, and interactive content that brings stories to life.",
-  },
-  {
-    title: "BRANDING",
-    description:
-        "Branding is more than just a logo or a color palette; it is the experience that shapes a brand's identity and leaves an impression on audience.",
-  },
-  {
-    title: "PRODUCTION",
-    description:
-        "Transforming ideas into visual content begins with planning and scriptwriting, followed by filming, directing, and editing, all using cinematic equipment.",
-  },
-  {
-    title: "PHOTOGRAPHY",
-    description:
-        "We offer professional photo sessions carefully designed to capture moments and create images that showcase a brand's identity at its best.",
-  },
-  {
-    title: "SOCIAL MEDIA",
-    description:
-        "Managing social media pages is more than just posting: it's a complete process designed to build a strong and consistent presence for the brand.",
-  },
-];
+const serviceKeys = [
+  "graphicDesign",
+  "motionAnimation",
+  "branding",
+  "production",
+  "photography",
+  "socialMedia",
+] as const;
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -60,14 +37,15 @@ const cardVariants = {
 };
 
 export default function ServicesSection() {
+  const t = useTranslations("services");
   return (
       <section className="bg-primary text-white pt-22 pb-32 px-6 md:px-10">
         <div className="w-full max-w-[1440px] mx-auto -mt-20 md:-mt-24">
           <h2 className="text-3xl md:text-4xl font-bold uppercase text-center tracking-tight mb-10 max-w-4xl mx-auto leading-tight">
-            NOTHING PLEASES US<br />EXCEPT THE STRANGE
+            {t("heading1")}<br />{t("heading2")}
           </h2>
           <p className="text-xl md:text-3xl  text-center text-white max-w-5xl mx-auto mb-16 leading-tight px-5">
-            We strive to provide a comprehensive range of creative and professional services designed to meet the needs of brands in today&apos;s competitive digital world. From the first idea to the final execution.
+            {t("intro")}
           </p>
 
           <motion.div
@@ -77,9 +55,9 @@ export default function ServicesSection() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
           >
-            {servicesData.map((card, index) => (
+            {serviceKeys.map((key) => (
                 <motion.div
-                    key={card.title}
+                    key={key}
                     variants={cardVariants}
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 220, damping: 18 }}
@@ -110,7 +88,7 @@ export default function ServicesSection() {
                           lineHeight: "100%",
                         }}
                     >
-                      {card.title}
+                      {t(`${key}`)}
                     </h3>
 
                     <p
@@ -120,7 +98,7 @@ export default function ServicesSection() {
                           fontSize: "18.43px",
                         }}
                     >
-                      {card.description}
+                      {t(`${key}Desc`)}
                     </p>
                   </article>
                 </motion.div>

@@ -2,32 +2,25 @@
 
 import { useState } from "react";
 import { Rubik } from "next/font/google";
+import { useTranslations } from "next-intl";
 
-const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin"] });
+const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin", "arabic"] });
 
 const tabs = [
-  { id: "story", label: "OUR STORY" },
-  { id: "vision", label: "OUR VISION" },
-  { id: "mission", label: "OUR MISSION" },
+  { id: "story", labelKey: "ourStory" },
+  { id: "vision", labelKey: "ourVision" },
+  { id: "mission", labelKey: "ourMission" },
 ] as const;
 
-const tabContent: Record<(typeof tabs)[number]["id"], string[]> = {
-  story: [
-    "Our story began with a simple idea: to turn creativity into meaningful visual experiences. Since the very first project, our vision has been clear to combine art, technology, and storytelling in a way that inspires audiences and strengthens brands.",
-    "Over the years, we've grown into a team of passionate creatives, each adding a unique touch that shaped our identity and set us apart. What started as a small vision has become a trusted partner for businesses and individuals seeking originality, professionalism, and innovation. And our story is still being written with every new project, every new challenge, and every new success.",
-  ],
-  vision: [
-    "Our vision is to be the go-to creative partner for brands that dare to stand out. We aim to push boundaries, blend art with technology, and deliver visual experiences that leave a lasting impression.",
-    "We see a future where every brand has access to bold, original storytelling—and we're here to make that happen, one project at a time.",
-  ],
-  mission: [
-    "Our mission is to deliver more than beautiful visuals: we craft work that communicates, inspires, and drives real impact. We combine creativity with strategy so every project strengthens your brand and connects with your audience.",
-    "We're committed to originality, professionalism, and innovation in everything we do—from the first idea to the final deliverable.",
-  ],
-};
-
 export default function AboutTabsSection() {
+  const t = useTranslations("about");
   const [activeTab, setActiveTab] = useState<(typeof tabs)[number]["id"]>("story");
+
+  const tabContent: Record<(typeof tabs)[number]["id"], string[]> = {
+    story: [t("storyP1"), t("storyP2")],
+    vision: [t("visionP1"), t("visionP2")],
+    mission: [t("missionP1"), t("missionP2")],
+  };
 
   return (
     <section
@@ -56,7 +49,7 @@ export default function AboutTabsSection() {
                   aria-selected={isActive}
                   role="tab"
                 >
-                  {tab.label}
+                  {t(tab.labelKey)}
                   {/* Tab indicator: SVG pill centered under the label */}
                   <span className="block mt-1 relative z-10 flex justify-center" aria-hidden>
                     <svg

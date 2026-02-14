@@ -2,8 +2,9 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Rubik } from "next/font/google";
+import { useTranslations } from "next-intl";
 
-const rubik = Rubik({ weight: "600", subsets: ["latin"] });
+const rubik = Rubik({ weight: "600", subsets: ["latin", "arabic"] });
 
 function useCountUp(end: number, duration: number = 2000, startOnView: boolean = true) {
   const [count, setCount] = useState(0);
@@ -73,6 +74,7 @@ const defaultCounters = { videos: 743, brands: 39, clients: 76 };
 
 export default function ExploreSection(props: ExploreCountersProps = {}) {
   const { videos, brands, clients } = { ...defaultCounters, ...props };
+  const t = useTranslations("explore");
   const videosCount = useCountUp(videos, 1000);
   const brandsCount = useCountUp(brands, 1000);
   const clientsCount = useCountUp(clients, 1000);
@@ -115,7 +117,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                     leading-none
                   `}
               >
-                  EXPLORE
+                  {t("title")}
               </h2>
 
               <p
@@ -126,7 +128,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                 fontSize: 'clamp(1rem, 2vw, 1rem)',
               }}
             >
-              At Scribble Production Company, ordinary is never enough.
+              {t("paragraph1")}
             </p>
             <p
               className={`${rubik.className} max-w-[85%] sm:max-w-[26rem] leading-[1.5]  mb-7 text-white`}
@@ -136,7 +138,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                 fontSize: 'clamp(1rem, 2vw, 1rem)',
               }}
             >
-                We constantly seek creativity that stands out, turning ideas into powerful visuals and sound that leave a lasting impression. With passion and expertise, we craft work that elevates your brand and speaks to your audience in the best way possible.
+                {t("paragraph2")}
             </p>
               </div>
 
@@ -172,7 +174,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                               fontWeight: 300,
                           }}
                       >
-                          VIDEOS
+                          {t("videos")}
                       </span>
                   </div>
 
@@ -202,7 +204,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                               fontWeight: 300,
                           }}
                       >
-                          BRAND
+                          {t("brand")}
                       </span>
                   </div>
 
@@ -232,7 +234,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                               fontWeight: 300,
                           }}
                       >
-                        CLIENTS
+                        {t("clients")}
                       </span>
                   </div>
                   </div>
@@ -251,7 +253,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                   fontSize: 'clamp(1rem, 1vw, 0.9rem)',
                 }}
               >
-                PORTFOLIO
+                {t("portfolio")}
               </span>
             </button>
           </div>

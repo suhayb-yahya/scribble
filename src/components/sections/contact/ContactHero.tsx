@@ -1,9 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import { Rubik } from "next/font/google";
+import { useTranslations } from "next-intl";
 
-const rubik = Rubik({ weight: ["600", "700"], subsets: ["latin"] });
+const rubik = Rubik({ weight: ["600", "700"], subsets: ["latin", "arabic"] });
 
 export default function ContactHero() {
+  const t = useTranslations("contact");
   return (
     <section
       className="relative w-full min-w-0 overflow-hidden"
@@ -32,11 +36,7 @@ export default function ContactHero() {
               lineHeight: "1.2",
             }}
           >
-            LET&apos;S REACH
-            <br />
-            YOUR TARGET
-            <br />
-            <span className="whitespace-nowrap">AUDIENCE TOGETHER</span>
+            {t("title1")}<br />{t("title2")}<br /><span className="whitespace-nowrap">{t("title3")}</span>
           </h1>
         </div>
       </div>

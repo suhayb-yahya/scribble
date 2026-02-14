@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link, usePathname } from "@/i18n/navigation";
 import { Rubik } from "next/font/google";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const rubik = Rubik({
     subsets: ["latin"],
@@ -19,6 +19,7 @@ const navActiveOnPrimary = "text-white";
 
 export default function Footer() {
     const pathname = usePathname();
+    const t = useTranslations("footer");
     const usePrimaryFooter = pathname === "/about" || pathname === "/services" || pathname === "/contact";
 
     const isActive = (href: string) => pathname === href;
@@ -41,24 +42,24 @@ export default function Footer() {
                     <div className="space-y-3">
                         <Image src="/assets/logo-scribble.svg" alt="Scribble" width={150} height={50} className={usePrimaryFooter ? "brightness-0 invert" : undefined} />
                         <p className={`${rubik.className} font-[700] text-[14.61px] leading-none ${infoColor}`}>
-                            At Scribble Production Company
+                            {t("atScribble")}
                         </p>
                         <p className={`${rubik.className} font-[700] text-[14.61px] leading-none ${infoColor}`}>
-                            PALESTINE, RAMALLAH, 00970 2 2975232
+                            {t("address")}
                         </p>
                     </div>
 
                     {/* Navigation */}
                     <div className="grid grid-cols-2 gap-x-12 gap-y-4 mt-6 md:mt-0">
                         <nav className="flex flex-col gap-4">
-                            <Link href="/" className={navLinkClass("/")}>HOME</Link>
-                            <Link href="/about" className={navLinkClass("/about")}>ABOUT US</Link>
-                            <Link href="/services" className={navLinkClass("/services")}>SERVICES</Link>
+                            <Link href="/" className={navLinkClass("/")}>{t("home")}</Link>
+                            <Link href="/about" className={navLinkClass("/about")}>{t("aboutUs")}</Link>
+                            <Link href="/services" className={navLinkClass("/services")}>{t("services")}</Link>
                         </nav>
                         <nav className="flex flex-col gap-4">
-                            <Link href="/portfolio" className={navLinkClass("/portfolio")}>PORTFOLIO</Link>
-                            <Link href="/contact" className={navLinkClass("/contact")}>CONTACT US</Link>
-                            <Link href="/jobs" className={navLinkClass("/jobs")}>JOBS</Link>
+                            <Link href="/portfolio" className={navLinkClass("/portfolio")}>{t("portfolio")}</Link>
+                            <Link href="/contact" className={navLinkClass("/contact")}>{t("contactUs")}</Link>
+                            <Link href="/jobs" className={navLinkClass("/jobs")}>{t("jobs")}</Link>
                         </nav>
                     </div>
                 </div>
@@ -74,7 +75,7 @@ export default function Footer() {
             </div>
 
             <div className={`max-w-[100rem] mx-auto mt-3 text-center md:text-right text-xs font-medium ${copyrightClass}`}>
-                © 2016 SCRIBBLE. All rights reserved
+                {t("copyright")}
             </div>
         </footer>
 

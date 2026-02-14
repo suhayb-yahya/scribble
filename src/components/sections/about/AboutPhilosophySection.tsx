@@ -1,19 +1,17 @@
-import { Rubik } from "next/font/google";
+"use client";
 
-const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin"] });
+import { Rubik } from "next/font/google";
+import { useTranslations } from "next-intl";
+
+const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin", "arabic"] });
 
 const boxes = [
-  {
-    title: "OUR PHILOSOPHY",
-    body: "At our core, we believe true creativity can't be copied. That's why we create 100% original, tailor-made work through a collaborative Scribble team that crafts inspiring stories where every detail matters.",
-  },
-  {
-    title: "WHY SCRIBBLE?",
-    body: "We're not just executors—we're partners in success. We innovate with purpose, perfect every detail, and create cinematic experiences that resonate locally and globally, and are truly remembered.",
-  },
-];
+  { titleKey: "ourPhilosophy", bodyKey: "philosophyDesc" },
+  { titleKey: "whyScribble", bodyKey: "whyScribbleDesc" },
+] as const;
 
 export default function AboutPhilosophySection() {
+  const t = useTranslations("about");
   return (
     <section
       className="py-16 md:py-24 px-6 md:px-10 bg-primary"
@@ -22,7 +20,7 @@ export default function AboutPhilosophySection() {
       <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         {boxes.map((box) => (
           <div
-            key={box.title}
+            key={box.titleKey}
             className="rounded-2xl p-6 sm:p-8 md:p-10 border-2 flex flex-col justify-center min-h-[200px] bg-primary hover:bg-[#4F1A39] transition-colors duration-200"
             style={{
               borderColor: "#D2A860",
@@ -32,13 +30,13 @@ export default function AboutPhilosophySection() {
               className={`${rubik.className} text-xl md:text-2xl lg:text-3xl font-semibold uppercase tracking-wide mb-4`}
               style={{ color: "#D2A860" }}
             >
-              {box.title}
+              {t(box.titleKey)}
             </h2>
             <p
               className={`${rubik.className} text-base md:text-lg font-normal leading-relaxed`}
               style={{ color: "#FFFFFF" }}
             >
-              {box.body}
+              {t(box.bodyKey)}
             </p>
           </div>
         ))}
