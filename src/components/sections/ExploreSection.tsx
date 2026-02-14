@@ -91,14 +91,17 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
           className="relative w-full min-w-0 overflow-hidden"
           aria-label="Explore"
         >
-          {/* Image - full length */}
-          <img
-            src="/assets/explore-bg.jpeg"
-            alt=""
-            className="block w-full h-auto max-w-full"
-            aria-hidden
-            decoding="async"
-          />
+          {/* Image - full length, fixed aspect ratio for consistent layout across deployments */}
+          <div className="relative w-full" style={{ aspectRatio: "1600/780" }}>
+            <img
+              src="/assets/explore-bg.jpeg"
+              alt=""
+              className="block w-full h-full object-cover object-center"
+              aria-hidden
+              decoding="async"
+              fetchPriority="high"
+            />
+          </div>
           <div className="absolute inset-0 z-10 flex flex-col pt-24 md:pt-28 pb-0 pl-6 md:pl-10 pr-0">
         <div className="w-full max-w-[1920px] mx-auto mr-0 px-0 overflow-x-hidden">
           <div className="flex flex-col md:flex-row md:justify-end">
