@@ -91,12 +91,11 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
           className="relative w-full min-w-0 overflow-hidden"
           aria-label="Explore"
         >
-          {/* Image - compact aspect ratio */}
+          {/* Image - full length */}
           <img
             src="/assets/explore-bg.jpeg"
             alt=""
-            className="block w-full h-auto max-w-full object-cover object-center"
-            style={{ aspectRatio: "16/6", maxHeight: "55vh" }}
+            className="block w-full h-auto max-w-full"
             aria-hidden
             decoding="async"
           />
@@ -143,7 +142,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
               </div>
 
         {/* Counters box: left edge aligns with text, extends to right edge */}
-        <div className="flex w-full mt-8 md:mt-12 -mr-6 md:-mr-10 overflow-visible ml-20 md:ml-36">
+        <div className="flex w-full mt-20 md:mt-28 -mr-6 md:-mr-10 overflow-visible ml-20 md:ml-36">
           <div className="flex-1 min-w-0 rounded-l-[5rem] md:rounded-l-[6rem] rounded-r-none border-t border-l border-b border-white pl-[5rem] md:pl-[6rem] pr-6 md:pr-10 pt-0 pb-2 md:pb-3 bg-black/20 backdrop-blur-sm flex items-center gap-0 justify-start">
             <div className="flex flex-1 justify-start">
                   <div className="flex items-center gap-4 md:gap-8 py-1 md:py-2">
