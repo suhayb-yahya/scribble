@@ -13,7 +13,7 @@ export default function ContactHero() {
       className="relative w-full min-w-0 overflow-hidden"
       aria-label="Contact Scribble"
     >
-      <div className="relative w-full max-w-[1920px] mx-auto aspect-[3/2] min-h-[360px] sm:min-h-[480px] md:min-h-[560px] lg:min-h-[640px] shadow-none">
+      <div className="content-nav-aligned relative w-full aspect-[3/2] min-h-[360px] sm:min-h-[480px] md:min-h-[560px] lg:min-h-[640px] shadow-none">
         <Image
           src="/assets/contact-main.png"
           alt="Scribble studio — creative team and production environment"
@@ -25,7 +25,7 @@ export default function ContactHero() {
         />
 
         <div
-          className="absolute inset-0 pl-[calc(5%+60px)] min-[1920px]:pl-[156px] pr-4 pb-[200px] pointer-events-none flex flex-col justify-end text-left max-w-2xl"
+          className="absolute inset-0 left-0 pb-[200px] pointer-events-none flex flex-col justify-end text-left max-w-2xl"
           aria-hidden
         >
           <h1

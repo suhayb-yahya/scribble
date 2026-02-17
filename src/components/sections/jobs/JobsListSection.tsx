@@ -35,8 +35,8 @@ export default function JobsListSection({ jobs }: JobsListSectionProps) {
       className="py-16 md:py-24 bg-white min-h-0"
       aria-label="Available positions"
     >
-      <div className="max-w-[1920px] mx-auto w-full pl-[8%] pr-[8%]">
-        <div className="max-w-[1440px] grid grid-cols-1 lg:grid-cols-[1.35fr_0.65fr] min-h-0">
+      <div className="content-nav-aligned">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_0.65fr] min-h-0">
       {/* Left half: jobs list */}
       <div className="max-w-4xl flex flex-col gap-12 md:gap-16 pr-6 md:pr-10">
         {jobs.map((job) => (

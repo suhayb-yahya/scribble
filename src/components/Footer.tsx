@@ -32,8 +32,8 @@ export default function Footer() {
     const copyrightClass = usePrimaryFooter ? "text-white/80" : "text-gray-900";
 
     return (
-        <footer className={`${footerBg} px-6 md:px-16 pt-12 pb-6`}>
-            <div className="max-w-[100rem] mx-auto flex flex-col md:flex-row items-start md:items-end justify-between gap-12">
+        <footer className={`${footerBg} pt-12 pb-6`}>
+            <div className="content-nav-aligned flex flex-col md:flex-row items-start md:items-end justify-between gap-12">
 
                 {/* LEFT */}
                 <div className="flex flex-col md:flex-row items-start md:items-end gap-10 md:gap-20 w-full">
@@ -70,11 +70,11 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="max-w-[100rem] mx-auto mt-6">
+            <div className="content-nav-aligned mt-6">
                 <div className={`h-px ${dividerClass}`} />
             </div>
 
-            <div className={`max-w-[100rem] mx-auto mt-3 text-center md:text-right text-xs font-medium ${copyrightClass}`}>
+            <div className={`content-nav-aligned mt-3 text-center md:text-right text-xs font-medium ${copyrightClass}`}>
                 {t("copyright")}
             </div>
         </footer>

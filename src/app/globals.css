@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Content container aligned with nav bar left/right borders */
+@layer components {
+  .content-nav-aligned {
+    @apply w-full max-w-6xl mx-auto px-4 md:px-8;
+  }
+}
+
 :root {
   --primary: #7B2553;
   --secondary: #ffffff;

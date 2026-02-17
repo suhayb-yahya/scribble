@@ -12,7 +12,7 @@ export default function AboutIllustrationSection() {
       style={{ backgroundColor: "#7B2553" }}
       aria-label="Different — nothing pleases us except the strange"
     >
-      <div className="w-full max-w-[1920px] mx-auto flex flex-col justify-center items-center gap-8 md:gap-10">
+      <div className="content-nav-aligned flex flex-col justify-center items-center gap-8 md:gap-10">
       <div className="flex justify-center relative w-full max-w-[280px] md:max-w-[360px]">
         <Image
           src="/assets/char.svg"

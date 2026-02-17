@@ -7,8 +7,10 @@ export default function MainLayout({
   return (
     <>
       <Header />
-      {children}
-      <Footer />
+      <div className="w-full min-w-0">
+        {children}
+        <Footer />
+      </div>
     </>
   );
 }

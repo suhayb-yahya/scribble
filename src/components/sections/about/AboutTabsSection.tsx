@@ -24,10 +24,10 @@ export default function AboutTabsSection() {
 
   return (
     <section
-      className="py-16 md:py-24 px-6 md:px-10 bg-white"
+      className="py-16 md:py-24 bg-white"
       aria-label="Our story, vision, and mission"
     >
-      <div className="max-w-[1440px] mx-auto">
+      <div className="content-nav-aligned">
         {/* Tab navigation: line runs through the indicator boxes */}
         <div className="relative">
           <div className="flex flex-wrap gap-8 md:gap-12 items-end">

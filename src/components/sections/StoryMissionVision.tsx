@@ -11,8 +11,8 @@ const rubik = Rubik({
 export default function StoryMissionVision() {
   const t = useTranslations("storyMissionVision");
   return (
-      <section className={`${rubik.className} bg-white py-20 px-6 md:px-10`}>
-        <div className="max-w-[1200px] mx-auto">
+      <section className={`${rubik.className} bg-white py-20 w-full`}>
+        <div className="w-full px-4 md:px-8">
           {/* Top paragraph (center) */}
           <p className="mx-auto md:max-w-[790.4px] text-center text-[28px] leading-[1.4] font-[400] text-primary">
             {t("intro")}

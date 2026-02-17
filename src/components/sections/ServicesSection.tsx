@@ -39,8 +39,8 @@ const cardVariants = {
 export default function ServicesSection() {
   const t = useTranslations("services");
   return (
-      <section className="bg-primary text-white pt-22 pb-32 px-6 md:px-10">
-        <div className="w-full max-w-[1440px] mx-auto -mt-20 md:-mt-24">
+      <section className="bg-primary text-white pt-22 pb-32">
+        <div className="content-nav-aligned -mt-20 md:-mt-24">
           <h2 className="text-3xl md:text-4xl font-bold uppercase text-center tracking-tight mb-10 max-w-4xl mx-auto leading-tight">
             {t("heading1")}<br />{t("heading2")}
           </h2>
@@ -49,7 +49,7 @@ export default function ServicesSection() {
           </p>
 
           <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-[1440px] mx-auto items-start"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full items-start"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"

@@ -14,10 +14,10 @@ export default function AboutPhilosophySection() {
   const t = useTranslations("about");
   return (
     <section
-      className="py-16 md:py-24 px-6 md:px-10 bg-primary"
+      className="py-16 md:py-24 bg-primary"
       aria-label="Our philosophy and why Scribble"
     >
-      <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <div className="content-nav-aligned grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         {boxes.map((box) => (
           <div
             key={box.titleKey}

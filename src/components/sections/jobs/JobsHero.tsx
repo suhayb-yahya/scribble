@@ -13,7 +13,7 @@ export default function JobsHero() {
       className="relative w-full min-w-0 overflow-hidden bg-[#7B2553]"
       aria-label="Jobs at Scribble"
     >
-      <div className="relative w-full aspect-[16/10] min-h-[320px] sm:min-h-[400px] md:min-h-[480px] overflow-hidden">
+      <div className="content-nav-aligned relative w-full aspect-[16/10] min-h-[320px] sm:min-h-[400px] md:min-h-[480px] overflow-hidden">
         <Image
           src="/assets/jobs-main.png"
           alt="Join our team — modern creative studio at Scribble"
@@ -24,9 +24,9 @@ export default function JobsHero() {
           unoptimized
         />
 
-        {/* Bottom-left text overlay */}
+        {/* Bottom-left text overlay — aligned to navbar edges */}
         <div
-          className="absolute left-0 bottom-0 p-4 pointer-events-none ml-[8%] flex flex-col justify-center mb-40 md:mb-48 w-[40%] max-w-[600px]"
+          className="absolute left-0 bottom-0 p-4 pointer-events-none flex flex-col justify-center mb-24 md:mb-32 max-w-[600px]"
           aria-hidden
         >
           <h1

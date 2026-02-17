@@ -1,7 +1,7 @@
 export default function HeroBanner() {
   return (
     <section className="w-full min-w-0 overflow-hidden bg-primary flex justify-center" aria-label="Hero">
-      <div className="w-full max-w-[1920px]">
+      <div className="content-nav-aligned max-w-full">
         <img
           src="/assets/hero-banner.png"
           alt="Scribble — modern workspace"

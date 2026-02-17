@@ -12,7 +12,7 @@ export default function AboutBeachSection() {
         <img
           src="/assets/about-beach.svg"
           alt="Scribble — creative space and relaxed inspiration"
-          className="relative block w-full min-w-full h-auto"
+          className="relative block w-full min-w-full h-auto object-cover object-center"
           decoding="async"
         />
       </div>
