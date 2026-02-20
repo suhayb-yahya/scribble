@@ -74,8 +74,19 @@ export default function Footer() {
                 <div className={`h-px ${dividerClass}`} />
             </div>
 
-            <div className={`content-nav-aligned mt-3 text-center md:text-right text-xs font-medium ${copyrightClass}`}>
-                {t("copyright")}
+            <div className={`content-nav-aligned mt-3 flex flex-col sm:flex-row items-center sm:items-center justify-between gap-2 text-xs font-medium ${copyrightClass}`}>
+                <div className={`text-left ${copyrightClass} opacity-80`}>
+                    {t("poweredBy")}{" "}
+                    <a
+                        href="https://techvara.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`underline hover:opacity-100 transition-opacity ${usePrimaryFooter ? "text-white" : "text-[#7B2553]"}`}
+                    >
+                        TechVara
+                    </a>
+                </div>
+                <div className="text-center sm:text-right">{t("copyright")}</div>
             </div>
         </footer>
 

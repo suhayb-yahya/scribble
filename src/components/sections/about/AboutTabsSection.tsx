@@ -28,8 +28,8 @@ export default function AboutTabsSection() {
       aria-label="Our story, vision, and mission"
     >
       <div className="content-nav-aligned">
-        {/* Tab navigation: line runs through the indicator boxes */}
-        <div className="relative">
+        {/* Tab navigation: line runs through the center of indicator boxes */}
+        <div className="relative pb-8 md:pb-10">
           <div className="flex flex-wrap gap-8 md:gap-12 items-end">
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
@@ -50,8 +50,8 @@ export default function AboutTabsSection() {
                   role="tab"
                 >
                   {t(tab.labelKey)}
-                  {/* Tab indicator: SVG pill centered under the label */}
-                  <span className="block mt-1 relative z-10 flex justify-center" aria-hidden>
+                  {/* Tab indicator: SVG pill centered on the line (26px from title to line; pill center is 8.5px from top) */}
+                  <span className="block mt-[17.5px] relative z-10 flex justify-center items-center" aria-hidden>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="84"
@@ -70,16 +70,15 @@ export default function AboutTabsSection() {
               );
             })}
           </div>
-          {/* Baseline: runs through the tab indicator boxes */}
+          {/* Baseline: runs through the vertical center of tab indicator boxes (pills are 17px, center at 8.5px) */}
           <div
-            className="absolute left-0 right-0 h-px bg-gray-300 z-0"
-            style={{ bottom: "8px" }}
+            className="absolute left-0 right-0 h-px bg-gray-300 z-0 bottom-[40.5px] md:bottom-[48.5px]"
             aria-hidden
           />
         </div>
 
-        {/* Content + CREATIVE block */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center pt-[120px]">
+        {/* Content + CREATIVE block (100px from line to content; line sits ~40.5px above section bottom) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center pt-[60px] md:pt-[52px]">
           <div role="tabpanel" aria-labelledby={`tab-${activeTab}`}>
             <div className="space-y-6">
               {tabContent[activeTab].map((paragraph, i) => (

@@ -8,12 +8,12 @@ export default function AboutIllustrationSection() {
 
   return (
     <section
-      className="w-full min-w-0 py-12 md:py-16 flex flex-col justify-center items-center gap-8 md:gap-10"
+      className="w-full min-w-0 pt-[100px] pb-12 md:pt-[100px] md:pb-16 flex flex-col justify-center items-center gap-8 md:gap-10"
       style={{ backgroundColor: "#7B2553" }}
       aria-label="Different — nothing pleases us except the strange"
     >
-      <div className="content-nav-aligned flex flex-col justify-center items-center gap-8 md:gap-10">
-      <div className="flex justify-center relative w-full max-w-[280px] md:max-w-[360px]">
+      <div className="content-nav-aligned w-full flex flex-col justify-center items-center gap-8 md:gap-10 text-center">
+      <div className="flex justify-center items-center relative w-full max-w-[280px] md:max-w-[360px] mx-auto">
         <Image
           src="/assets/char.svg"
           alt="Scribble character — creative at work"

@@ -14,7 +14,7 @@ export default function AboutPhilosophySection() {
   const t = useTranslations("about");
   return (
     <section
-      className="py-16 md:py-24 bg-primary"
+      className="pt-16 md:pt-24 pb-0 bg-primary"
       aria-label="Our philosophy and why Scribble"
     >
       <div className="content-nav-aligned grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">

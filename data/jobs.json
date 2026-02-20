@@ -37,15 +37,5 @@
       "Ability to work collaboratively with directors, clients, and other crew; reliable on set and on deadline.",
       "A reel or portfolio demonstrating range in style, format, and production value."
     ]
-  },
-  {
-    "id": "test",
-    "title": "TEST",
-    "requirements": [
-      "TEST1",
-      "TEST2",
-      "TEST3"
-    ],
-    "applyUrl": "http://google.com"
   }
 ]
