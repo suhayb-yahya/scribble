@@ -21,10 +21,22 @@ function PlayIcon({ className, rtl }: { className?: string; rtl?: boolean }) {
 
 export type JobItem = {
   id: string;
-  title: string;
-  requirements: string[];
+  title: { en: string; ar: string };
+  requirements: { en: string[]; ar: string[] };
   applyUrl?: string;
 };
+
+/** Returns localized job content for display (used by JobsListSection) */
+export function getLocalizedJob(
+  job: JobItem,
+  locale: "en" | "ar"
+): { title: string; requirements: string[] } {
+  const lang = locale === "ar" ? "ar" : "en";
+  return {
+    title: job.title[lang] || job.title.en || "",
+    requirements: job.requirements[lang] || job.requirements.en || [],
+  };
+}
 
 type JobsListSectionProps = {
   jobs: JobItem[];
@@ -32,7 +44,7 @@ type JobsListSectionProps = {
 
 export default function JobsListSection({ jobs }: JobsListSectionProps) {
   const t = useTranslations("jobs");
-  const locale = useLocale();
+  const locale = useLocale() as "en" | "ar";
   const isRtl = locale === "ar";
   return (
     <section
@@ -44,7 +56,9 @@ export default function JobsListSection({ jobs }: JobsListSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_0.65fr] min-h-0">
       {/* Left half: jobs list */}
       <div className={`max-w-4xl flex flex-col gap-12 md:gap-16 pr-6 md:pr-10 ${isRtl ? "text-right" : ""}`}>
-        {jobs.map((job) => (
+        {jobs.map((job) => {
+          const { title, requirements } = getLocalizedJob(job, locale);
+          return (
           <article
             key={job.id}
             className="flex flex-col gap-6"
@@ -66,13 +80,13 @@ export default function JobsListSection({ jobs }: JobsListSectionProps) {
                   lineHeight: "normal",
                 }}
               >
-                {job.title}
+                {title}
               </h2>
             </div>
 
             {/* Requirements list */}
             <ul className="list-none pl-0 space-y-2 text-gray-800 text-base md:text-lg leading-relaxed">
-              {job.requirements.map((item, i) => (
+              {requirements.map((item, i) => (
                 <li key={i} className="flex gap-2">
                   <span className="text-gray-500 shrink-0">–</span>
                   <span>{item}</span>
@@ -91,7 +105,8 @@ export default function JobsListSection({ jobs }: JobsListSectionProps) {
               </a>
             </div>
           </article>
-        ))}
+          );
+        })}
       </div>
 
       {/* Right half: character illustration (smaller to give more room to jobs list) */}

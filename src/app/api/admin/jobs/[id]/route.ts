@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { verifyAdminCookie } from "@/lib/auth";
-import { getJobs, saveJobs } from "@/lib/jobs";
+import { getJobs, saveJobs, parseBilingualBody } from "@/lib/jobs";
 import type { JobItem } from "@/components/sections/jobs/JobsListSection";
 
 function requireAdmin(request: Request): NextResponse | null {
@@ -19,20 +19,16 @@ export async function PUT(
   if (err) return err;
   const { id } = await params;
   const body = await request.json().catch(() => ({}));
-  const title = typeof body.title === "string" ? body.title.trim() : "";
-  const requirements = Array.isArray(body.requirements)
-    ? body.requirements.filter((r: unknown) => typeof r === "string").map((r: string) => r.trim())
-    : [];
-  const applyUrl = typeof body.applyUrl === "string" ? body.applyUrl.trim() || undefined : undefined;
-  if (!title) {
-    return NextResponse.json({ error: "Title is required" }, { status: 400 });
+  const parsed = parseBilingualBody(body);
+  if (!parsed) {
+    return NextResponse.json({ error: "At least one title (EN or AR) is required" }, { status: 400 });
   }
   const jobs = await getJobs();
   const index = jobs.findIndex((j) => j.id === id);
   if (index === -1) {
     return NextResponse.json({ error: "Job not found" }, { status: 404 });
   }
-  const updated: JobItem = { ...jobs[index], title, requirements, applyUrl };
+  const updated: JobItem = { ...jobs[index], ...parsed };
   jobs[index] = updated;
   await saveJobs(jobs);
   return NextResponse.json(updated);
