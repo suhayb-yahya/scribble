@@ -1,13 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import { Rubik } from "next/font/google";
+import { useLocale, useTranslations } from "next-intl";
 
-const rubik = Rubik({ subsets: ["latin"], weight: ["400", "600"] });
-
+const rubik = Rubik({ subsets: ["latin", "arabic"], weight: ["400", "600"] });
 
 export type ServicesPart = {
   id: string;
-  title: string;
-  description: string;
+  /** Translation key under servicesParts (e.g. "motionGraphics") */
+  translationKey: string;
   /** Optional: when set, image is shown beside the text */
   imageSrc?: string;
   imageAlt?: string;
@@ -26,6 +28,11 @@ type ServicesPartsSectionProps = {
 };
 
 function PartBlock({ part }: { part: ServicesPart }) {
+  const t = useTranslations("servicesParts");
+  const locale = useLocale();
+  const isRtl = locale === "ar";
+  const title = t(`${part.translationKey}.title`);
+  const description = t(`${part.translationKey}.description`);
   const isTextLeft = part.layout === "text-left";
   const hasImage = Boolean(part.imageSrc);
   const fullWidth = Boolean(part.fullWidth);
@@ -52,8 +59,9 @@ function PartBlock({ part }: { part: ServicesPart }) {
           <h2
             className={`${rubik.className} mb-6 leading-[1.85] text-lg sm:text-xl md:text-2xl lg:text-[36px]`}
             style={{ color: "#FFF", fontWeight: 600 }}
+            dir={isRtl ? "rtl" : undefined}
           >
-            {part.title}
+            {title}
           </h2>
           <p
             className={`${rubik.className}`}
@@ -64,8 +72,9 @@ function PartBlock({ part }: { part: ServicesPart }) {
               fontWeight: 400,
               lineHeight: "normal",
             }}
+            dir={isRtl ? "rtl" : undefined}
           >
-            {part.description}
+            {description}
           </p>
         </div>
       </div>
@@ -74,7 +83,8 @@ function PartBlock({ part }: { part: ServicesPart }) {
 
   return (
     <div
-      className={`flex flex-col lg:flex-row gap-2 lg:gap-0 items-stretch w-full content-nav-aligned py-3 lg:py-4 ${!hasImage && !fullWidth ? "lg:justify-center" : ""}`}
+      className={`flex flex-col lg:flex-row gap-2 lg:gap-0 items-stretch w-full py-3 lg:py-4 ${isRtl ? "content-nav-aligned-right" : `content-nav-aligned ${!hasImage && !fullWidth ? "lg:justify-center" : ""}`}`}
+      dir={isRtl ? "rtl" : undefined}
     >
       {textBox}
 

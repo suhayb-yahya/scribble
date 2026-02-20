@@ -1,7 +1,7 @@
 "use client";
 
 import { Rubik } from "next/font/google";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin", "arabic"] });
 
@@ -12,12 +12,14 @@ const boxes = [
 
 export default function AboutPhilosophySection() {
   const t = useTranslations("about");
+  const locale = useLocale();
+  const isRtl = locale === "ar";
   return (
     <section
       className="pt-16 md:pt-24 pb-0 bg-primary"
       aria-label="Our philosophy and why Scribble"
     >
-      <div className="content-nav-aligned grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <div className={`${isRtl ? "content-nav-aligned-right" : "content-nav-aligned"} grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8`} dir={isRtl ? "rtl" : undefined}>
         {boxes.map((box) => (
           <div
             key={box.titleKey}
@@ -27,13 +29,13 @@ export default function AboutPhilosophySection() {
             }}
           >
             <h2
-              className={`${rubik.className} text-xl md:text-2xl lg:text-3xl font-semibold uppercase tracking-wide mb-4`}
+              className={`${rubik.className} text-xl md:text-2xl lg:text-3xl font-semibold uppercase tracking-wide mb-4 ${isRtl ? "text-right" : ""}`}
               style={{ color: "#D2A860" }}
             >
               {t(box.titleKey)}
             </h2>
             <p
-              className={`${rubik.className} text-base md:text-lg font-normal leading-relaxed`}
+              className={`${rubik.className} text-base md:text-lg font-normal leading-relaxed ${isRtl ? "text-right" : ""}`}
               style={{ color: "#FFFFFF" }}
             >
               {t(box.bodyKey)}

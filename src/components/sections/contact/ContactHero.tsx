@@ -2,12 +2,14 @@
 
 import Image from "next/image";
 import { Rubik } from "next/font/google";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const rubik = Rubik({ weight: ["600", "700"], subsets: ["latin", "arabic"] });
 
 export default function ContactHero() {
   const t = useTranslations("contact");
+  const locale = useLocale();
+  const isRtl = locale === "ar";
   return (
     <section
       className="relative w-full min-w-0 overflow-hidden"
@@ -25,11 +27,13 @@ export default function ContactHero() {
         />
 
         <div
-          className="absolute inset-0 left-0 pb-[200px] pointer-events-none flex flex-col justify-end text-left max-w-2xl"
+          className={`absolute inset-y-0 bottom-0 pb-[200px] pointer-events-none flex flex-col justify-end max-w-2xl ${isRtl ? "left-auto right-0 mr-3 md:mr-4 items-end text-right" : "left-0 right-auto ml-3 md:ml-4 items-start text-left"}`}
+          dir={isRtl ? "rtl" : undefined}
           aria-hidden
         >
           <h1
-            className={`${rubik.className} text-[#FFF] font-semibold uppercase tracking-tight`}
+            className={`${rubik.className} text-[#FFF] font-semibold uppercase tracking-tight ${isRtl ? "text-right" : "text-left"}`}
+            dir={isRtl ? "rtl" : undefined}
             style={{
               fontSize: "clamp(28px, 6vw, 48px)",
               fontWeight: 500,

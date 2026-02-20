@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Rubik } from "next/font/google";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const rubik = Rubik({ weight: "600", subsets: ["latin", "arabic"] });
 
@@ -74,21 +74,23 @@ const defaultCounters = { videos: 743, brands: 39, clients: 76 };
 
 export default function ExploreSection(props: ExploreCountersProps = {}) {
   const { videos, brands, clients } = { ...defaultCounters, ...props };
+  const locale = useLocale();
   const t = useTranslations("explore");
+  const isRtl = locale === "ar";
   const videosCount = useCountUp(videos, 1000);
   const brandsCount = useCountUp(brands, 1000);
   const clientsCount = useCountUp(clients, 1000);
 
   return (
     <div
-      className="w-full min-w-0 overflow-hidden"
+      className="relative w-full min-w-0 overflow-hidden"
       style={{
         background: "linear-gradient(to right, #7B2553 0%, #7B2553 35%, #7B2553 65%, #7B2553 100%)",
       }}
     >
       <div className="content-nav-aligned max-w-full">
       <section
-        className="relative w-screen left-1/2 -ml-[50vw] min-w-0 overflow-hidden"
+        className="relative w-screen left-1/2 -translate-x-1/2 min-w-0 overflow-hidden"
         aria-label="Explore"
       >
         {/* Image - full length, fixed aspect ratio for consistent layout across deployments */}
@@ -102,13 +104,12 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
             fetchPriority="high"
           />
         </div>
-        <div className="absolute inset-0 z-10 flex flex-col pt-24 md:pt-28 pb-0">
-          <div className="flex-1 max-h-[25%]" />
-          {/* Text + counters: aligned to left edge of counters box, shifted right */}
-          <div className="w-full flex flex-col md:flex-row md:justify-end md:items-end gap-6 md:gap-0 pl-4 md:pl-8 pr-4 md:pr-0 pb-6">
-            <div className="flex flex-col md:items-start w-full md:w-auto md:max-w-[55rem] md:ml-auto md:gap-6">
-              {/* Text block - left-aligned, aligns with counters left edge */}
-              <div className="text-left -mt-16 md:-mt-24 order-2 md:order-1 w-full md:w-auto">
+        <div className="absolute inset-0 z-10 flex flex-col">
+          <div className="flex-1" />
+          {/* Text block: vertically centered in middle of image */}
+          <div className="flex-1 flex flex-col justify-center pl-4 md:pl-8 pr-4 md:pr-8">
+            <div className={`flex flex-col w-full md:max-w-[48rem] md:ml-auto ${isRtl ? "md:mr-[200px] md:ml-auto items-start" : "md:mr-[250px] items-end"}`} dir={isRtl ? "rtl" : undefined}>
+              <div className="w-full max-w-[85%] sm:max-w-[26rem] text-start" dir={isRtl ? "rtl" : "ltr"}>
                 <h2
                   className={`
                     ${rubik.className}
@@ -124,7 +125,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                   {t("title")}
                 </h2>
                 <p
-                  className={`${rubik.className} max-w-[85%] sm:max-w-[26rem] leading-[1.5] text-white`}
+                  className={`${rubik.className} leading-[1.5] text-white`}
                   style={{
                     fontStyle: 'normal',
                     fontWeight: 600,
@@ -134,7 +135,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                   {t("paragraph1")}
                 </p>
                 <p
-                  className={`${rubik.className} max-w-[85%] sm:max-w-[26rem] leading-[1.5] mb-0 md:mb-7 text-white`}
+                  className={`${rubik.className} leading-[1.5] mb-0 md:mb-7 text-white`}
                   style={{
                     fontStyle: 'normal',
                     fontWeight: 600,
@@ -144,11 +145,20 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                   {t("paragraph2")}
                 </p>
               </div>
-              {/* Counters box: sticks to right edge of viewport, same left edge as text */}
-              <div className="flex w-full md:w-auto overflow-visible order-1 md:order-2 md:flex-shrink-0 mt-10 md:mt-16">
-                <div className="flex-1 min-w-0 rounded-l-[5rem] md:rounded-l-[6rem] rounded-r-xl md:rounded-r-none border-t border-l border-b border-r border-white pl-[5rem] md:pl-[6rem] pr-6 md:pr-10 pt-0 pb-2 md:pb-3 bg-black/20 backdrop-blur-sm flex items-center gap-0 justify-start">
-                  <div className="flex flex-1 justify-start">
-                  <div className="flex items-center gap-4 md:gap-8 py-1 md:py-2">
+            </div>
+          </div>
+          <div className="flex-1" />
+        </div>
+      </section>
+      </div>
+
+      {/* Counters box: absolute, sticks to right edge (dir="ltr" in RTL) */}
+      <div
+        className="absolute right-0 bottom-6 z-20 pl-4 md:pl-0"
+        style={{ right: 0, marginRight: 0, paddingRight: 0 }}
+        dir={isRtl ? "ltr" : undefined}
+      >
+        <div className="flex rounded-l-[5rem] md:rounded-l-[6rem] rounded-r-xl md:rounded-r-none border-t border-l border-b border-r border-white pl-[5rem] md:pl-[6rem] pr-6 md:pr-10 pt-0 pb-2 md:pb-3 bg-black/20 backdrop-blur-sm items-center gap-4 md:gap-8">
                   {/* VIDEOS */}
                   <div className="flex flex-col items-center justify-center">
                       <div ref={videosCount.ref as React.RefObject<HTMLDivElement>}>
@@ -239,31 +249,24 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                         {t("clients")}
                       </span>
                   </div>
-                  </div>
                   <button
                     type="button"
-              className="shrink-0 self-start flex items-center justify-center h-10 md:h-12 min-w-[7rem] md:min-w-[8rem] bg-white border-t border-r border-b border-white rounded-r-xl rounded-b-xl hover:opacity-95 transition-opacity pl-5 pr-5 md:pl-6 md:pr-6"
-              aria-label="View portfolio"
-            >
-              <span
-                className={`${rubik.className} uppercase whitespace-nowrap text-[#19140F]`}
-                style={{
-                  fontStyle: 'normal',
-                  fontWeight: 600,
-                  lineHeight: 'normal',
-                  fontSize: 'clamp(1rem, 1vw, 0.9rem)',
-                }}
-              >
-                {t("portfolio")}
-              </span>
-            </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                    className="shrink-0 self-start flex items-center justify-center h-10 md:h-12 min-w-[7rem] md:min-w-[8rem] bg-white border-t border-r border-b border-white rounded-r-xl rounded-b-xl hover:opacity-95 transition-opacity pl-5 pr-5 md:pl-6 md:pr-6"
+                    aria-label={t("viewPortfolio")}
+                  >
+                    <span
+                      className={`${rubik.className} uppercase whitespace-nowrap text-[#19140F]`}
+                      style={{
+                        fontStyle: 'normal',
+                        fontWeight: 600,
+                        lineHeight: 'normal',
+                        fontSize: 'clamp(1rem, 1vw, 0.9rem)',
+                      }}
+                    >
+                      {t("portfolio")}
+                    </span>
+                  </button>
         </div>
-      </section>
       </div>
     </div>
   );

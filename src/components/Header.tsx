@@ -199,7 +199,7 @@ export default function Header() {
               );
             })}
             <Link
-              href="/"
+              href={pathname}
               locale={locale === "en" ? "ar" : "en"}
               className="text-black text-sm font-bold uppercase tracking-wide whitespace-nowrap hover:text-primary/80 transition-colors"
             >
@@ -273,7 +273,7 @@ export default function Header() {
 
               <div className="flex items-center justify-between gap-3">
                 <Link
-                  href="/"
+                  href={pathname}
                   locale={locale === "en" ? "ar" : "en"}
                   className="text-black text-sm font-bold uppercase tracking-wide hover:text-primary/80 transition-colors"
                 >

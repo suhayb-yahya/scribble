@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Rubik } from "next/font/google";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin", "arabic"] });
 
@@ -14,6 +14,8 @@ const tabs = [
 
 export default function AboutTabsSection() {
   const t = useTranslations("about");
+  const locale = useLocale();
+  const isRtl = locale === "ar";
   const [activeTab, setActiveTab] = useState<(typeof tabs)[number]["id"]>("story");
 
   const tabContent: Record<(typeof tabs)[number]["id"], string[]> = {
@@ -27,10 +29,10 @@ export default function AboutTabsSection() {
       className="py-16 md:py-24 bg-white"
       aria-label="Our story, vision, and mission"
     >
-      <div className="content-nav-aligned">
+      <div className={`content-nav-aligned flex flex-col ${isRtl ? "items-start" : ""}`} dir={isRtl ? "rtl" : undefined}>
         {/* Tab navigation: line runs through the center of indicator boxes */}
-        <div className="relative pb-8 md:pb-10">
-          <div className="flex flex-wrap gap-8 md:gap-12 items-end">
+        <div className="relative pb-8 md:pb-10 w-full">
+          <div className={`flex flex-wrap gap-8 md:gap-12 items-end ${isRtl ? "justify-start" : ""}`}>
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
@@ -38,9 +40,9 @@ export default function AboutTabsSection() {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id)}
-                  className={`${rubik.className} flex flex-col items-center uppercase tracking-wide transition-colors pb-0 hover:opacity-90 ${
-                    isActive ? "text-[#469098]" : "text-[#4F1A39]"
-                  }`}
+                  className={`${rubik.className} flex flex-col uppercase tracking-wide transition-colors pb-0 hover:opacity-90 ${
+                    isRtl ? "items-start text-right" : "items-center"
+                  } ${isActive ? "text-[#469098]" : "text-[#4F1A39]"}`}
                   style={{
                     fontSize: "32px",
                     fontWeight: 600,
@@ -79,12 +81,12 @@ export default function AboutTabsSection() {
 
         {/* Content + CREATIVE block (100px from line to content; line sits ~40.5px above section bottom) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center pt-[60px] md:pt-[52px]">
-          <div role="tabpanel" aria-labelledby={`tab-${activeTab}`}>
+          <div role="tabpanel" aria-labelledby={`tab-${activeTab}`} className={isRtl ? "w-full text-right" : ""} dir={isRtl ? "rtl" : undefined}>
             <div className="space-y-6">
               {tabContent[activeTab].map((paragraph, i) => (
                 <p
                   key={i}
-                  className={rubik.className}
+                  className={`${rubik.className} ${isRtl ? "text-right" : ""}`}
                   style={{
                     color: "#19140F",
                     fontSize: "24px",

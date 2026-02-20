@@ -45,7 +45,8 @@ export default function Footer() {
                             {t("atScribble")}
                         </p>
                         <p className={`${rubik.className} font-[700] text-[14.61px] leading-none ${infoColor}`}>
-                            {t("address")}
+                            {t("address")}{" "}
+                            <span dir="ltr">{t("addressPhone")}</span>
                         </p>
                     </div>
 

@@ -1,10 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import { Rubik } from "next/font/google";
+import { useLocale, useTranslations } from "next-intl";
 
-const rubik = Rubik({ weight: ["700"], subsets: ["latin"] });
+const rubik = Rubik({ weight: ["700"], subsets: ["latin", "arabic"] });
 
 export default function AboutIllustrationSection() {
-  
+  const t = useTranslations("about");
+  const locale = useLocale();
+  const isRtl = locale === "ar";
 
   return (
     <section
@@ -12,7 +17,7 @@ export default function AboutIllustrationSection() {
       style={{ backgroundColor: "#7B2553" }}
       aria-label="Different — nothing pleases us except the strange"
     >
-      <div className="content-nav-aligned w-full flex flex-col justify-center items-center gap-8 md:gap-10 text-center">
+      <div className={`content-nav-aligned w-full flex flex-col justify-center gap-8 md:gap-10 items-center text-center`} dir={isRtl ? "rtl" : undefined}>
       <div className="flex justify-center items-center relative w-full max-w-[280px] md:max-w-[360px] mx-auto">
         <Image
           src="/assets/char.svg"
@@ -39,8 +44,11 @@ export default function AboutIllustrationSection() {
         }}
       >
 
-        <h2 className="text-3xl md:text-4xl font-bold uppercase text-center tracking-tight mb-10 max-w-4xl mx-auto leading-tight">
-        NOTHING PLEASES US <br /> EXCEPT THE STRANGE
+        <h2
+          className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-10 max-w-4xl leading-tight text-center mx-auto"
+          dir={isRtl ? "rtl" : undefined}
+        >
+          {t("heading1")} <br /> {t("heading2")}
         </h2>
         
       </div>

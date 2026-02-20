@@ -2,12 +2,14 @@
 
 import Image from "next/image";
 import { Rubik } from "next/font/google";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const rubik = Rubik({ weight: "600", subsets: ["latin", "arabic"] });
 
 export default function JobsHero() {
   const t = useTranslations("jobs");
+  const locale = useLocale();
+  const isRtl = locale === "ar";
   return (
     <section
       className="relative w-full min-w-0 overflow-hidden bg-[#7B2553]"
@@ -24,13 +26,15 @@ export default function JobsHero() {
           unoptimized
         />
 
-        {/* Bottom-left text overlay — aligned to navbar edges */}
+        {/* Text overlay: English = left (original), Arabic = right aligned to navbar */}
         <div
-          className="absolute left-0 bottom-0 p-4 pointer-events-none flex flex-col justify-center mb-24 md:mb-32 max-w-[600px]"
+          className={`absolute bottom-0 p-4 pointer-events-none flex flex-col justify-center mb-24 md:mb-32 max-w-[600px] ${isRtl ? "right-0 items-start text-right" : "left-0 items-start text-left"}`}
+          dir={isRtl ? "rtl" : undefined}
           aria-hidden
         >
           <h1
-            className={`${rubik.className} text-white uppercase leading-tight`}
+            className={`${rubik.className} text-white uppercase leading-tight ${isRtl ? "text-right" : "text-left"}`}
+            dir={isRtl ? "rtl" : undefined}
             style={{
               fontSize: "clamp(28px, 6vw, 48px)",
               fontWeight: 500,
@@ -40,7 +44,8 @@ export default function JobsHero() {
             {t("title")}
           </h1>
           <p
-            className={`${rubik.className} text-white mt-4 leading-tight`}
+            className={`${rubik.className} text-white mt-4 leading-tight ${isRtl ? "text-right" : "text-left"}`}
+            dir={isRtl ? "rtl" : undefined}
             style={{
               fontSize: "24px",
               fontWeight: 300,

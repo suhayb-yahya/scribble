@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import { Rubik } from "next/font/google";
+import { useLocale, useTranslations } from "next-intl";
 
-const rubik = Rubik({ weight: ["400", "600", "700"], subsets: ["latin"] });
+const rubik = Rubik({ weight: ["400", "600", "700"], subsets: ["latin", "arabic"] });
 
-function PlayIcon({ className }: { className?: string }) {
+function PlayIcon({ className, rtl }: { className?: string; rtl?: boolean }) {
   return (
     <svg
-      className={className}
+      className={`${className ?? ""} ${rtl ? "rotate-180" : ""}`.trim()}
       viewBox="0 0 24 24"
       fill="currentColor"
       aria-hidden
@@ -30,15 +31,19 @@ type JobsListSectionProps = {
 };
 
 export default function JobsListSection({ jobs }: JobsListSectionProps) {
+  const t = useTranslations("jobs");
+  const locale = useLocale();
+  const isRtl = locale === "ar";
   return (
     <section
       className="py-16 md:py-24 bg-white min-h-0"
-      aria-label="Available positions"
+      aria-label={t("availablePositions")}
+      dir={isRtl ? "rtl" : undefined}
     >
-      <div className="content-nav-aligned">
+      <div className={isRtl ? "content-nav-aligned-right" : "content-nav-aligned"}>
         <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_0.65fr] min-h-0">
       {/* Left half: jobs list */}
-      <div className="max-w-4xl flex flex-col gap-12 md:gap-16 pr-6 md:pr-10">
+      <div className={`max-w-4xl flex flex-col gap-12 md:gap-16 pr-6 md:pr-10 ${isRtl ? "text-right" : ""}`}>
         {jobs.map((job) => (
           <article
             key={job.id}
@@ -48,7 +53,7 @@ export default function JobsListSection({ jobs }: JobsListSectionProps) {
             {/* Job title with play icon */}
             <div className="flex items-center gap-3">
               <span className="text-black shrink-0" aria-hidden>
-                <PlayIcon className="w-4 h-4 md:w-5 md:h-5" />
+                <PlayIcon className="w-4 h-4 md:w-5 md:h-5" rtl={isRtl} />
               </span>
               <h2
                 id={`job-title-${job.id}`}
@@ -81,8 +86,8 @@ export default function JobsListSection({ jobs }: JobsListSectionProps) {
                 href={job.applyUrl ?? "#"}
                 className={`${rubik.className} apply-now-btn inline-flex items-center gap-2 uppercase font-bold text-white text-sm tracking-wide rounded-full px-6 py-3 transition-[background] duration-300`}
               >
-                Apply now
-                <PlayIcon className="w-4 h-4 text-white shrink-0" />
+                {t("applyNow")}
+                <PlayIcon className="w-4 h-4 text-white shrink-0" rtl={isRtl} />
               </a>
             </div>
           </article>

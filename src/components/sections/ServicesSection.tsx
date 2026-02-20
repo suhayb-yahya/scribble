@@ -41,12 +41,14 @@ export default function ServicesSection() {
   return (
       <section className="bg-primary text-white pt-22 pb-32">
         <div className="content-nav-aligned -mt-20 md:-mt-24">
-          <h2 className="text-3xl md:text-4xl font-bold uppercase text-center tracking-tight mb-10 max-w-4xl mx-auto leading-tight">
-            {t("heading1")}<br />{t("heading2")}
-          </h2>
-          <p className="text-xl md:text-3xl  text-center text-white max-w-5xl mx-auto mb-16 leading-tight px-5">
-            {t("intro")}
-          </p>
+          <div className="flex flex-col items-center w-full">
+            <h2 className="text-3xl md:text-4xl font-bold uppercase text-center tracking-tight mb-10 max-w-4xl leading-tight">
+              {t("heading1")}<br />{t("heading2")}
+            </h2>
+            <p className="text-xl md:text-3xl text-right text-white max-w-5xl mb-16 leading-tight px-5">
+              {t("intro")}
+            </p>
+          </div>
 
           <motion.div
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full items-start"

@@ -2,8 +2,9 @@
 
 import { Rubik } from "next/font/google";
 import { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 
-const rubik = Rubik({ weight: "600", subsets: ["latin"] });
+const rubik = Rubik({ weight: "600", subsets: ["latin", "arabic"] });
 
 function ScribbleLogo({
   className,
@@ -62,6 +63,9 @@ function ScribbleLogo({
 }
 
 export default function ContactFormSection() {
+  const t = useTranslations("contact");
+  const locale = useLocale();
+  const isRtl = locale === "ar";
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [comments, setComments] = useState("");
@@ -81,7 +85,7 @@ export default function ContactFormSection() {
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
         setStatus("error");
-        setErrorMessage(data.error ?? "Something went wrong. Please try again.");
+        setErrorMessage(data.error ?? t("errorDefault"));
         return;
       }
       setStatus("success");
@@ -90,7 +94,7 @@ export default function ContactFormSection() {
       setComments("");
     } catch {
       setStatus("error");
-      setErrorMessage("Network error. Please try again.");
+      setErrorMessage(t("networkError"));
     }
   }
 
@@ -99,102 +103,107 @@ export default function ContactFormSection() {
       className="relative w-full min-w-0 overflow-x-visible overflow-y-visible bg-primary"
       aria-label="Contact information and form"
     >
-      <div className="content-nav-aligned mt-10 md:mt-14 lg:mt-16 pt-0 pb-12 md:pb-16 lg:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-x-8 lg:gap-y-12 items-center">
-          {/* First half: logo, contact info, form */}
-          <div className="flex flex-col gap-10 md:gap-14 lg:gap-16 min-w-0 lg:min-w-0">
-            {/* Row: Logo on left, company info on the right — single line, no wrap */}
-            <div className="flex flex-nowrap items-center gap-6 md:gap-8 min-w-0">
+      <div className={`${isRtl ? "content-nav-aligned-right" : "content-nav-aligned-left"} mt-10 md:mt-14 lg:mt-16 pt-0 pb-12 md:pb-16 lg:pb-20`} dir={isRtl ? "rtl" : undefined}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-x-8 lg:gap-y-12 items-center w-full" dir={isRtl ? "rtl" : undefined}>
+          {/* Form + content: RTL = right (first in RTL flow), LTR = left */}
+          <div className={`flex flex-col gap-10 md:gap-14 lg:gap-16 min-w-0 lg:min-w-0 ${isRtl ? "lg:items-end lg:text-right" : "items-start"}`}>
+            {/* Row: Logo first, address/contact info second */}
+            <div className="flex flex-nowrap items-center justify-start gap-6 md:gap-8 min-w-0 w-full" dir={isRtl ? "rtl" : undefined}>
               <ScribbleLogo className="shrink-0 w-[200px] h-[99px] sm:w-[238px] sm:h-[118px]" />
               <div
-                className={`flex flex-col gap-1 text-[#FFF] uppercase tracking-wide md:ml-auto shrink-0 min-w-[320px] lg:min-w-[380px] ml-6 lg:ml-10 ${rubik.className}`}
+                className={`flex flex-col gap-1 text-[#FFF] uppercase tracking-wide shrink-0 min-w-[320px] lg:min-w-[380px] ${isRtl ? "md:ml-auto" : ""} ${rubik.className}`}
               >
-                <span className="text-[22px] font-semibold leading-normal whitespace-nowrap">
-                  Scribble Production Company
+                <span className="text-[22px] font-semibold leading-normal whitespace-nowrap" dir={isRtl ? "rtl" : undefined}>
+                  {t("companyName")}
                 </span>
-                <span className="text-[22px] font-semibold leading-normal whitespace-nowrap">
-                  Ramallah, Palestine
+                <span className="text-[22px] font-semibold leading-normal whitespace-nowrap" dir={isRtl ? "rtl" : undefined}>
+                  {t("location")}
                 </span>
                 <a
-                  href="tel:0097222975232"
+                  href="tel:0097022975232"
+                  dir="ltr"
                   className="text-[42px] font-semibold leading-normal text-[#FFF] hover:opacity-90 transition-opacity mt-1 whitespace-nowrap"
                 >
-                  00972 2 2975232
+                  00970 2 2975232
                 </a>
               </div>
             </div>
 
             {/* Form sticks under them */}
             <form
-              className="flex flex-col gap-4"
+              className={`flex flex-col gap-4 ${isRtl ? "items-end" : ""}`}
               onSubmit={handleSubmit}
             >
             <label className="sr-only" htmlFor="contact-name">
-              Name
+              {t("name")}
             </label>
             <input
               id="contact-name"
               name="name"
               type="text"
-              placeholder="Name"
+              placeholder={t("name")}
+              dir={isRtl ? "rtl" : undefined}
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
               disabled={status === "sending"}
-              className="contact-input-style w-[512.529px] max-w-full h-[55.135px] px-4"
-              aria-label="Your name"
+              className={`contact-input-style w-[512.529px] max-w-full h-[55.135px] px-4 ${isRtl ? "text-right" : ""}`}
+              aria-label={t("name")}
             />
             <label className="sr-only" htmlFor="contact-email">
-              Email
+              {t("email")}
             </label>
             <input
               id="contact-email"
               name="email"
               type="email"
-              placeholder="Email"
+              placeholder={t("email")}
+              dir={isRtl ? "rtl" : undefined}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
               disabled={status === "sending"}
-              className="contact-input-style w-[512.529px] max-w-full h-[55.135px] px-4"
-              aria-label="Your email"
+              className={`contact-input-style w-[512.529px] max-w-full h-[55.135px] px-4 ${isRtl ? "text-right" : ""}`}
+              aria-label={t("email")}
             />
             <label className="sr-only" htmlFor="contact-comments">
-              Comments
+              {t("comments")}
             </label>
             <textarea
               id="contact-comments"
               name="comments"
-              placeholder="Comments"
+              placeholder={t("comments")}
+              dir={isRtl ? "rtl" : undefined}
               rows={4}
               value={comments}
               onChange={(e) => setComments(e.target.value)}
               required
               disabled={status === "sending"}
-              className="contact-input-style w-[512.529px] max-w-full min-h-[100px] px-4 py-3 resize-y"
-              aria-label="Your message"
+              className={`contact-input-style w-[512.529px] max-w-full min-h-[100px] px-4 py-3 resize-y ${isRtl ? "text-right" : ""}`}
+              aria-label={t("comments")}
             />
             {(status === "success" || status === "error") && (
               <p
                 role="alert"
-                className={`text-sm max-w-[512.529px] ${status === "success" ? "text-green-300" : "text-red-300"}`}
+                dir={isRtl ? "rtl" : undefined}
+                className={`text-sm max-w-[512.529px] ${status === "success" ? "text-green-300" : "text-red-300"} ${isRtl ? "text-right" : ""}`}
               >
-                {status === "success" ? "Message sent. We'll get back to you soon." : errorMessage}
+                {status === "success" ? t("successMessage") : errorMessage}
               </p>
             )}
-            <div className="flex justify-end max-w-[512.529px]">
+            <div className={`flex max-w-[512.529px] ${isRtl ? "justify-start w-full" : "justify-end"}`}>
               <button
                 type="submit"
                 disabled={status === "sending"}
                 className="w-fit px-8 py-3 rounded-lg bg-black text-white font-medium uppercase tracking-wide hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {status === "sending" ? "Sending…" : "Send"}
+                {status === "sending" ? t("sending") : t("send")}
               </button>
             </div>
             </form>
           </div>
 
-          {/* Second half: illustration */}
+          {/* Illustration: RTL = left (second in RTL flow), LTR = right */}
           <div className="relative flex justify-center items-end min-h-[450px] pt-[50px]">
             <img
               src="/assets/contact-illustration.png"

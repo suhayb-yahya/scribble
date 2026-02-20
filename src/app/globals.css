@@ -7,6 +7,14 @@
   .content-nav-aligned {
     @apply w-full max-w-6xl mx-auto px-4 md:px-8;
   }
+  /* Align content to navbar left edge (LTR) */
+  .content-nav-aligned-left {
+    @apply w-full max-w-6xl mx-auto px-4 md:px-8 flex flex-col items-start;
+  }
+  /* Align content to navbar right edge (RTL) */
+  .content-nav-aligned-right {
+    @apply w-full max-w-6xl mx-auto px-4 md:px-8 flex flex-col items-end;
+  }
 }
 
 :root {
