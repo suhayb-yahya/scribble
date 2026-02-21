@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
   const contactEmail = process.env.CONTACT_EMAIL;
   if (!contactEmail?.trim()) {
@@ -11,12 +9,15 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
-  if (!process.env.RESEND_API_KEY) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey?.trim()) {
     return NextResponse.json(
       { error: "Email service is not configured (RESEND_API_KEY)." },
       { status: 500 }
     );
   }
+
+  const resend = new Resend(apiKey);
 
   let body: { name?: string; email?: string; comments?: string };
   try {
