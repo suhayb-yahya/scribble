@@ -40,14 +40,9 @@ export default function AboutTabsSection() {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id)}
-                  className={`${rubik.className} flex flex-col uppercase tracking-wide transition-colors pb-0 hover:opacity-90 ${
+                  className={`${rubik.className} flex flex-col text-[28px] leading-[1] font-[600] uppercase transition-colors pb-0 hover:opacity-90 ${
                     isRtl ? "items-start text-right" : "items-center"
                   } ${isActive ? "text-[#469098]" : "text-[#4F1A39]"}`}
-                  style={{
-                    fontSize: "32px",
-                    fontWeight: 600,
-                    lineHeight: "normal",
-                  }}
                   aria-selected={isActive}
                   role="tab"
                 >
@@ -72,27 +67,16 @@ export default function AboutTabsSection() {
               );
             })}
           </div>
-          {/* Baseline: runs through the vertical center of tab indicator boxes (pills are 17px, center at 8.5px) */}
-          <div
-            className="absolute left-0 right-0 h-px bg-gray-300 z-0 bottom-[40.5px] md:bottom-[48.5px]"
-            aria-hidden
-          />
         </div>
 
         {/* Content + CREATIVE block (100px from line to content; line sits ~40.5px above section bottom) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center pt-[60px] md:pt-[52px]">
           <div role="tabpanel" aria-labelledby={`tab-${activeTab}`} className={isRtl ? "w-full text-right" : ""} dir={isRtl ? "rtl" : undefined}>
-            <div className="space-y-6">
+            <div className="space-y-6 max-w-[460px]">
               {tabContent[activeTab].map((paragraph, i) => (
                 <p
                   key={i}
-                  className={`${rubik.className} ${isRtl ? "text-right" : ""}`}
-                  style={{
-                    color: "#19140F",
-                    fontSize: "24px",
-                    fontWeight: 400,
-                    lineHeight: "normal",
-                  }}
+                  className={`${rubik.className} text-[#19140F] text-[18px] leading-[1.5] font-normal ${isRtl ? "text-right" : ""}`}
                 >
                   {paragraph}
                 </p>
