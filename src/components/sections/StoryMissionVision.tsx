@@ -23,8 +23,8 @@ export default function StoryMissionVision() {
           {/* Content: stacked on mobile, side-by-side on desktop */}
           <div className="mt-10 md:mt-16 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-[170px] w-full">
             {/* Left - content blocks */}
-            <div className={`space-y-8 md:space-y-12 max-w-[480px] w-full order-2 md:order-1 ${isRtl ? "text-right" : ""}`}>
-              <div className="w-full max-w-[460px]">
+            <div className={`space-y-8 md:space-y-12 max-w-[480px] w-full order-2 md:order-1 text-center md:text-left ${isRtl ? "md:text-right" : ""}`}>
+              <div className="w-full max-w-[460px] mx-auto md:mx-0">
                 <h3 className="text-primary text-xl md:text-[28px] leading-[1] font-[600] uppercase mb-2 md:mb-3">
                   {t("story")}
                 </h3>
@@ -33,7 +33,7 @@ export default function StoryMissionVision() {
                 </p>
               </div>
 
-              <div className="w-full max-w-[460px]">
+              <div className="w-full max-w-[460px] mx-auto md:mx-0">
                 <h3 className="text-primary text-xl md:text-[28px] leading-[1] font-[600] uppercase mb-2 md:mb-3">
                   {t("mission")}
                 </h3>
@@ -42,7 +42,7 @@ export default function StoryMissionVision() {
                 </p>
               </div>
 
-              <div className="w-full max-w-[460px]">
+              <div className="w-full max-w-[460px] mx-auto md:mx-0">
                 <h3 className="text-primary text-xl md:text-[28px] leading-[1] font-[600] uppercase mb-2 md:mb-3">
                   {t("vision")}
                 </h3>
