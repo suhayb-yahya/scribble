@@ -106,10 +106,11 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
         </div>
         <div className="absolute inset-0 z-10 flex flex-col">
           <div className="flex-1" />
-          {/* Text block: vertically centered in middle of image */}
-          <div className="flex-1 flex flex-col justify-center pl-4 md:pl-8 pr-4 md:pr-8">
-            <div className={`flex flex-col w-full md:max-w-[48rem] md:ml-auto ${isRtl ? "md:mr-[200px] md:ml-auto items-start" : "md:mr-[250px] items-end"}`} dir={isRtl ? "rtl" : undefined}>
-              <div className="w-full max-w-[85%] sm:max-w-[26rem] text-start" dir={isRtl ? "rtl" : "ltr"}>
+          {/* Text block: vertically centered, aligned to navbar edges */}
+          <div className="flex-1 flex flex-col justify-center w-full -translate-y-6">
+            <div className="content-nav-aligned w-full">
+              <div className={`flex flex-col w-full md:max-w-[48rem] ${isRtl ? "md:mr-auto items-start" : "md:ml-auto items-end"}`} dir={isRtl ? "rtl" : undefined}>
+              <div className="w-full max-w-[420px] text-start" dir={isRtl ? "rtl" : "ltr"}>
                 <h2
                   className={`
                     ${rubik.className}
@@ -145,6 +146,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                   {t("paragraph2")}
                 </p>
               </div>
+            </div>
             </div>
           </div>
           <div className="flex-1" />
