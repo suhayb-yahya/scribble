@@ -28,27 +28,33 @@ export default function JobsHero() {
 
         {/* Text overlay: English = left (original), Arabic = right aligned to navbar */}
         <div
-          className={`absolute bottom-0 p-4 pointer-events-none flex flex-col justify-center mb-24 md:mb-32 max-w-[600px] ${isRtl ? "right-0 items-start text-right" : "left-0 items-start text-left"}`}
+          className={`absolute bottom-0 p-4 pointer-events-none flex flex-col justify-center mb-12 md:mb-16 max-w-[600px] ${isRtl ? "right-0 items-start text-right" : "left-0 items-start text-left"}`}
           dir={isRtl ? "rtl" : undefined}
           aria-hidden
         >
           <h1
-            className={`${rubik.className} text-white uppercase leading-tight ${isRtl ? "text-right" : "text-left"}`}
+            className={`${rubik.className} mb-4 ${isRtl ? "text-right" : "text-left"}`}
             dir={isRtl ? "rtl" : undefined}
             style={{
-              fontSize: "clamp(28px, 6vw, 48px)",
-              fontWeight: 500,
-              lineHeight: "1.2",
+              color: "#FFF",
+              fontFamily: "Rubik",
+              fontSize: "53.294px",
+              fontStyle: "normal",
+              fontWeight: 600,
+              lineHeight: "normal",
             }}
           >
             {t("title")}
           </h1>
           <p
-            className={`${rubik.className} text-white mt-4 leading-tight ${isRtl ? "text-right" : "text-left"}`}
+            className={`${rubik.className} mt-4 ${isRtl ? "text-right" : "text-left"}`}
             dir={isRtl ? "rtl" : undefined}
             style={{
+              color: "#FFF",
+              fontFamily: "Rubik",
               fontSize: "24px",
-              fontWeight: 300,
+              fontStyle: "normal",
+              fontWeight: 600,
               lineHeight: "normal",
             }}
           >
