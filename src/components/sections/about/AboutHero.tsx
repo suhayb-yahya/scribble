@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Rubik } from "next/font/google";
 import { useLocale, useTranslations } from "next-intl";
 
-const rubik = Rubik({ weight: "600", subsets: ["latin", "arabic"] });
+const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin", "arabic"] });
 
 export default function AboutHero() {
   const t = useTranslations("about");
@@ -28,37 +28,21 @@ export default function AboutHero() {
               priority
               unoptimized
             />
-            <div className={`absolute inset-x-0 bottom-0 mb-14 md:mb-20 flex pointer-events-none justify-start`}>
+            <div className={`absolute inset-x-0 bottom-0 mb-8 md:mb-12 flex pointer-events-none justify-start`}>
               <div className={`content-nav-aligned w-full flex flex-col justify-center items-start`}>
                 {(() => {
                   const [title, paragraph] = t("heroText").split("\n\n");
                   return (
                     <>
                       <h1
-                        className={`${rubik.className} mb-4 ${isRtl ? "text-right" : "text-left"}`}
-                        style={{
-                          color: "#FFF",
-                          fontFamily: "Rubik",
-                          fontSize: "53.294px",
-                          fontStyle: "normal",
-                          fontWeight: 600,
-                          lineHeight: "normal",
-                        }}
+                        className={`${rubik.className} text-3xl md:text-4xl font-bold uppercase tracking-tight mb-10 max-w-4xl leading-tight text-white text-left`}
                         dir={isRtl ? "rtl" : undefined}
                       >
                         {title}
                       </h1>
                       <p
-                        className={`${rubik.className} mt-4 max-w-[700px] text-start self-start`}
+                        className={`${rubik.className} font-normal text-xl md:text-3xl text-white max-w-[800px] mb-16 leading-tight text-left self-start`}
                         dir={isRtl ? "rtl" : undefined}
-                        style={{
-                          color: "#FFF",
-                          fontFamily: "Rubik",
-                          fontSize: "24px",
-                          fontStyle: "normal",
-                          fontWeight: 600,
-                          lineHeight: "normal",
-                        }}
                       >
                         {paragraph}
                       </p>
