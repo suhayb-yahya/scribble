@@ -116,7 +116,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                     ${rubik.className}
                     uppercase
                     tracking-[0.04em]
-                    mb-4
+                    mb-6
                     text-white
                     text-[28px]
                     md:text-[28px]
