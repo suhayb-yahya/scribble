@@ -29,13 +29,13 @@ export default function AboutPhilosophySection() {
             }}
           >
             <h2
-              className={`${rubik.className} text-xl md:text-2xl lg:text-3xl font-semibold uppercase tracking-wide mb-4 ${isRtl ? "text-right" : ""}`}
+              className={`${rubik.className} text-xl md:text-2xl lg:text-3xl font-semibold uppercase tracking-wide mb-4 text-center md:text-left ${isRtl ? "md:text-right" : ""}`}
               style={{ color: "#D2A860" }}
             >
               {t(box.titleKey)}
             </h2>
             <p
-              className={`${rubik.className} text-base md:text-lg font-normal leading-relaxed ${isRtl ? "text-right" : ""}`}
+              className={`${rubik.className} text-base md:text-lg font-normal leading-relaxed text-center md:text-left ${isRtl ? "md:text-right" : ""}`}
               style={{ color: "#FFFFFF" }}
             >
               {t(box.bodyKey)}

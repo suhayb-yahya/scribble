@@ -32,7 +32,7 @@ export default function AboutTabsSection() {
       <div className={`content-nav-aligned flex flex-col ${isRtl ? "items-start" : ""}`} dir={isRtl ? "rtl" : undefined}>
         {/* Tab navigation: line runs through the center of indicator boxes */}
         <div className="relative pb-8 md:pb-10 w-full">
-          <div className={`flex flex-wrap gap-8 md:gap-12 items-end ${isRtl ? "justify-start" : ""}`}>
+          <div className="flex flex-wrap gap-8 md:gap-12 items-end justify-center">
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
@@ -40,7 +40,7 @@ export default function AboutTabsSection() {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id)}
-                  className={`${rubik.className} flex flex-col text-[28px] leading-[1] font-[600] uppercase transition-colors pb-0 hover:opacity-90 ${
+                  className={`${rubik.className} flex flex-col text-lg md:text-[28px] leading-[1] font-[600] uppercase transition-colors pb-0 hover:opacity-90 ${
                     isRtl ? "items-start text-right" : "items-center"
                   } ${isActive ? "text-[#469098]" : "text-[#4F1A39]"}`}
                   aria-selected={isActive}
@@ -70,13 +70,13 @@ export default function AboutTabsSection() {
         </div>
 
         {/* Content + CREATIVE block (100px from line to content; line sits ~40.5px above section bottom) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center pt-[60px] md:pt-[52px]">
-          <div role="tabpanel" aria-labelledby={`tab-${activeTab}`} className={isRtl ? "w-full text-right" : ""} dir={isRtl ? "rtl" : undefined}>
-            <div className="space-y-6 max-w-[460px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center lg:justify-items-start pt-[60px] md:pt-[52px]">
+          <div role="tabpanel" aria-labelledby={`tab-${activeTab}`} className={`order-1 lg:order-none w-full max-w-[460px] flex flex-col items-center lg:items-start ${isRtl ? "lg:text-right" : "lg:text-left"} text-center`} dir={isRtl ? "rtl" : undefined}>
+            <div className="space-y-6 w-full">
               {tabContent[activeTab].map((paragraph, i) => (
                 <p
                   key={i}
-                  className={`${rubik.className} text-[#19140F] text-[18px] leading-[1.5] font-normal ${isRtl ? "text-right" : ""}`}
+                  className={`${rubik.className} text-[#19140F] text-[18px] leading-[1.5] font-normal`}
                 >
                   {paragraph}
                 </p>
@@ -84,9 +84,9 @@ export default function AboutTabsSection() {
             </div>
           </div>
 
-          <div className="flex justify-center lg:justify-end order-first lg:order-none">
+          <div className="flex justify-center lg:justify-center w-full order-2 lg:order-none m-10 md:m-16">
             <svg
-              className="w-full max-w-[436px] h-auto select-none"
+              className="w-[436px] max-w-full h-auto select-none"
               viewBox="0 0 436 66"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

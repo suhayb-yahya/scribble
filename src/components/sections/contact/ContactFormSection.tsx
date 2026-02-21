@@ -106,9 +106,9 @@ export default function ContactFormSection() {
       <div className={`${isRtl ? "content-nav-aligned-right" : "content-nav-aligned-left"} mt-10 md:mt-14 lg:mt-16 pt-0 pb-12 md:pb-16 lg:pb-20`} dir={isRtl ? "rtl" : undefined}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-x-8 lg:gap-y-12 items-center w-full" dir={isRtl ? "rtl" : undefined}>
           {/* Form + content: RTL = right (first in RTL flow), LTR = left */}
-          <div className={`flex flex-col gap-10 md:gap-14 lg:gap-16 min-w-0 lg:min-w-0 ${isRtl ? "lg:items-end lg:text-right" : "items-start"}`}>
+          <div className={`flex flex-col gap-10 md:gap-14 lg:gap-16 min-w-0 lg:min-w-0 items-center lg:items-start ${isRtl ? "lg:items-end lg:text-right" : ""}`}>
             {/* Row: Logo first, address/contact info second */}
-            <div className="flex flex-nowrap items-center justify-start gap-6 md:gap-8 min-w-0 w-full" dir={isRtl ? "rtl" : undefined}>
+            <div className="flex flex-nowrap items-center justify-center lg:justify-start gap-6 md:gap-8 min-w-0 w-full" dir={isRtl ? "rtl" : undefined}>
               <ScribbleLogo className="shrink-0 w-[200px] h-[99px] sm:w-[238px] sm:h-[118px]" />
               <div
                 className={`flex flex-col gap-1 text-[#FFF] uppercase tracking-wide shrink-0 min-w-[320px] lg:min-w-[380px] ${isRtl ? "md:ml-auto" : ""} ${rubik.className}`}
@@ -131,7 +131,7 @@ export default function ContactFormSection() {
 
             {/* Form sticks under them */}
             <form
-              className={`flex flex-col gap-4 ${isRtl ? "items-end" : ""}`}
+              className={`flex flex-col gap-4 items-center lg:items-start ${isRtl ? "lg:items-end" : ""}`}
               onSubmit={handleSubmit}
             >
             <label className="sr-only" htmlFor="contact-name">
@@ -186,12 +186,12 @@ export default function ContactFormSection() {
               <p
                 role="alert"
                 dir={isRtl ? "rtl" : undefined}
-                className={`text-sm max-w-[512.529px] ${status === "success" ? "text-green-300" : "text-red-300"} ${isRtl ? "text-right" : ""}`}
+                className={`text-sm max-w-[512.529px] text-center lg:text-left ${status === "success" ? "text-green-300" : "text-red-300"} ${isRtl ? "lg:text-right" : ""}`}
               >
                 {status === "success" ? t("successMessage") : errorMessage}
               </p>
             )}
-            <div className={`flex max-w-[512.529px] ${isRtl ? "justify-start w-full" : "justify-end"}`}>
+            <div className={`flex max-w-[512.529px] w-full justify-center lg:justify-end ${isRtl ? "lg:justify-start" : ""}`}>
               <button
                 type="submit"
                 disabled={status === "sending"}

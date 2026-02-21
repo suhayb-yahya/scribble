@@ -115,14 +115,14 @@ export default function ServicesPartsSection({
 }: ServicesPartsSectionProps) {
   return (
     <section
-      className="w-full min-w-0 relative -mt-32 sm:-mt-40 md:-mt-52 z-20 overflow-visible"
+      className="w-full min-w-0 relative mt-0 md:-mt-52 z-20 overflow-visible"
       style={{
         background:
           "linear-gradient(to bottom, transparent 0%, rgba(123, 37, 83, 0.4) 30px, rgba(123, 37, 83, 0.9) 60px, #7B2553 90px, #7B2553 100%)",
       }}
       aria-label="Services overview"
     >
-      <div className="relative -mt-[100px]">
+      <div className="relative mt-0 md:-mt-[100px]">
         {parts.map((part) => (
           <PartBlock key={part.id} part={part} />
         ))}

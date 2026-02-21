@@ -13,11 +13,11 @@ export default function AboutIllustrationSection() {
 
   return (
     <section
-      className="w-full min-w-0 pt-[100px] pb-12 md:pt-[100px] md:pb-16 flex flex-col justify-center items-center gap-8 md:gap-10"
+      className="w-full min-w-0 pt-16 pb-4 md:pt-20 md:pb-6 flex flex-col justify-center items-center gap-6 md:gap-8"
       style={{ backgroundColor: "#7B2553" }}
       aria-label="Different — nothing pleases us except the strange"
     >
-      <div className={`content-nav-aligned w-full flex flex-col justify-center gap-8 md:gap-10 items-center text-center`} dir={isRtl ? "rtl" : undefined}>
+      <div className={`content-nav-aligned w-full flex flex-col justify-center gap-6 md:gap-8 items-center text-center ${isRtl ? "md:items-end md:text-right" : ""}`} dir={isRtl ? "rtl" : undefined}>
       <div className="flex justify-center items-center relative w-full max-w-[280px] md:max-w-[360px] mx-auto">
         <Image
           src="/assets/char.svg"
@@ -30,7 +30,7 @@ export default function AboutIllustrationSection() {
       </div>
 
       <div
-        className={`${rubik.className} flex flex-col justify-center items-center uppercase font-bold max-w-full mt-10 md:mt-14`}
+        className={`${rubik.className} flex flex-col justify-center items-center ${isRtl ? "md:items-end" : ""} uppercase font-bold max-w-full mt-6 md:mt-8`}
         style={{
           width: "50%",
           minWidth: "min(578px, 100%)",
@@ -45,7 +45,7 @@ export default function AboutIllustrationSection() {
       >
 
         <h2
-          className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-10 max-w-4xl leading-tight text-center mx-auto"
+          className={`text-3xl md:text-4xl font-bold uppercase tracking-tight mb-4 max-w-4xl leading-tight mx-auto text-center ${isRtl ? "md:text-right" : ""}`}
           dir={isRtl ? "rtl" : undefined}
         >
           {t("heading1")} <br /> {t("heading2")}

@@ -81,91 +81,82 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
   const brandsCount = useCountUp(brands, 1000);
   const clientsCount = useCountUp(clients, 1000);
 
+  const textBlock = (
+    <>
+      <h2 className={`${rubik.className} uppercase tracking-[0.04em] mb-6 text-white text-[28px] leading-none`}>
+        {t("title")}
+      </h2>
+      <p
+        className={`${rubik.className} leading-[1.5] text-white`}
+        style={{ fontStyle: "normal", fontWeight: 600, fontSize: "clamp(1rem, 2vw, 1rem)" }}
+      >
+        {t("paragraph1")}
+      </p>
+      <p
+        className={`${rubik.className} leading-[1.5] mb-0 md:mb-7 text-white`}
+        style={{ fontStyle: "normal", fontWeight: 600, fontSize: "clamp(1rem, 2vw, 1rem)" }}
+      >
+        {t("paragraph2")}
+      </p>
+    </>
+  );
+
   return (
     <div
       className="relative w-full min-w-0 overflow-hidden"
       style={{
         background: "linear-gradient(to right, #7B2553 0%, #7B2553 35%, #7B2553 65%, #7B2553 100%)",
       }}
+      aria-label="Explore"
     >
       <div className="content-nav-aligned max-w-full">
-      <section
-        className="relative w-screen left-1/2 -translate-x-1/2 min-w-0 overflow-hidden"
-        aria-label="Explore"
-      >
-        {/* Image - full length, fixed aspect ratio for consistent layout across deployments */}
-        <div className="relative w-full" style={{ aspectRatio: "1600/780" }}>
-          <img
-            src="/assets/explore-bg.jpeg"
-            alt=""
-            className="block w-full h-full object-cover object-center"
-            aria-hidden
-            decoding="async"
-            fetchPriority="high"
-          />
-        </div>
-        <div className="absolute inset-0 z-10 flex flex-col">
-          <div className="flex-1" />
-          {/* Text block: vertically centered, aligned to navbar edges */}
-          <div className="flex-1 flex flex-col justify-center w-full -translate-y-6">
-            <div className="content-nav-aligned w-full">
-              <div className={`flex flex-col w-full md:max-w-[48rem] ${isRtl ? "md:mr-auto items-start" : "md:ml-auto items-end"}`} dir={isRtl ? "rtl" : undefined}>
-              <div className="w-full max-w-[420px] text-start" dir={isRtl ? "rtl" : "ltr"}>
-                <h2
-                  className={`
-                    ${rubik.className}
-                    uppercase
-                    tracking-[0.04em]
-                    mb-6
-                    text-white
-                    text-[28px]
-                    md:text-[28px]
-                    leading-none
-                  `}
-                >
-                  {t("title")}
-                </h2>
-                <p
-                  className={`${rubik.className} leading-[1.5] text-white`}
-                  style={{
-                    fontStyle: 'normal',
-                    fontWeight: 600,
-                    fontSize: 'clamp(1rem, 2vw, 1rem)',
-                  }}
-                >
-                  {t("paragraph1")}
-                </p>
-                <p
-                  className={`${rubik.className} leading-[1.5] mb-0 md:mb-7 text-white`}
-                  style={{
-                    fontStyle: 'normal',
-                    fontWeight: 600,
-                    fontSize: 'clamp(1rem, 2vw, 1rem)',
-                  }}
-                >
-                  {t("paragraph2")}
-                </p>
+        <section className="relative w-screen left-1/2 -translate-x-1/2 min-w-0 overflow-hidden">
+          {/* Image */}
+          <div className="relative w-full" style={{ aspectRatio: "1600/780" }}>
+            <img
+              src="/assets/explore-bg.jpeg"
+              alt=""
+              className="block w-full h-full object-cover object-center"
+              aria-hidden
+              decoding="async"
+              fetchPriority="high"
+            />
+            {/* Desktop: text overlay on image */}
+            <div className="hidden md:flex absolute inset-0 z-10 flex-col pointer-events-none">
+              <div className="flex-1" />
+              <div className="flex-1 flex flex-col justify-center w-full -translate-y-6">
+                <div className="content-nav-aligned w-full">
+                  <div className={`flex flex-col w-full md:max-w-[48rem] ${isRtl ? "md:mr-auto items-start" : "md:ml-auto items-end"}`} dir={isRtl ? "rtl" : undefined}>
+                    <div className="w-full max-w-[420px] text-start" dir={isRtl ? "rtl" : "ltr"}>
+                      {textBlock}
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+              <div className="flex-1" />
             </div>
           </div>
-          <div className="flex-1" />
-        </div>
-      </section>
+        </section>
       </div>
 
-      {/* Counters box: absolute, sticks to right edge (dir="ltr" in RTL) */}
+      {/* Mobile: text below image */}
+      <div className="content-nav-aligned w-full py-8 md:hidden flex flex-col items-center">
+        <div className={`flex flex-col w-full max-w-[420px] mx-auto ${isRtl ? "items-end text-right" : "items-center text-center"}`} dir={isRtl ? "rtl" : "ltr"}>
+          {textBlock}
+        </div>
+      </div>
+
+      {/* Counters - mobile: in flow centered, desktop: absolute at bottom right with pill design */}
       <div
-        className="absolute right-0 bottom-6 z-20 pl-4 md:pl-0"
-        style={{ right: 0, marginRight: 0, paddingRight: 0 }}
+        className={`content-nav-aligned w-full flex justify-center pb-6 md:absolute md:right-0 md:bottom-6 md:pb-0 md:pl-0 md:pr-0 md:justify-end z-20`}
         dir={isRtl ? "ltr" : undefined}
       >
-        <div className="flex rounded-l-[5rem] md:rounded-l-[6rem] rounded-r-xl md:rounded-r-none border-t border-l border-b border-r border-white pl-[5rem] md:pl-[6rem] pr-6 md:pr-10 pt-0 pb-2 md:pb-3 bg-black/20 backdrop-blur-sm items-center gap-4 md:gap-8">
+        <div className="flex flex-wrap justify-center md:flex-nowrap rounded-2xl md:rounded-l-[6rem] md:rounded-r-none border border-white p-4 md:pl-[6rem] md:pr-0 md:pt-0 md:pb-3 bg-black/20 backdrop-blur-sm items-center gap-4 md:gap-8">
                   {/* VIDEOS */}
                   <div className="flex flex-col items-center justify-center">
                       <div ref={videosCount.ref as React.RefObject<HTMLDivElement>}>
                           <span
-                              className={`${rubik.className} block w-[7rem] md:w-[8.3rem] text-[3.5rem] md:text-[4.2rem] font-bold leading-none tabular-nums text-center`}
+                              className={`${rubik.className} block w-[5rem] md:w-[8.3rem] text-3xl md:text-[4.2rem] font-bold leading-none tabular-nums text-center`}
                               style={{
                                   background: 'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 97.1%)',
                                   WebkitBackgroundClip: 'text',
@@ -196,7 +187,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                   <div className="flex flex-col items-center justify-center">
                       <div ref={brandsCount.ref as React.RefObject<HTMLDivElement>}>
                           <span
-                              className={`${rubik.className} block w-[7rem] md:w-[8rem] text-[3.5rem] md:text-[4.2rem] leading-none tabular-nums text-center`}
+                              className={`${rubik.className} block w-[5rem] md:w-[8rem] text-3xl md:text-[4.2rem] leading-none tabular-nums text-center`}
                               style={{
                                 background: 'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 97.1%)',
                                 WebkitBackgroundClip: 'text',
@@ -226,7 +217,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                   <div className="flex flex-col items-center justify-center">
                       <div ref={clientsCount.ref as React.RefObject<HTMLDivElement>}>
                           <span
-                              className={`${rubik.className} block w-[7rem] md:w-[8rem] text-[3.5rem] md:text-[4.2rem]  leading-none tabular-nums text-center`}
+                              className={`${rubik.className} block w-[5rem] md:w-[8rem] text-3xl md:text-[4.2rem] leading-none tabular-nums text-center`}
                               style={{
                                   background: 'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 97.1%)',
                                   WebkitBackgroundClip: 'text',
@@ -258,12 +249,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                   >
                     <span
                       className={`${rubik.className} uppercase whitespace-nowrap text-[#19140F]`}
-                      style={{
-                        fontStyle: 'normal',
-                        fontWeight: 600,
-                        lineHeight: 'normal',
-                        fontSize: 'clamp(1rem, 1vw, 0.9rem)',
-                      }}
+                      style={{ fontStyle: "normal", fontWeight: 600, lineHeight: "normal", fontSize: "0.9rem" }}
                     >
                       {t("portfolio")}
                     </span>

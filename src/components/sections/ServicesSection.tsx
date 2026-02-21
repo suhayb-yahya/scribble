@@ -2,7 +2,7 @@
 
 import { Rubik } from "next/font/google";
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const rubik = Rubik({ weight: ["400", "600"], subsets: ["latin", "arabic"] });
 
@@ -38,14 +38,15 @@ const cardVariants = {
 
 export default function ServicesSection() {
   const t = useTranslations("services");
+  const locale = useLocale();
   return (
       <section className="bg-primary text-white pt-22 pb-32">
-        <div className="content-nav-aligned -mt-20 md:-mt-24">
+        <div className="content-nav-aligned mt-0 md:-mt-24">
           <div className="flex flex-col items-center w-full">
-            <h2 className="text-3xl md:text-4xl font-bold uppercase text-center tracking-tight mb-10 max-w-4xl leading-tight">
+            <h2 className={`text-3xl md:text-4xl font-bold uppercase tracking-tight mb-10 max-w-4xl leading-tight ${locale === "ar" ? "text-right" : "text-center"}`} dir={locale === "ar" ? "rtl" : undefined}>
               {t("heading1")}<br />{t("heading2")}
             </h2>
-            <p className="text-xl md:text-3xl text-right text-white max-w-5xl mb-16 leading-tight px-5">
+            <p className={`text-xl md:text-3xl text-white max-w-5xl mb-16 leading-tight px-5 ${locale === "ar" ? "text-right" : "text-center"}`} dir={locale === "ar" ? "rtl" : "ltr"}>
               {t("intro")}
             </p>
           </div>
