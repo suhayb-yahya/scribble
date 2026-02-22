@@ -17,13 +17,13 @@ export default function AboutHero() {
           className="relative w-full min-w-0 overflow-hidden"
           aria-label="About Scribble"
         >
-          <div className="relative w-full">
+          <div className="relative w-full max-w-[1920px] mx-auto">
             <Image
               src="/assets/about-main.png"
               alt="Scribble team — modern office, creative professionals at work"
               width={1920}
               height={1200}
-              className="w-full h-auto block max-w-full"
+              className="w-full h-auto block max-w-full max-h-[1200px]"
               sizes="(max-width: 1920px) 100vw, 1920px"
               priority
               unoptimized

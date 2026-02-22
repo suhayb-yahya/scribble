@@ -6,10 +6,16 @@ import { useLocale, useTranslations } from "next-intl";
 
 const rubik = Rubik({ weight: "600", subsets: ["latin", "arabic"] });
 
-function useCountUp(end: number, duration: number = 2000, startOnView: boolean = true) {
+function useCountUp(
+  end: number,
+  duration: number = 2000,
+  startOnView: boolean = true,
+  triggerRef?: React.RefObject<HTMLElement | null>
+) {
   const [count, setCount] = useState(0);
   const [hasStarted, setHasStarted] = useState(!startOnView);
   const elementRef = useRef<HTMLDivElement>(null);
+  const observedRef = triggerRef ?? elementRef;
 
   useEffect(() => {
     if (!startOnView || hasStarted) {
@@ -28,8 +34,8 @@ function useCountUp(end: number, duration: number = 2000, startOnView: boolean =
       { threshold: 0.5 }
     );
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
+    if (observedRef.current) {
+      observer.observe(observedRef.current);
     }
 
     return () => observer.disconnect();
@@ -77,9 +83,10 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
   const locale = useLocale();
   const t = useTranslations("explore");
   const isRtl = locale === "ar";
-  const videosCount = useCountUp(videos, 1000);
-  const brandsCount = useCountUp(brands, 1000);
-  const clientsCount = useCountUp(clients, 1000);
+  const countTriggerRef = useRef<HTMLDivElement>(null);
+  const videosCount = useCountUp(videos, 1000, true, countTriggerRef);
+  const brandsCount = useCountUp(brands, 1000, true, countTriggerRef);
+  const clientsCount = useCountUp(clients, 1000, true, countTriggerRef);
 
   const textBlock = (
     <>
@@ -109,18 +116,132 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
       }}
       aria-label="Explore"
     >
-      <div className="content-nav-aligned max-w-full">
-        <section className="relative w-screen left-1/2 -translate-x-1/2 min-w-0 overflow-hidden">
-          {/* Image */}
-          <div className="relative w-full" style={{ aspectRatio: "1600/780" }}>
+      <div className="w-full flex justify-center">
+        <section className="relative flex justify-center min-w-0 overflow-hidden w-full">
+          {/* Image - full width section, image at natural size centered */}
+          <div ref={countTriggerRef} className="relative w-fit max-w-full">
             <img
               src="/assets/explore-bg.jpeg"
               alt=""
-              className="block w-full h-full object-cover object-center"
+              className="block w-auto max-w-full h-auto mx-auto"
               aria-hidden
               decoding="async"
               fetchPriority="high"
             />
+            {/* Desktop: counters at image's right edge */}
+            <div
+              className="hidden md:flex absolute right-0 bottom-6 justify-end z-20"
+              dir={isRtl ? "ltr" : undefined}
+            >
+              <div className="flex flex-nowrap justify-end rounded-l-[6rem] rounded-r-none border border-white p-4 pl-6 pr-0 pt-0 pb-3 bg-black/20 backdrop-blur-sm items-center" style={{ width: '700px', height: '128px' }}>
+                <div className="flex items-center gap-[70px] mr-8">
+                {/* VIDEOS */}
+                <div className="flex flex-col items-center justify-center">
+                  <div ref={videosCount.ref as React.RefObject<HTMLDivElement>} style={{ marginTop: '25px' }}>
+                    <span
+                      className={`${rubik.className} block w-[4rem] md:w-[6rem] text-3xl md:text-[50px] font-bold leading-none tabular-nums text-center`}
+                      style={{
+                        background: 'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 97.1%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        fontWeight: 300,
+                        fontVariantNumeric: 'tabular-nums',
+                      }}
+                    >
+                      {videosCount.count}
+                    </span>
+                  </div>
+                  <span
+                    className="uppercase tracking-[0.2em] mt-2"
+                    style={{
+                      color: '#FFFFFF',
+                      fontFamily: 'Rubik, sans-serif',
+                      fontSize: '1.0rem',
+                      fontWeight: 300,
+                      marginBottom: '25px',
+                    }}
+                  >
+                    {t("videos")}
+                  </span>
+                </div>
+
+                {/* BRAND */}
+                <div className="flex flex-col items-center justify-center">
+                  <div ref={brandsCount.ref as React.RefObject<HTMLDivElement>} style={{ marginTop: '25px' }}>
+                    <span
+                      className={`${rubik.className} block w-[4rem] md:w-[6rem] text-3xl md:text-[50px] leading-none tabular-nums text-center`}
+                      style={{
+                        background: 'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 97.1%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        fontWeight: 300,
+                        fontVariantNumeric: 'tabular-nums',
+                      }}
+                    >
+                      {brandsCount.count}
+                    </span>
+                  </div>
+                  <span
+                    className="uppercase tracking-[0.2em] mt-2"
+                    style={{
+                      color: '#FFFFFF',
+                      fontFamily: 'Rubik, sans-serif',
+                      fontSize: '1.0rem',
+                      fontWeight: 300,
+                      marginBottom: '25px',
+                    }}
+                  >
+                    {t("brand")}
+                  </span>
+                </div>
+
+                {/* CLIENTS */}
+                <div className="flex flex-col items-center justify-center">
+                  <div ref={clientsCount.ref as React.RefObject<HTMLDivElement>} style={{ marginTop: '25px' }}>
+                    <span
+                      className={`${rubik.className} block w-[4rem] md:w-[6rem] text-3xl md:text-[50px] leading-none tabular-nums text-center`}
+                      style={{
+                        background: 'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 97.1%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        fontWeight: 300,
+                        fontVariantNumeric: 'tabular-nums',
+                      }}
+                    >
+                      {clientsCount.count}
+                    </span>
+                  </div>
+                  <span
+                    className="uppercase tracking-[0.2em] mt-2"
+                    style={{
+                      color: '#FFFFFF',
+                      fontFamily: 'Rubik, sans-serif',
+                      fontSize: '1.0rem',
+                      fontWeight: 300,
+                      marginBottom: '25px',
+                    }}
+                  >
+                    {t("clients")}
+                  </span>
+                </div>
+                </div>
+                <button
+                  type="button"
+                  className="shrink-0 self-start flex items-center justify-center h-10 md:h-12 min-w-[7rem] md:min-w-[8rem] bg-white border-t border-r border-b border-white rounded-b-xl hover:opacity-95 transition-opacity pl-5 pr-5 md:pl-6 md:pr-6 ml-4 mr-4"
+                  aria-label={t("viewPortfolio")}
+                >
+                  <span
+                    className={`${rubik.className} uppercase whitespace-nowrap text-[#19140F]`}
+                    style={{ fontStyle: "normal", fontWeight: 600, lineHeight: "normal", fontSize: "0.9rem" }}
+                  >
+                    {t("portfolio")}
+                  </span>
+                </button>
+              </div>
+            </div>
             {/* Desktop: text overlay on image */}
             <div className="hidden md:flex absolute inset-0 z-10 flex-col pointer-events-none">
               <div className="flex-1" />
@@ -146,17 +267,17 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
         </div>
       </div>
 
-      {/* Counters - mobile: in flow centered, desktop: absolute at bottom right with pill design */}
+      {/* Counters - mobile only: in flow centered */}
       <div
-        className={`content-nav-aligned w-full flex justify-center pb-6 md:absolute md:right-0 md:bottom-6 md:pb-0 md:pl-0 md:pr-0 md:justify-end z-20`}
+        className="content-nav-aligned w-full flex justify-center pb-6 md:hidden"
         dir={isRtl ? "ltr" : undefined}
       >
-        <div className="flex flex-wrap justify-center md:flex-nowrap rounded-2xl md:rounded-l-[6rem] md:rounded-r-none border border-white p-4 md:pl-[6rem] md:pr-0 md:pt-0 md:pb-3 bg-black/20 backdrop-blur-sm items-center gap-4 md:gap-8">
+        <div className="flex flex-wrap justify-center rounded-2xl border border-white p-4 bg-black/20 backdrop-blur-sm items-center gap-4 md:gap-8">
                   {/* VIDEOS */}
                   <div className="flex flex-col items-center justify-center">
-                      <div ref={videosCount.ref as React.RefObject<HTMLDivElement>}>
+                      <div ref={videosCount.ref as React.RefObject<HTMLDivElement>} style={{ marginTop: '25px' }}>
                           <span
-                              className={`${rubik.className} block w-[5rem] md:w-[8.3rem] text-3xl md:text-[4.2rem] font-bold leading-none tabular-nums text-center`}
+                              className={`${rubik.className} block w-[4rem] md:w-[6rem] text-3xl md:text-[50px] font-bold leading-none tabular-nums text-center`}
                               style={{
                                   background: 'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 97.1%)',
                                   WebkitBackgroundClip: 'text',
@@ -177,6 +298,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                               fontFamily: 'Rubik, sans-serif',
                               fontSize: '1.0rem',
                               fontWeight: 300,
+                              marginBottom: '25px',
                           }}
                       >
                           {t("videos")}
@@ -185,9 +307,9 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
 
                   {/* BRAND */}
                   <div className="flex flex-col items-center justify-center">
-                      <div ref={brandsCount.ref as React.RefObject<HTMLDivElement>}>
+                      <div ref={brandsCount.ref as React.RefObject<HTMLDivElement>} style={{ marginTop: '25px' }}>
                           <span
-                              className={`${rubik.className} block w-[5rem] md:w-[8rem] text-3xl md:text-[4.2rem] leading-none tabular-nums text-center`}
+                              className={`${rubik.className} block w-[4rem] md:w-[6rem] text-3xl md:text-[50px] leading-none tabular-nums text-center`}
                               style={{
                                 background: 'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 97.1%)',
                                 WebkitBackgroundClip: 'text',
@@ -202,11 +324,12 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                       </div>
                       <span
                           className="uppercase tracking-[0.2em] mt-2"
-                          style={{  
+                          style={{
                               color: '#FFFFFF',
                               fontFamily: 'Rubik, sans-serif',
                               fontSize: '1.0rem',
                               fontWeight: 300,
+                              marginBottom: '25px',
                           }}
                       >
                           {t("brand")}
@@ -215,9 +338,9 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
 
                   {/* CLIENTS */}
                   <div className="flex flex-col items-center justify-center">
-                      <div ref={clientsCount.ref as React.RefObject<HTMLDivElement>}>
+                      <div ref={clientsCount.ref as React.RefObject<HTMLDivElement>} style={{ marginTop: '25px' }}>
                           <span
-                              className={`${rubik.className} block w-[5rem] md:w-[8rem] text-3xl md:text-[4.2rem] leading-none tabular-nums text-center`}
+                              className={`${rubik.className} block w-[4rem] md:w-[6rem] text-3xl md:text-[50px] leading-none tabular-nums text-center`}
                               style={{
                                   background: 'linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 97.1%)',
                                   WebkitBackgroundClip: 'text',
@@ -237,6 +360,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                               fontFamily: 'Rubik, sans-serif',
                               fontSize: '1.0rem',
                               fontWeight: 300,
+                              marginBottom: '25px',
                           }}
                       >
                         {t("clients")}
@@ -244,7 +368,7 @@ export default function ExploreSection(props: ExploreCountersProps = {}) {
                   </div>
                   <button
                     type="button"
-                    className="shrink-0 self-start flex items-center justify-center h-10 md:h-12 min-w-[7rem] md:min-w-[8rem] bg-white border-t border-r border-b border-white rounded-r-xl rounded-b-xl hover:opacity-95 transition-opacity pl-5 pr-5 md:pl-6 md:pr-6"
+                    className="shrink-0 self-start flex items-center justify-center h-10 md:h-12 min-w-[7rem] md:min-w-[8rem] bg-white border-t border-r border-b border-white rounded-b-xl hover:opacity-95 transition-opacity pl-5 pr-5 md:pl-6 md:pr-6"
                     aria-label={t("viewPortfolio")}
                   >
                     <span

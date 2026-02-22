@@ -108,15 +108,15 @@ export default function ContactFormSection() {
           {/* Form + content: RTL = right (first in RTL flow), LTR = left */}
           <div className={`flex flex-col gap-10 md:gap-14 lg:gap-16 min-w-0 lg:min-w-0 items-center lg:items-start ${isRtl ? "lg:items-end lg:text-right" : ""}`}>
             {/* Row: Logo first, address/contact info second */}
-            <div className="flex flex-nowrap items-center justify-center lg:justify-start gap-6 md:gap-8 min-w-0 w-full" dir={isRtl ? "rtl" : undefined}>
+            <div className="flex flex-col sm:flex-row sm:flex-nowrap items-center justify-center lg:justify-start gap-4 sm:gap-6 md:gap-8 min-w-0 w-full" dir={isRtl ? "rtl" : undefined}>
               <ScribbleLogo className="shrink-0 w-[200px] h-[99px] sm:w-[238px] sm:h-[118px]" />
               <div
-                className={`flex flex-col gap-1 text-[#FFF] uppercase tracking-wide shrink-0 min-w-[320px] lg:min-w-[380px] ${isRtl ? "md:ml-auto" : ""} ${rubik.className}`}
+                className={`flex flex-col gap-1 text-[#FFF] uppercase tracking-wide text-center sm:text-left min-w-0 ${isRtl ? "sm:text-right md:ml-auto" : ""} ${rubik.className}`}
               >
-                <span className="text-[22px] font-semibold leading-normal whitespace-nowrap" dir={isRtl ? "rtl" : undefined}>
+                <span className="text-[22px] font-semibold leading-normal" dir={isRtl ? "rtl" : undefined}>
                   {t("companyName")}
                 </span>
-                <span className="text-[22px] font-semibold leading-normal whitespace-nowrap" dir={isRtl ? "rtl" : undefined}>
+                <span className="text-[22px] font-semibold leading-normal" dir={isRtl ? "rtl" : undefined}>
                   {t("location")}
                 </span>
                 <a
@@ -131,7 +131,7 @@ export default function ContactFormSection() {
 
             {/* Form sticks under them */}
             <form
-              className={`flex flex-col gap-4 items-center lg:items-start ${isRtl ? "lg:items-end" : ""}`}
+              className={`flex flex-col gap-4 w-full items-center lg:items-start ${isRtl ? "lg:items-end" : ""}`}
               onSubmit={handleSubmit}
             >
             <label className="sr-only" htmlFor="contact-name">
@@ -147,7 +147,7 @@ export default function ContactFormSection() {
               onChange={(e) => setName(e.target.value)}
               required
               disabled={status === "sending"}
-              className={`contact-input-style w-[512.529px] max-w-full h-[55.135px] px-4 ${isRtl ? "text-right" : ""}`}
+              className={`contact-input-style w-full max-w-[512px] h-[55.135px] px-4 ${isRtl ? "text-right" : ""}`}
               aria-label={t("name")}
             />
             <label className="sr-only" htmlFor="contact-email">
@@ -163,7 +163,7 @@ export default function ContactFormSection() {
               onChange={(e) => setEmail(e.target.value)}
               required
               disabled={status === "sending"}
-              className={`contact-input-style w-[512.529px] max-w-full h-[55.135px] px-4 ${isRtl ? "text-right" : ""}`}
+              className={`contact-input-style w-full max-w-[512px] h-[55.135px] px-4 ${isRtl ? "text-right" : ""}`}
               aria-label={t("email")}
             />
             <label className="sr-only" htmlFor="contact-comments">
@@ -179,19 +179,19 @@ export default function ContactFormSection() {
               onChange={(e) => setComments(e.target.value)}
               required
               disabled={status === "sending"}
-              className={`contact-input-style w-[512.529px] max-w-full min-h-[100px] px-4 py-3 resize-y ${isRtl ? "text-right" : ""}`}
+              className={`contact-input-style w-full max-w-[512px] min-h-[100px] px-4 py-3 resize-y ${isRtl ? "text-right" : ""}`}
               aria-label={t("comments")}
             />
             {(status === "success" || status === "error") && (
               <p
                 role="alert"
                 dir={isRtl ? "rtl" : undefined}
-                className={`text-sm max-w-[512.529px] text-center lg:text-left ${status === "success" ? "text-green-300" : "text-red-300"} ${isRtl ? "lg:text-right" : ""}`}
+                className={`text-sm w-full max-w-[512px] text-center lg:text-left ${status === "success" ? "text-green-300" : "text-red-300"} ${isRtl ? "lg:text-right" : ""}`}
               >
                 {status === "success" ? t("successMessage") : errorMessage}
               </p>
             )}
-            <div className={`flex max-w-[512.529px] w-full justify-center lg:justify-end ${isRtl ? "lg:justify-start" : ""}`}>
+            <div className={`flex w-full max-w-[512px] justify-center lg:justify-end ${isRtl ? "lg:justify-start" : ""}`}>
               <button
                 type="submit"
                 disabled={status === "sending"}

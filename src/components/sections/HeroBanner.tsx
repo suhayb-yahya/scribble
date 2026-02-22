@@ -7,7 +7,7 @@ export default function HeroBanner() {
           alt="Scribble — modern workspace"
           loading="eager"
           fetchPriority="high"
-          className="w-full min-w-0 max-w-full h-auto object-cover object-center block"
+          className="w-auto max-w-full h-auto block mx-auto"
         />
       </div>
     </section>
